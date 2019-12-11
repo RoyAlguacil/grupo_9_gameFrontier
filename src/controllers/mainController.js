@@ -12,6 +12,10 @@ const controller = {
 	root: (req, res) => {
 		let html = readHTML('index');
 		res.send(html);
+	},	
+	detail: (req, res) => {
+		let html = readHTML('detail');
+		res.send(html);
 	},
 };
 
