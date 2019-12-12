@@ -4,8 +4,85 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home Page</title>
+		<link rel="stylesheet" href="/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/css/swiper.min.css">
 		<link rel="stylesheet" href="/css/home.css" />
 	</head>
 	<body>
+		<header class="header">
+			<div class="header__logo">
+				<img src="/images/logo/logo.jpeg" alt="GameFrontier logo">
+			</div>
+			<div class="header__searchbar">
+				<input class="form-control" type="text" placeholder="Buscar...">
+			</div>
+			<div class="header__login">
+				<button class="btnLogin"><a href="#">Mi cuenta</a></button>
+			</div>
+		</header>
+
+		<main class="main">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/ctr.png" alt="Crash image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/catherine-full-body.png" alt="Catherine image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/mortal-kombat-11.png" alt="Mortal Kombat image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/nioh-2.png" alt="Nioh 2 image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/resident-evil-2.png" alt="Resident Evil 2 image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img src="/images/home-carousel/misma-resolucion/the-last-of-us-2.png" alt="The Last of Us 2 image">
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+				</div>
+				<div class="swiper-button-prev"></div>
+				<div class="swiper-button-next"></div>
+			</div>
+		</main>
+
+		
+
+		<script src="/js/swiper.min.js"></script>
+		<script>
+			const mySwiper = new Swiper ('.swiper-container', {
+    			loop: true,
+				on: {
+					init: function() {
+							checkArrow();
+					},
+					resize: function() {
+							checkArrow();
+					}
+  				}
+			});
+
+			function checkArrow() {
+				let swiperPrev = document.querySelector('.swiper-button-prev');
+				let swiperNext = document.querySelector('.swiper-button-next');
+				if ( window.innerWidth > 1024  ) {
+					swiperPrev.style.display = 'block';
+					swiperNext.style.display = 'block';
+				} else {
+					swiperPrev.style.display = 'none';
+					swiperNext.style.display = 'none';
+				}
+			}
+		</script>
 	</body>
 </html>
