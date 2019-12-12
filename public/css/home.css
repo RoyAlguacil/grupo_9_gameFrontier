@@ -29,11 +29,11 @@ html {
 .header__login button,
 .header__login button:active,
 .header__login button:link {
-    margin-right: 20px;
     background-color: rgb(47, 156, 195);
     padding: 5px 10px;
     border: none;
     border-radius: 20px;
+    margin-right: 80px;
 }
 
 .header__login button a {
@@ -44,6 +44,23 @@ html {
 
 .header__searchbar {
     display: none;
+}
+
+.menu {
+    background-color: #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: none;
+    margin-right: 10px;
+    position: fixed;
+    right: 10px;
+}
+
+.menu i {
+    color: rgb(47, 156, 195);
+    font-size: 20px;
+    margin-top: 5px;
 }
 
 /* Carousel */
