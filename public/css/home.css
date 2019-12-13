@@ -6,14 +6,31 @@
     box-sizing: border-box;
 }
 
+:root {
+    --main-color: #2f9cc3;
+    --white-color: #fff;
+    --black-color: #000;
+}
+
 html {
     min-width: 100%;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Utils */
+.heading {
+    color: var(--main-color);
+    text-align: center;
+    font-weight: 700;
 }
 
 /* Header */
 
 .header {
-    background-color: #000;
+    background-color: var(--black-color);
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -29,7 +46,7 @@ html {
 .header__login button,
 .header__login button:active,
 .header__login button:link {
-    background-color: rgb(47, 156, 195);
+    background-color: var(--main-color);
     padding: 5px 10px;
     border: none;
     border-radius: 20px;
@@ -38,7 +55,7 @@ html {
 
 .header__login button a {
     text-decoration: none;
-    color: #fff;
+    color: var(--white-color);
     font-size: 15px;
 }
 
@@ -47,7 +64,7 @@ html {
 }
 
 .menu {
-    background-color: #fff;
+    background-color: var(--white-color);
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -55,10 +72,11 @@ html {
     margin-right: 10px;
     position: fixed;
     right: 10px;
+    z-index: 999;
 }
 
 .menu i {
-    color: rgb(47, 156, 195);
+    color: var(--main-color);
     font-size: 20px;
     margin-top: 5px;
 }
@@ -84,24 +102,211 @@ html {
     bottom: 0;
     margin: 0 5px 5px 0;
     font-size: 12px;
-    color: #fff;
+    color: var(--white-color);
     padding: 5px 15px;
-    background-color: rgb(47, 156, 195);
+    background-color: var(--main-color);
     border: none;
     border-radius: 20px;
     transition: all .4s ease;
 }
 
 .swiper-slide .btnInfo a {
-    color: #fff;
+    color: var(--white-color);
     text-decoration: none;
     transition: all .3s ease;
 }
 
 .swiper-slide .btnInfo:hover {
-    background-color: #fff;
+    background-color: var(--white-color);
 }
 .swiper-slide .btnInfo:hover a {
-    color: rgb(47, 156, 195);
+    color: var(--main-color);
 }
 
+/* Welcome */
+.welcome {
+    padding: 30px 10px 0 10px;
+}
+
+.welcome p {
+    text-align: center;
+}
+
+/* Categories */
+.categories {
+    padding-top: 30px;
+}
+
+.categories-container {
+    height: 800px;
+    margin-top: 20px;
+    background-color: var(--black-color);
+    transition: all .2s ease;
+}
+
+.categories-container:hover > .categories__screen {
+    opacity: 0.3;
+}
+
+.categories__screen {
+    position: relative;
+}
+
+.categories__screen:nth-child(1) {
+    background-image: url('/images/categorias/consoles.jpg');
+    width: 100%;
+    height: 25%;
+    background-size: cover;
+    background-position: center;
+}
+.categories__screen:nth-child(2) {
+    background-image: url('/images/categorias/a8efde39d47d591af2e973eb31a45ed5.jpg');
+    width: 100%;
+    height: 25%;
+    background-size: cover;
+    background-position: center;
+}
+.categories__screen:nth-child(3) {
+    background-image: url('/images/categorias/console-controller-gamer-gaming-21067.jpg');
+    width: 100%;
+    height: 25%;
+    background-size: cover;
+}
+.categories__screen:nth-child(4) {
+    background-image: url('/images/categorias/merchandising.jpg');
+    width: 100%;
+    height: 25%;
+    background-size: cover;
+}
+
+.categories__screen {
+    transition: all .2s ease;
+}
+
+.categories-container .categories__screen:hover {
+    opacity: 1;
+}
+
+.categories__screen-item {
+    position: absolute;
+    padding-top: 3px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--white-color);
+}
+
+.cateogies__screen-item h3 {
+    font-size: 10px;
+}
+
+.categories__screen-item p {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding-bottom: 3px;
+    font-weight: 700;
+}
+
+/* Trending */
+.trending {
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.trending-heading {
+    background-color: var(--main-color);
+    width: 100%;
+    padding: 20px 0;
+}
+
+.trending-heading h2 {
+    color: var(--white-color);
+}
+
+.swiper-container.trending-swiper {
+    margin-top: 30px;
+    padding: 0 40px;
+}
+
+.swiper-slide .btnInfo-destacado {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 5px 5px 0;
+    font-size: 15px;
+    color: var(--white-color);
+    padding: 8px 20px;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 20px;
+    transition: all .4s ease;
+}
+
+.swiper-slide .btnInfo-destacado a {
+    color: var(--white-color);
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+/* Newsletter */
+.newsletter {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--black-color);
+    padding: 0 0 30px 0;
+}
+
+.newsletter__title {
+    padding: 20px 0;
+    width: 100%;
+}
+
+form {
+    width: 90%;
+    margin-top: 10px;
+    background-color: var(--white-color);
+    border-radius: 30px;
+    padding: 20px 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form input {
+    width: 80%;
+    border: none;
+    border: 1px solid #2f9cc3;
+    border-radius: 30px;
+    margin-top: 20px;
+    padding: 10px 30px;
+}
+
+form input::placeholder {
+    color: var(--main-color);
+}
+
+form button {
+    margin-top: 20px;
+    background-color: var(--main-color);
+    color: var(--white-color);
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid #2f9cc3;
+    font-size: 15px;
+}
+
+/* Footer */
+footer {
+    height: 200px;
+    width: 100%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 30px;
+}

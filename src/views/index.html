@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home Page</title>
+		<link href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap" rel="stylesheet"> 
 		<link rel="stylesheet" href="/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/css/swiper.min.css">
 		<script src="https://kit.fontawesome.com/b614b88656.js" crossorigin="anonymous"></script>
@@ -53,38 +54,90 @@
 						<button class="btnInfo"><a href="#">Ver más</a></button>
 					</div>
 				</div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
 			</div>
-		</main>
 
-		
+			<section class="welcome">
+				<h1 class="heading">Bienvenido</h1>
+				<p>GameFrontier nació con un enfoque claro: satisfacer la demanda de todo aquel que sienta una desenfranada necesidad de despejarse un poco de la realidad con un joystick en mano. Ya sea librando una feroz batalla para salvar el mundo o disputando el partido de tu vida, o tratando de adelantar a tu rival en la ultima recta de una carrera disputada.</p>
+			</section>
+
+			<section class="categories">
+				<h2 class="heading">Categorías</h2>
+				<div class="categories-container">
+					<div class="categories__screen">
+						<div class="categories__screen-item">
+							<h3 class="heading">Consolas</h3>
+							<p>Encontrá las consolas más potentes del mercado</p>
+						</div>
+					</div>
+					<div class="categories__screen">
+						<div class="categories__screen-item">
+							<h3 class="heading">Juegos</h3>
+							<p>Tenemos la más amplia variedad de juegos</p>
+						</div>
+					</div>
+					<div class="categories__screen">
+						<div class="categories__screen-item">
+							<h3 class="heading">Accesorios</h3>
+							<p>Los complementos perfectos</p>
+						</div>
+					</div>
+					<div class="categories__screen">
+						<div class="categories__screen-item">
+							<h3 class="heading">Merchandising</h3>
+							<p>Los más populares objetos coleccionables</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="trending">
+				<div class="trending-heading"><h2 class="heading">Más buscados</h2></div>
+				<div class="swiper-container trending-swiper">
+				<!-- Additional required wrapper -->
+					<div class="swiper-wrapper trending-items">
+						<!-- Slides -->
+						<div class="swiper-slide">
+							<img src="/images/juegos/ps4/spyro.jpg" alt="Producto destacado">
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide">
+							<img src="/images/juegos/ps4/assassins-3.png" alt="Producto destacado">
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide">
+							<img src="/images/juegos/ps4/catherine.jpg" alt="Producto destacado">
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide">
+							<img src="/images/juegos/ps4/spiderman.jpg" alt="Producto destacado">
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="newsletter">
+				<div class="newsletter__title">
+					<h2 class="heading">Newsletter</h2>
+				</div>
+				<form action="">
+					<input type="text" placeholder="Email">
+					<button type="submit">Enviar</button>
+				</form>
+			</section>
+
+			<footer>
+				aca va el footer
+			</footer>
+		</main>
 
 		<script src="/js/swiper.min.js"></script>
 		<script>
 			const mySwiper = new Swiper ('.swiper-container', {
     			loop: true,
-				on: {
-					init: function() {
-							checkArrow();
-					},
-					resize: function() {
-							checkArrow();
-					}
-  				}
+				effect: window.innerWidth > 700 ? 'fade' : 'slide',
 			});
-
-			function checkArrow() {
-				let swiperPrev = document.querySelector('.swiper-button-prev');
-				let swiperNext = document.querySelector('.swiper-button-next');
-				if ( window.innerWidth > 1024  ) {
-					swiperPrev.style.display = 'block';
-					swiperNext.style.display = 'block';
-				} else {
-					swiperPrev.style.display = 'none';
-					swiperNext.style.display = 'none';
-				}
-			}
 		</script>
 	</body>
 </html>
