@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro|Nunito:400,700,700i|Tomorrow:400,600,600i|Varela+Round&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+:root {
+    --main-color: #2f9cc3;
+}
+
+body {
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+
+#cajaImgPrd img {   
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    color: var(--main-color);
+    font-size: 40px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+footer {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    color: var(--main-color);
+}
+
+#detalle {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#productosRelacionados {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#imgProductosRelacionados {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#descripcion {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#imgPrdRelacionados img {
+    width: 100%;
+}
+
+span {
+    text-align: center;
+}
+
+.fas {
+    font-size: 50px;
+    margin-top: 15px;
+}
+
+@media(min-width: 768px) {
+    #imgPrdRelacionados {
+        display: flex;
+    }
+}
