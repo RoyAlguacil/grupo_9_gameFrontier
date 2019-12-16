@@ -7,6 +7,8 @@ const mainController = require('../controllers/mainController');
 
 /* GET - home page. */
 router.get('/', mainController.root);
+/* GET - Pagina de Registracion*/
+router.get('/registro', mainController.formulario);
 
 /* Detalle de Producto */
 

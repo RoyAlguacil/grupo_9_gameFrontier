@@ -17,6 +17,10 @@ const controller = {
 		let html = readHTML('detail');
 		res.send(html);
 	},
+	formulario: (req, res) => {
+		let formulario = readHTML('formulario');
+		res.send(formulario);
+	}
 };
 
 module.exports = controller
