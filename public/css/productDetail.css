@@ -71,6 +71,83 @@ span {
     margin-top: 15px;
 }
 
+/* Header */
+
+.header {
+    background-color: var(--black-color);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo img {
+    width: 120px;
+    margin-left: 10px;
+}
+
+.header__login button,
+.header__login button:active,
+.header__login button:link {
+    background-color: var(--main-color);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 80px;
+}
+
+.header__login button a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 15px;
+}
+
+.header__searchbar {
+    display: none;
+}
+
+footer {
+    height: auto;
+    width: 100%;
+    background-color: var(--black-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+    font-size: 30px;
+}
+
+.footer__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding-top: 30px;
+}
+
+.footer__container-item ul {
+    list-style: none;
+}
+
+.footer__container-item ul li a {
+    color: var(--white-color);
+    font-size: 15px;
+}
+
+.social ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.social ul li a {
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+.social ul li a:hover {
+    color: var(--main-color);
+}
+
 @media(min-width: 768px) {
     #imgPrdRelacionados {
         display: flex;

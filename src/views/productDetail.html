@@ -8,14 +8,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro|Nunito:400,700,700i|Tomorrow:400,600,600i|Varela+Round&display=swap" rel="stylesheet">
-
+    
     <script src="https://kit.fontawesome.com/cf7e7aeca2.js" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" href="/css/productDetail.css">
 </head>
 
 <body>
-    <header>Aca va el header</header>
+    
+    <header class="header">
+        <div class="header__logo">
+            <img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
+        </div>
+        <div class="header__searchbar">
+            <input class="form-control" type="text" placeholder="Buscar..." />
+        </div>
+        <div class="header__login">
+            <button class="btnLogin"><a href="#">Mi cuenta</a></button>
+        </div>
+        <button class="menu"><i class="fas fa-bars"></i></button>
+    </header>
     
     <section class="container-fluid">
         
@@ -65,7 +77,39 @@
     </section>
     
     <footer>
-        Aca va el footer
+        <div class="footer__container">
+            <div class="footer__container-item">
+                <ul>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Locales</a></li>
+                    <li><a href="#">Soporte</a></li>
+                </ul>
+            </div>
+            <div class="footer__container-item">
+                <ul>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer__container-item social">
+                <img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </footer>
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

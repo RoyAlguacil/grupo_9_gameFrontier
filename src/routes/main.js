@@ -14,4 +14,8 @@ router.get('/registro', mainController.formulario);
 
 router.get('/detail', mainController.detail);
 
+/* Carrito de Compras */
+
+router.get('/productCart', mainController.productCart)
+
 module.exports = router;

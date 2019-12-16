@@ -20,7 +20,11 @@ const controller = {
 	formulario: (req, res) => {
 		let formulario = readHTML('formulario');
 		res.send(formulario);
+	},
+	productCart: (req, res) => {
+		let html = readHTML('productCart');
+		res.send(html);
 	}
 };
 
-module.exports = controller
+module.exports = controller;
