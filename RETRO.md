@@ -14,3 +14,7 @@ Existe buena comunicación en el equipo y nos es fácil ponernos de acuerdo.
 
 5. Qué deberíamos dejar de hacer (Stop Doing):
 Encuentros en persona para poder agilizar los tiempos, haciendo uso de git y slack.
+
+
+Link al tablero de Trello
+https://trello.com/b/48D154z5/gamefrontier
