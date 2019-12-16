@@ -18,39 +18,40 @@
             <div class="col">
               <div class="card card-signin my-5">
                 <div class="card-body">
-                  <h5 class="card-title text-center">Registracion</h5>
+                  <h5 class="card-title text-center">Registro</h5>
                   <form class="form-signin">
                     <div class="form-label-group">
-                        <input type="Usuario" id="inputUsuario" class="form-control" placeholder="Usuario" required autofocus>
-                        <label for="Usuario">Usuario</label>
-                      </div>
+                        <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required>
+                        <label for="inputUsuario">Usuario</label>
+                        <p style="color: red; margin: 5px 0 0 10px;">Este nombre de usuario ya existe</p> 
+                    </div>
                 
                     <div class="form-label-group">
-                      <input type="Contraseña" id="inputContraseña" class="form-control" placeholder="Contraseña" required>
+                      <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                       <label for="inputPassword">Contraseña</label>
                     </div>
                       <div class="form-label-group">
-                        <input type="Nombre" id="inputNombre" class="form-control" placeholder="Nombre" required autofocus>
+                        <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required>
                         <label for="inputNombre">Nombre</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="Telefono" id="inputTelefono" class="form-control" placeholder="Telefono" required autofocus>
+                        <input type="text" id="inputTelefono" class="form-control" placeholder="Telefono" required>
                         <label for="inputTelefono">Telefono</label>
                       </div>  
                       <div class="form-label-group">
-                        <input type="Provincia" id="inputProvincia" class="form-control" placeholder="Provincia" required autofocus>
+                        <input type="text" id="inputProvincia" class="form-control" placeholder="Provincia" required>
                         <label for="inputProvincia">Provincia</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="Localidad" id="inputLocalidad" class="form-control" placeholder="Localidad" required autofocus>
-                        <label for="inputNombre">Localidad</label>
+                        <input type="text" id="inputLocalidad" class="form-control" placeholder="Localidad" required>
+                        <label for="inputLocalidad">Localidad</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="DNI" id="inputDNI" class="form-control" placeholder="DNI" required autofocus>
-                        <label for="inputNombre">DNI</label>
+                        <input type="number" id="inputDNI" class="form-control" placeholder="DNI" required>
+                        <label for="inputDNI">DNI</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
                         <label for="inputEmail">Correo Electronico</label>
                        </div> 
                      
@@ -63,7 +64,8 @@
                   </form>
               </div>
             </div>
-    </div>
+          </div>
+      </div>
     </div>
   </body>
 </html>
