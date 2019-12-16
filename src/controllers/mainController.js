@@ -14,7 +14,7 @@ const controller = {
 		res.send(html);
 	},	
 	detail: (req, res) => {
-		let html = readHTML('detail');
+		let html = readHTML('productDetail');
 		res.send(html);
 	},
 	formulario: (req, res) => {
