@@ -4,8 +4,228 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home Page</title>
+		<link
+			href="https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/css/swiper.min.css" />
+		<script
+			src="https://kit.fontawesome.com/b614b88656.js"
+			crossorigin="anonymous"
+		></script>
 		<link rel="stylesheet" href="/css/home.css" />
 	</head>
 	<body>
+		<header class="header">
+			<div class="header__logo">
+				<img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
+			</div>
+			<div class="header__searchbar">
+				<input class="form-control" type="text" placeholder="Buscar..." />
+			</div>
+			<div class="header__login">
+				<button class="btnLogin"><a href="#">Mi cuenta</a></button>
+			</div>
+			<button class="menu"><i class="fas fa-bars"></i></button>
+		</header>
+
+		<main class="main">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<div class="swiper-wrapper" id="swiper-hero">
+					<!-- Slides -->
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/ctr.png"
+							alt="Crash image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/catherine-full-body.png"
+							alt="Catherine image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/mortal-kombat-11.png"
+							alt="Mortal Kombat image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/nioh-2.png"
+							alt="Nioh 2 image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/resident-evil-2.png"
+							alt="Resident Evil 2 image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+					<div class="swiper-slide">
+						<img
+							src="/images/home-carousel/misma-resolucion/the-last-of-us-2.png"
+							alt="The Last of Us 2 image"
+						/>
+						<button class="btnInfo"><a href="#">Ver más</a></button>
+					</div>
+				</div>
+			</div>
+
+			<section class="welcome">
+				<div class="container">
+					<h1 class="heading">Bienvenido</h1>
+					<p>
+						GameFrontier nació con un enfoque claro: satisfacer la demanda de
+						todo aquel que sienta una desenfranada necesidad de despejarse un
+						poco de la realidad con un joystick en mano. Ya sea librando una
+						feroz batalla para salvar el mundo o disputando el partido de tu
+						vida, o tratando de adelantar a tu rival en la última recta de una
+						carrera disputada.
+					</p>
+				</div>
+			</section>
+
+			<section class="categories">
+				<h2 class="heading">Categorías</h2>
+				<div class="split">
+					<div class="screen consoles">
+						<div class="categories__screen-item">
+							<h3 class="heading">Consolas</h3>
+							<p>Encontrá las consolas más potentes del mercado</p>
+							<a href="#">Ver más</a>
+						</div>
+					</div>
+					<div class="screen games">
+						<div class="categories__screen-item">
+							<h3 class="heading">Juegos</h3>
+							<p>Tenemos la más amplia variedad de juegos</p>
+							<a href="#">Ver más</a>
+						</div>
+					</div>
+					<div class="screen electro">
+						<div class="categories__screen-item">
+							<h3 class="heading">Accesorios</h3>
+							<p>Los complementos perfectos</p>
+							<a href="#">Ver más</a>
+						</div>
+					</div>
+					<div class="screen merch">
+						<div class="categories__screen-item">
+							<h3 class="heading">Merchandising</h3>
+							<p>Los más populares objetos coleccionables</p>
+							<a href="#">Ver más</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="trending">
+				<div class="trending-heading">
+					<h2 class="heading">Más buscados</h2>
+				</div>
+				<div class="swiper-container trending-swiper">
+					<!-- Additional required wrapper -->
+					<div class="swiper-wrapper trending-items">
+						<!-- Slides -->
+						<div class="swiper-slide trending">
+							<img
+								src="/images/juegos/ps4/spyro.jpg"
+								alt="Producto destacado"
+							/>
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide trending">
+							<img
+								src="/images/juegos/ps4/assassins-3.png"
+								alt="Producto destacado"
+							/>
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide trending">
+							<img
+								src="/images/juegos/ps4/catherine.jpg"
+								alt="Producto destacado"
+							/>
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+						<div class="swiper-slide trending">
+							<img
+								src="/images/juegos/ps4/spiderman.jpg"
+								alt="Producto destacado"
+							/>
+							<button class="btnInfo-destacado"><a href="#">Ver más</a></button>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="newsletter">
+				<div class="newsletter__title">
+					<h2 class="heading">Newsletter</h2>
+				</div>
+				<form action="">
+					<input type="text" placeholder="Email" />
+					<button type="submit">Enviar</button>
+				</form>
+			</section>
+
+			<footer>
+				<div class="footer__container">
+					<div class="footer__container-item">
+						<ul>
+							<li><a href="#">Nosotros</a></li>
+							<li><a href="#">Contacto</a></li>
+							<li><a href="#">Locales</a></li>
+							<li><a href="#">Soporte</a></li>
+						</ul>
+					</div>
+					<div class="footer__container-item">
+						<ul>
+							<li><a href="#">Política de privacidad</a></li>
+							<li><a href="#">Términos y condiciones</a></li>
+						</ul>
+					</div>
+					<div class="footer__container-item social">
+						<img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
+						<ul>
+							<li>
+								<a href="#"><i class="fab fa-whatsapp"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fab fa-facebook-f"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fab fa-instagram"></i></a>
+							</li>
+							<li>
+								<a href="#"><i class="fab fa-twitter"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</footer>
+		</main>
+
+		<script src="/js/swiper.min.js"></script>
+		<script>
+			const mySwiper = new Swiper('.swiper-container', {
+				loop: true,
+				loopedSlides: 4,
+				effect: window.innerWidth > 992 ? 'fade' : 'slide',
+				autoplay: {
+					delay: 4000
+				},
+				slidesPerView: 1
+			});
+		</script>
 	</body>
 </html>
