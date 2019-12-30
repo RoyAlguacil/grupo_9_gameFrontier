@@ -14,98 +14,101 @@
 <body>
     <header>ACA VA EL HEADER</header>
     
-    <section class="container-fluid">
-        
-        <div class="row" id="detalle">
-            <div class="col-12">
-                <span>Detalle de compra</span>
+    <div class="mje-cliente">
+        <h6>Mensaje al cliente</h6>
+    </div>
+    <!-- Detalle de compra -->
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Detalle de tu Compra</button>
+                </h2>
+            </div>
+            
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Item</h6>
+                            <img src="/images/consolas/ps4-pro.jpg" width=100% alt="Play Station 4 Pro">
+                        </div>
+                        <div class="col-3">
+                            <h6>Cantidad</h6>
+                            <input class="qty_box" type="number" name="quantity" value="1">
+                        </div>
+                        <div class="col-3">
+                            <h6>Precio</h6><h6>$35.000</h6>
+                            
+                        </div>
+                        <div class="col-3">
+                            <h6>Sub-Total</h6>
+                            <h6>$35.000</h6>
+                        </div>
+                    </div>
+                    <div class="row" id="mas-productos">
+                <button><a href="#">< Agregar más productos</a></button>
+            </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- Entrega -->
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Domicilio de Entrega</button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div class="input-group flex-nowrap">
+                        <form action="#" method="#">
+                            <div class="form-group">
+                                <label for="address">Domicilio</label>
+                                <input type="text" class="form-control" id="address" placeholder="Domicilio">
+                            </div>
+                            <div class="form-group">
+                                <label for="area-entrega">Area de Entrega</label>
+                                <select class="form-control" id="area-entrega">
+                                    <option>CABA</option>
+                                    <option>GBA - Zona Norte</option>
+                                    <option>GBA - Zona Oeste</option>
+                                    <option>GBA - Zona Sur</option>
+                                    <option>Interior Prov. Bs As</option>
+                                    <option>Resto del Pais</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="codigo-postal">Cod. Postal</label>
+                                <input type="text" class="form-control" id="codigo-postal" placeholder="C. P.">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono" placeholder="N° de Teléfono">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        
-        <div class="row" id="titulos">
-            <div class="col-3">
-                <span>Items</span>
+        <!-- Pago -->
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Metodo de Pago / Descuentos
+                    </button>
+                </h2>
             </div>
-            <div class="col-3">
-                <span>Cantidad</span>
-            </div>
-            <div class="col-3">
-                <span>Precio</span>
-            </div>
-            <div class="col-3">
-                <span>Total</span>
-            </div>
-        </div>
-        
-        <div class="row" id="items">
-            <div class="col-3">
-                <span>Play Station 4</span>
-            </div>
-            <div class="col-3">
-                <span>1</span>
-            </div>
-            <div class="col-3">
-                <span>35MilPe</span>
-            </div>
-            <div class="col-3">
-                <span>35MilPe</span>
-            </div>
-            <div class="col-3">
-                <span>PES 2021</span>
-            </div>
-            <div class="col-3">
-                <span>1</span>
-            </div>
-            <div class="col-3">
-                <span>5MilPe</span>
-            </div>
-            <div class="col-3">
-                <span>40MilPe</span>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                </div>
             </div>
         </div>
-        
-        <div class="row" id="total">
-            <div class="col-6"></div>
-            <div class="col-3">
-                <a href="#">Total</a>
-            </div>
-            <div class="col-3">
-                <a href="#">Continuar</a>
-            </div>
-        </div>
-        
-        <div class="row" id="entrega">
-            <div class="col">
-                <span><a href="#">Entrega</a></span>
-            </div>
-        </div>
-        <div class="row" id="pago">
-            <div class="col">
-                <span><a href="#">Pago | Cod. Descuento</a></span>
-            </div>
-        </div>
-        <div class="row" id="confirmacion">
-            <div class="col">
-                <span><a href="#">Confirmar compra</a></span>
-            </div>
-        </div>
-        <div class="row" id="mediosPago">
-            <div class="col">
-                <a href="#">Medios de Pago</a>
-            </div>
-        </div>
-        <div class="row" id="aclaracion_logo">
-            <div class="col-7">
-                <p>Los precios expresados incluyen IVA</p>
-                <p>Las imagenes son a modo ilustrativo</p>
-                <p>La venta de productos esta sujeta a stock</p>
-                <p>Copyrigth ®</p>
-            </div>
-            <div class="col-5">
-                <img src="/images/logo/logo.jpeg" alt="Logo Game Frontier">
-            </div>
-        </div>
-    </section>
+    </div>
+    <footer>ACA VA EL FOOTER</footer>
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

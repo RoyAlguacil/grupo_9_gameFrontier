@@ -11,37 +11,23 @@ body {
     background-color: #fff;
 }
 
-header {
+header, footer, .mje-cliente {
     text-align: center;
     padding: 15px;
     font-weight: bold;
 }
 
-#aclaracion_logo img {
+.qty_box {
     width: 100%;
 }
 
-a {
-    text-decoration: none;
-    color: #2f9cc3;
+.form-control {
+    width: 100%;
+    display: inline-block;
 }
 
-#detalle,
-#entrega,
-#titulos,
-#items,
-#total,
-#aclaracion_logo {
-    padding-top: 15px;
-}
-
-#aclaracion_logo {
-    font-size: 9px;
-    padding-bottom: 15px;
-}
-
-@media(min-width: 320px) {
-    body {
-        font-size: smaller;
-    }
+#mas-productos {
+    justify-content: center;
+    padding-bottom: 10px;
+    border-style: none;
 }
