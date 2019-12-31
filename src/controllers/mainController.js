@@ -22,7 +22,7 @@ const controller = {
 		res.render('productCart', { title: 'Carrito de compras' });
 	},
 	productLoad: (req, res) => {
-		res.render('productLoad');
+		res.render('productLoad', { title: 'Carga de Producto' });
 	}
 };
 
