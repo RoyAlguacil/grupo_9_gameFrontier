@@ -10,20 +10,16 @@ const path = require('path');
 
 const controller = {
 	root: (req, res) => {
-		/*let html = readHTML('index');*/
-		res.render('index');
-	},	
+		res.render('index', { title: 'Home page' });
+	},
 	detail: (req, res) => {
-		/*let html = readHTML('productDetail');*/
-		res.render('productDetail');
+		res.render('productDetail', { title: 'Detalle de producto' });
 	},
 	register: (req, res) => {
-		/*let formulario = readHTML('register');*/
-		res.render('register');
+		res.render('register', { title: 'Registro' });
 	},
 	productCart: (req, res) => {
-		/*let html = readHTML('productCart');*/
-		res.render('productCart');
+		res.render('productCart', { title: 'Carrito de compras' });
 	},
 	productLoad: (req, res) => {
 		res.render('productLoad');
