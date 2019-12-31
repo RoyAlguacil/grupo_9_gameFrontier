@@ -19,4 +19,9 @@ router.get('/detail', mainController.detail);
 
 router.get('/productCart', mainController.productCart)
 
+/* Carrito de Carga */
+
+router.get('/productLoad', mainController.productLoad)
+
 module.exports = router;
+

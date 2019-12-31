@@ -24,6 +24,9 @@ const controller = {
 	productCart: (req, res) => {
 		/*let html = readHTML('productCart');*/
 		res.render('productCart');
+	},
+	productLoad: (req, res) => {
+		res.render('productLoad');
 	}
 };
 
