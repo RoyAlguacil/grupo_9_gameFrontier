@@ -3,20 +3,11 @@
 	<head>
 		<%- include('./partials/head-links') %>
 		<link rel="stylesheet" href="/css/home.css" />
+		<link rel="stylesheet" href="/css/header.css" />
+		<link rel="stylesheet" href="/css/mediaQueries.css" />
 	</head>
 	<body>
-		<header class="header">
-			<div class="header__logo">
-				<img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
-			</div>
-			<div class="header__searchbar">
-				<input class="form-control" type="text" placeholder="Buscar..." />
-			</div>
-			<div class="header__login">
-				<button class="btnLogin"><a href="#">Mi cuenta</a></button>
-			</div>
-			<button class="menu"><i class="fas fa-bars"></i></button>
-		</header>
+		<%- include('./partials/header') %>
 
 		<main class="main">
 			<div class="swiper-container">
