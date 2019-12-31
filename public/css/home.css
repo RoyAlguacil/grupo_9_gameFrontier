@@ -1,25 +1,3 @@
-*,
-*::before,
-*::after {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-:root {
-	--main-color: #2f9cc3;
-	--white-color: #fff;
-	--black-color: #000;
-}
-
-html {
-	min-width: 100%;
-}
-
-body {
-	font-family: 'Nunito', sans-serif;
-}
-
 /* Utils */
 .heading {
 	color: var(--main-color);
