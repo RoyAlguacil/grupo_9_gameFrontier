@@ -1,0 +1,53 @@
+/* Header */
+
+.header {
+	background-color: var(--black-color);
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__logo img {
+	width: 120px;
+	margin-left: 10px;
+}
+
+.header__login button,
+.header__login button:active,
+.header__login button:link {
+	background-color: var(--main-color);
+	padding: 5px 10px;
+	border: none;
+	border-radius: 20px;
+	margin-right: 80px;
+}
+
+.header__login button a {
+	text-decoration: none;
+	color: var(--white-color);
+	font-size: 15px;
+}
+
+.header__searchbar {
+	display: none;
+}
+
+.menu {
+	background-color: var(--white-color);
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	border: 1px solid var(--black-color);
+	margin-right: 10px;
+	position: fixed;
+	right: 10px;
+	z-index: 999;
+}
+
+.menu i {
+	color: var(--main-color);
+	font-size: 20px;
+	margin-top: 5px;
+}
