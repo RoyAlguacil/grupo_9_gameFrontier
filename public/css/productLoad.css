@@ -1,20 +1,13 @@
 h2 {
-    font-family: 'Nunito', sans-serif;
-    font-size: unset;
-    color: #2f9cc3;
-    background-color: #fff;
-}
-
-.admin {
 	font-family: 'Nunito', sans-serif;
-	background-color: var(--main-color);
-	border-radius: 50%;
-	margin-right: 20px;
+	color: #2f9cc3;
+	background-color: #fff;
 }
 
 img {
-	border-radius: 100%;
-   }
+	border-radius: 50%;
+	object-fit: cover;
+}
 
 .login button,
 .login button:active,

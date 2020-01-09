@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <%- include('./partials/head-links')%>
     <link rel="stylesheet" href="/css/globals.css">
@@ -9,53 +10,62 @@
     <link rel="stylesheet" href="/css/mediaQueries.css">
     <link rel="stylesheet" href="/css/footer.css">
 </head>
-<body>
-<%- include('./partials/header') %>
-</section>
-<div class="container">
-<div class="row">
-    <div class="col-12"><h2>Carga de Productos</h2> 
-</div>
-</div>
-<div class="row">
-<div class=col-6>Administrador
-    <div class="admin"></div>  
-    <img src="/images/administrador/admin.jpg"> 
-</div>
-<div class=col-6>	
-    <div class="login">
-    <button class="btnLogin"><a href="#">Salir</a></button>
-</div>
-</div>
-<div class="row">
-    <div class="col-12"><h2>Categorias</h2> 
-</div>
-<div class="row"></div>
-<div class=col-3>imagen1</div>
-<div class=col-3>imagen2</div>
-<div class=col-3>imagen3</div>
-<div class=col-3>imagen4</div>
-</div>
-<div class="row">
-    <div class="col-12"><h2>Detalle</h2> 
-</div>
-<div class="row"></div>
-<div class=col-4>imagen 1</div>
-<div class=col-4>Formulario 1</div>
-<div class=col-4>Formulario 2</div>
-</div>
-<div class="row">
-    <div class="col-12"><h2>Sucursales</h2> 
-</div>
-<div class="row"></div>
-<div class=col-4>Sucursal 1</div>
-<div class=col-4>Sucursal 2</div>
-<div class=col-4>Sucursal 3</div>
-</div>
-<div class="row">
-    <div class="col-12"><h2>Relleno</h2> 
-</div>
-</div>
 
+<body>
+    <%- include('./partials/header') %>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>Carga de Productos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class=col-6>
+                <h2>Administrador</h2>
+                <img src="/images/administrador/admin.jpg" width="150" height="150">
+            </div>
+            <div class=col-6>
+                <div class="login">
+                    <button class="btnLogin"><a href="#">Salir</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Categorias</h3>
+            </div>
+            <div class="row"></div>
+            <div class=col-3>imagen1</div>
+            <div class=col-3>imagen2</div>
+            <div class=col-3>imagen3</div>
+            <div class=col-3>imagen4</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Detalle</h3>
+            </div>
+            <div class="row"></div>
+            <div class=col-4>imagen 1</div>
+            <div class=col-4>Formulario 1</div>
+            <div class=col-4>Formulario 2</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Sucursales</h3>
+            </div>
+            <div class="row"></div>
+            <div class=col-4>Sucursal 1</div>
+            <div class=col-4>Sucursal 2</div>
+            <div class=col-4>Sucursal 3</div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3>Relleno</h3>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
 </body>
+
 </html>
