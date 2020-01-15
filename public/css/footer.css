@@ -39,3 +39,30 @@ footer {
 .social ul li a:hover {
 	color: var(--main-color);
 }
+
+/* Media Queries */
+@media only screen and (min-width: 576px) {
+	.footer__container-item {
+		width: 100%;
+		text-align: center;
+	}
+}
+@media only screen and (min-width: 768px) {
+	.footer__container {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.footer__container-item {
+		width: 33.3%;
+	}
+
+	.social img {
+		width: 100%;
+	}
+}
+@media only screen and (min-width: 992px) {
+	.footer__container-item img {
+		width: 200px;
+	}
+}
