@@ -1,47 +1,69 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    font-size: unset;
-    color: #2f9cc3;
-    background-color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: unset;
+  color: #2f9cc3;
+  background-color: #fff;
 }
 
-header {
-    text-align: center;
-    padding: 15px;
-    font-weight: bold;
+.medios-pago {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
-#aclaracion_logo img {
-    width: 100%;
+.btn-primary {
+  margin-top: 25px;
 }
 
-a {
-    text-decoration: none;
-    color: #2f9cc3;
+.card-img-top {
+  width: 150px;
 }
 
-#detalle,
-#entrega,
-#titulos,
-#items,
-#total,
-#aclaracion_logo {
-    padding-top: 15px;
+header,
+footer,
+.mje-cliente {
+  text-align: center;
+  padding: 15px;
+  font-weight: bold;
 }
 
-#aclaracion_logo {
-    font-size: 9px;
-    padding-bottom: 15px;
+.modal fade btn__compras{
+  font-family: "Nunito", sans-serif;
+  font-size: unset;
+  color: #2f9cc3;
+  background-color: #fff;
 }
 
-@media(min-width: 320px) {
-    body {
-        font-size: smaller;
-    }
+.qtyBox {
+  display: flex;
+  align-content: center;
+}
+
+.qty_box {
+  width: 20%;
+}
+
+.form-control {
+  width: 100%;
+  display: inline-block;
+}
+
+.btn :hover {
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .medios-pago {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 40px 0;
+  }
 }
