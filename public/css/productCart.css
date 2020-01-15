@@ -11,12 +11,30 @@ body {
   background-color: #fff;
 }
 
+.card-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: center;
+}
+
+.card__item {
+  min-height: 300px;
+}
+
+.card__item .item-img img {
+  object-fit: contain;
+}
+
 .medios-pago {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+}
+
+.medios-pago div {
+  margin: 20px 0;
 }
 
 .btn-primary {
@@ -42,15 +60,6 @@ footer,
   background-color: #fff;
 }
 
-.qtyBox {
-  display: flex;
-  align-content: center;
-}
-
-.qty_box {
-  width: 20%;
-}
-
 .form-control {
   width: 100%;
   display: inline-block;
@@ -65,5 +74,13 @@ footer,
     flex-direction: row;
     justify-content: space-around;
     padding: 40px 0;
+    align-items: flex-start;
+  }
+
+  .card-body {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
