@@ -51,39 +51,42 @@
             <div class="col-md-4 col-sm-12 background">
                 <img src="/images/electro/pendrive-sandisk-16-gb-ultra-fit-negro.jpg" width="150" height="150" />
             </div>
-            <div class="col-md-4 col-sm-12 background">
-                <div class="form-label-group">
-                    <input type="text" id="inputProducto" class="form-control" placeholder="Ingrese el Nombre" required>
-                </div>
-                <div class="form-label-group">
-                    <input type="number" id="inputCantidad" class="form-control" placeholder="Ingrese la cantidad"
-                        required>
-                </div>
-                <div class="form-label-group">
-                    <input type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo" required>
-                </div>
-                <div class="form-label-group">
-                    <input type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor" required>
-                </div>
-                <div class="form-label-group">
-                    <label for="sucursales">Seleccione la Sucursal</label>
-                    <select id="sucursales" class="form-control">
-                        <option value="sucursal1">Av. la Plata 3500</option>
-                    </select>
-                </div>
+            <div class="col-md-4 col-sm-12">
+                <form action="" method="" style="width: 100%" id="creacion">
+                    <div class="form-label-group">
+                        <input type="text" id="inputProducto" class="form-control" placeholder="Ingrese el Nombre"
+                            required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="number" id="inputCantidad" class="form-control" placeholder="Ingrese la cantidad"
+                            required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo" required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="sucursales">Seleccione la Sucursal</label>
+                        <select id="sucursales" class="form-control">
+                            <option value="sucursal1">Av. la Plata 3500</option>
+                        </select>
+                    </div>
+                </form>
             </div>
             <div class="col-md-4 background">
                 <h3>Detalle del Producto</h3>
-                <textarea name="Descripcion del Producto" id="inputProducto" cols="30" rows="10"></textarea>
+                <textarea form="creacion" name="Descripcion del Producto" id="inputProducto" cols="30"
+                    rows="10"></textarea>
+                <button type="submit" form="creacion">GUARDAR</button>
             </div>
         </div>
-
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h3>Relleno</h3>
+        <div class="row">
+            <div class="col-12">
+                <h3>Relleno</h3>
+            </div>
         </div>
-    </div>
     </div>
     <%- include('./partials/footer') %>
 </body>
