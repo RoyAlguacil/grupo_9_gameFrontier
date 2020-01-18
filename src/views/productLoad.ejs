@@ -12,7 +12,7 @@
 
 <body>
     <%- include('./partials/header') %>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <h1>Carga de Productos</h1>
@@ -35,7 +35,7 @@
                 <img src="/images/categoria-admin/Electro.jpg" width="150" height="150" />
                 <p href="#" class="TituloCat">Electro</p>
             </div>
-            <div class="col-md-3 col-sm-12 category">
+            <div class="col-md-3 col-sm-cd 12 category">
                 <img src="/images/categoria-admin/juegos.jpg" width="150" height="150" />
                 <p href="#" class="TituloCat">Juegos</p>
             </div>
@@ -52,7 +52,7 @@
                 <img src="/images/electro/pendrive-sandisk-16-gb-ultra-fit-negro.jpg" width="150" height="150" />
             </div>
             <div class="col-md-4 col-sm-12">
-                <form action="" method="" style="width: 100%" id="creacion">
+                <form action="./data/productos.json" method="POST" style="width: 100%" id="creacion">
                     <div class="form-label-group">
                         <input type="text" id="inputProducto" class="form-control" placeholder="Ingrese el Nombre"
                             required>
@@ -71,20 +71,21 @@
                         <label for="sucursales">Seleccione la Sucursal</label>
                         <select id="sucursales" class="form-control">
                             <option value="sucursal1">Av. la Plata 3500</option>
+                            <option value="sucursal2">Av Rivadavia 11200</option>
+                            <option value="sucursal3">Ukrania 2929</option>
                         </select>
                     </div>
                 </form>
             </div>
             <div class="col-md-4 background">
                 <h3>Detalle del Producto</h3>
-                <textarea form="creacion" name="Descripcion del Producto" id="inputProducto" cols="30"
+                <textarea form="creacion" name="Descripcion del Producto" id="inputProducto" cols="60"
                     rows="10"></textarea>
-                <button type="submit" form="creacion">GUARDAR</button>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <h3>Relleno</h3>
+                <button class="envio" type="submit" form="creacion">GUARDAR</button>
             </div>
         </div>
     </div>

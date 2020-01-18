@@ -1,11 +1,11 @@
 h2 {
-	font-family: 'Nunito', sans-serif;
+	font-family: "Nunito", sans-serif;
 	color: #2f9cc3;
 	background-color: #fff;
 }
 
 h3 {
-	font-family: 'Nunito', sans-serif;
+	font-family: "Nunito", sans-serif;
 	color: #2f9cc3;
 	background-color: #fff;
 	align-items: center;
@@ -33,8 +33,7 @@ img {
 
 .TituloCat {
 	text-align: center;
-	font-family: 'Nunito', sans-serif;
-	text-align: center;
+	font-family: "Nunito", sans-serif;
 	padding: 5px 10px;
 	border-radius: 20px;
 	margin: 30px;
@@ -63,8 +62,17 @@ img {
 .form-label-group {
 	margin-bottom: 12px;
 	border-radius: 50%;
-
 }
+
+.envio {
+	color: #2f9cc3;
+	font-family: "Nunito", sans-serif;
+	padding: 5px 5px;
+	text-align: right;
+	margin-bottom: 12px;
+	justify-content: space-around;
+}
+
 
 .background {
 	text-align: center;
