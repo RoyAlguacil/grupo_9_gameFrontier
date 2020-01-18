@@ -15,6 +15,9 @@ router.get('/register', mainController.register);
 
 router.get('/detail', mainController.detail);
 
+/* GET - Catálogo*/
+router.get('/productos', mainController.productos);
+
 /* Carrito de Compras */
 
 router.get('/productCart', mainController.productCart)

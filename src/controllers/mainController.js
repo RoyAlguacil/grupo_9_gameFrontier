@@ -12,6 +12,9 @@ const controller = {
 	root: (req, res) => {
 		res.render('index', { title: 'Home page' });
 	},
+	productos: (req, res) => {
+		res.render('catalog', { title: 'Productos' });
+	},
 	detail: (req, res) => {
 		res.render('productDetail', { title: 'Detalle de producto' });
 	},

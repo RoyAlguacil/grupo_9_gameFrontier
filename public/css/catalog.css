@@ -1,0 +1,51 @@
+.red {
+    min-height: 200px;
+    flex-grow: 1;
+}
+
+.blue {
+    padding: 20px 0;
+    background-color: #ddd;
+    min-height: 500px;
+    flex-grow: 4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+}
+
+#accordionExample button,
+#accordionExample a {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+#accordionExample button:hover,
+#accordionExample a:hover {
+    color: var(--main-color);
+}
+
+.product {
+    width: 200px;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.product p {
+    font-size: 17px;
+}
+
+.product img {
+    width: 200px;
+    border-radius: 20px;
+}
+
+@media only screen and (min-width: 768px) {
+    .main-content {
+        flex-direction: row;
+    }
+}
