@@ -9,22 +9,21 @@ const mainController = require('../controllers/mainController');
 router.get('/', mainController.root);
 
 /* GET - Pagina de Registracion*/
-router.get('/register', mainController.register);
+router.get('/registro', mainController.register);
 
 /* Detalle de Producto */
 
-router.get('/detail', mainController.detail);
+router.get('/detalle', mainController.detail);
 
 /* GET - Catálogo*/
 router.get('/productos', mainController.productos);
 
 /* Carrito de Compras */
 
-router.get('/productCart', mainController.productCart)
+router.get('/carrito', mainController.productCart)
 
 /* Carrito de Carga */
 
-router.get('/productLoad', mainController.productLoad)
+router.get('/carga-producto', mainController.productLoad)
 
 module.exports = router;
-
