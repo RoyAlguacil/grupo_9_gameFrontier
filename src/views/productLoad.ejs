@@ -1,89 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <%- include('./partials/head-links')%>
     <link rel="stylesheet" href="/css/globals.css" />
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/productLoad.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <%- include('./partials/header') %>
     <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h1>Carga de Productos</h1>
-            </div>
+      <div class="row">
+        <div class="col-12">
+          <h1>Carga de Productos</h1>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h2>Administrador</h2>
-                <img class="photoProfile" src="/images/administrador/admin.jpg" width="150" height="150" />
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h2>Administrador</h2>
+          <img
+            class="photoProfile"
+            src="/images/administrador/admin.jpg"
+            width="150"
+            height="150"
+          />
         </div>
-        <div class="row">
-            <div class="col-12">
-                <h3 class="TituloCat">Detalle de Carga</h3>
-            </div>
-            <form action="/productos" method="POST" style="width: 100%" id="creacion">
-                <div class="row detalle_imagen">
-                    <div class="detalle">
-                        <div class="form-label-group">
-                            <input name="nombre" type="text" id="nombre" class="form-control"
-                                placeholder="Ingrese el nombre" required>
-                        </div>
-                        <div class="form-label-group">
-                            <label for="categoria">Categoría</label>
-                            <select name="categoria" id="categoria" class="form-control">
-                                <option value="consolas">Consolas</option>
-                                <option value="videojuegos">Videojuegos</option>
-                                <option value="electro">Electro</option>
-                                <option value="merchandising">Merchandising</option>
-                            </select>
-                        </div>
-                        <div class="form-label-group">
-                            <label for="subcategoria">Subcategoría</label>
-                            <select name="subcategoria" id="subcategoria" class="form-control">
-                                <option value="play4">PlayStation 4</option>
-                                <option value="xbox">Xbox One</option>
-                                <option value="nintendoS">Nintendo Switch</option>
-                                <option value="perifericos">Periféricos</option>
-                                <option value="memorias">Memorias externas</option>
-                                <option value="pendrives">Pendrives</option>
-                                <option value="figuras_coleccionables">Figuras coleccionables</option>
-                            </select>
-                        </div>
-                        <div class="form-label-group">
-                            <input name="cantidad" type="number" id="inputCantidad" class="form-control"
-                                placeholder="Ingrese la cantidad" required>
-                        </div>
-                        <div class="form-label-group">
-                            <input name="codigo" type="text" id="inputCodigo" class="form-control"
-                                placeholder="Ingrese codigo" required>
-                        </div>
-                        <div class="form-label-group">
-                            <input name="valor" type="text" id="inputValor" class="form-control"
-                                placeholder="Ingrese el valor" required>
-                        </div>
-                    </div>
-                    <div class="imagen">
-                        <div class="col-md-4 col-sm-12 background">
-                            <img src="/images/electro/pendrive-sandisk-16-gb-ultra-fit-negro.jpg" width="150"
-                                height="150" />
-                        </div>
-                    </div>
-                </div>
-                <div class="descripcion">
-                    <h3>Descripción del Producto</h3>
-                    <textarea name="descripcion" id="inputProducto" cols="60" rows="10"></textarea>
-                    <button class="envio" type="submit">GUARDAR</button>
-                </div>
-            </form>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3 class="TituloCat">Detalle de Carga</h3>
         </div>
+        <form
+          action="/productos"
+          method="POST"
+          style="width: 100%"
+          id="creacion"
+          enctype="multipart/form-data"
+        >
+          <div class="row detalle_imagen">
+            <div class="detalle">
+              <div class="form-label-group">
+                <input
+                  name="nombre"
+                  type="text"
+                  id="nombre"
+                  class="form-control"
+                  placeholder="Ingrese el nombre"
+                  required
+                />
+              </div>
+              <div class="form-label-group">
+                <label for="categoria">Categoría</label>
+                <select name="categoria" id="categoria" class="form-control">
+                  <option value="consolas">Consolas</option>
+                  <option value="videojuegos">Videojuegos</option>
+                  <option value="electro">Electro</option>
+                  <option value="merchandising">Merchandising</option>
+                </select>
+              </div>
+              <div class="form-label-group">
+                <label for="subcategoria">Subcategoría</label>
+                <select
+                  name="subcategoria"
+                  id="subcategoria"
+                  class="form-control"
+                >
+                  <option value="play4">PlayStation 4</option>
+                  <option value="xbox">Xbox One</option>
+                  <option value="nintendoS">Nintendo Switch</option>
+                  <option value="perifericos">Periféricos</option>
+                  <option value="memorias">Memorias externas</option>
+                  <option value="pendrives">Pendrives</option>
+                  <option value="figuras_coleccionables"
+                    >Figuras coleccionables</option
+                  >
+                </select>
+              </div>
+              <div class="form-label-group">
+                <input
+                  name="cantidad"
+                  type="number"
+                  id="inputCantidad"
+                  class="form-control"
+                  placeholder="Ingrese la cantidad"
+                  required
+                />
+              </div>
+              <div class="form-label-group">
+                <input
+                  name="codigo"
+                  type="text"
+                  id="inputCodigo"
+                  class="form-control"
+                  placeholder="Ingrese codigo"
+                  required
+                />
+              </div>
+              <div class="form-label-group">
+                <input
+                  name="valor"
+                  type="text"
+                  id="inputValor"
+                  class="form-control"
+                  placeholder="Ingrese el valor"
+                  required
+                />
+              </div>
+            </div>
+            <div class="imagen">
+              <div class="col-md-4 col-sm-12 background">
+                <input type="file" name="image_input" />
+              </div>
+            </div>
+          </div>
+          <div class="descripcion">
+            <h3>Descripción del Producto</h3>
+            <textarea
+              name="descripcion"
+              id="inputProducto"
+              cols="60"
+              rows="10"
+            ></textarea>
+            <button class="envio" type="submit">GUARDAR</button>
+          </div>
+        </form>
+      </div>
     </div>
     <%- include('./partials/footer') %>
-</body>
-
+  </body>
 </html>

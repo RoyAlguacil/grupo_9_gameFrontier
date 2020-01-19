@@ -86,65 +86,13 @@
                 </div>
             </div>
         </div>
-        <!--
-        <div class="blue">
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/alien.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/batman.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/cell.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/ciclope.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/ghost.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/dr-willy.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/dobby.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-            <div class="product">
-                <a href="#">
-                    <img src="/images/merchandising/daredevil.jpg" alt="Alien.jpg">
-                    <p>Título producto</p>
-                </a>
-            </div>
-        </div>
-        -->
-        <!-------------------------------->
+
         <div class="blue">
             <% productos.forEach(producto => { %>
             <div class="product">
                 <a href="#">
-                    <img src="/images/merchandising/daredevil.jpg" alt="Alien.jpg">
-                    <p><%= producto.nombre%></p>
+                    <img src="/images/multer/<%= producto.image %>" alt="<%= producto.name %>" />
+                    <p><%= producto.nombre %></p>
                 </a>
             </div>
             <% }) %>
