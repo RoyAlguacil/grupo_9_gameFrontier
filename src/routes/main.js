@@ -21,6 +21,10 @@ let upload = multer({
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
+/******
+ * Productos
+ */
+
 /* Index GET */
 router.get("/", mainController.root);
 
@@ -33,17 +37,23 @@ router.get("/productos", mainController.productos);
 /* Products/:id obtain --> GET */
 router.get("/productos/:id", mainController.detail);
 
-/* Products create --> POST*/
+/* Products create GET */
+router.get("/carga-producto", mainController.productLoad);
+
+/* Products create --> POST */
 router.post(
     "/productos",
     upload.single("image_input"),
     mainController.productos
 );
 
+/* Products update --> POST */
+router.get("/productos/editar/:id", mainController.update);
+
+/* Products delete --> POST */
+router.get("/productos/eliminar/:id", mainController.delete);
+
 /* Cart GET */
 router.get("/carrito", mainController.productCart);
-
-/* Products create GET */
-router.get("/carga-producto", mainController.productLoad);
 
 module.exports = router;

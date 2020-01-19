@@ -1,17 +1,1 @@
-[
- {
-  "id": 1,
-  "image": "1579463141010.jpg",
-  "nombre": "Roy Hernan Alguacil",
-  "categoria": "consolas",
-  "subcategoria": "play4",
-  "cantidad": "234",
-  "codigo": "324324",
-  "valor": "32432",
-  "descripcion": "234324"
- },
- {
-  "id": 2,
-  "image": null
- }
-]
+[{"id":1,"image":"1579466961958.jpg","nombre":"Pendrive","categoria":"electro","subcategoria":"pendrives","cantidad":"1","codigo":"13214234","valor":"500","descripcion":"eferfre"},{"id":7,"image":null}]

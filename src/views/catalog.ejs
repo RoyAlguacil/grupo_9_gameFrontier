@@ -93,6 +93,8 @@
                 <a href="/productos/<%= producto.id %>">
                     <img src="/images/multer/<%= producto.image %>" alt="<%= producto.name %>" />
                     <p><%= producto.nombre %></p>
+                    <a href="/productos/editar/<%= producto.id %>">Editar</a>
+                    <a href="/productos/eliminar/<%= producto.id %>">Borrar</a>
                 </a>
             </div>
             <% }) %>

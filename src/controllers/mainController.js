@@ -26,6 +26,17 @@ const getProduct = (id) => {
 	return producto = producto[0];
 };
 
+const deleteProduct = (id) => {
+	const productosJson = fs.readFileSync(rutaProductos, "utf-8");
+	const content = JSON.parse(productosJson);
+
+	const producto = content.filter(pro => {
+		return pro.id !== parseInt(id);
+	})
+
+	return producto;
+};
+
 const generateId = () => {
 	let products = getAllProducts();
 	if (products.length == 0) {
@@ -70,6 +81,28 @@ const controller = {
 			title: "Detalle de producto",
 			producto
 		});
+	},
+	update: (req, res) => {
+		const id = req.params.id;
+		const producto = getProduct(id);
+
+		res.render("productLoad", {
+			title: "Edición de Producto",
+			producto
+		});
+	},
+	delete: (req, res) => {
+		const id = req.params.id;
+		let filtrados = deleteProduct(id);
+		let jsonFiltrados = JSON.stringify(filtrados);
+
+		fs.writeFileSync(rutaProductos, jsonFiltrados, "utf-8");
+		const productos = getAllProducts();
+
+		res.render('catalog', {
+			title: "Productos",
+			productos: productos
+		})
 	},
 	register: (req, res) => {
 		res.render("register", {
