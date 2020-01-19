@@ -47,6 +47,7 @@ footer {
 		text-align: center;
 	}
 }
+
 @media only screen and (min-width: 768px) {
 	.footer__container {
 		width: 100%;
@@ -61,6 +62,7 @@ footer {
 		width: 100%;
 	}
 }
+
 @media only screen and (min-width: 992px) {
 	.footer__container-item img {
 		width: 200px;

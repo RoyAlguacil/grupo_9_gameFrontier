@@ -1,3 +1,7 @@
+.container {
+	padding: 0 60px;
+}
+
 h2 {
 	font-family: "Nunito", sans-serif;
 	color: #2f9cc3;
@@ -19,44 +23,40 @@ h3 {
 	object-fit: cover;
 }
 
-.category {
+.detalle_imagen {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	max-width: 100%;
+}
+
+.descripcion {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: space-around;
 	justify-content: center;
-	padding-top: 30px;
 }
 
-img {
-	object-fit: cover;
+.detalle {
+	flex-grow: 5;
+	max-width: 100%;
 }
 
-.TituloCat {
-	text-align: center;
-	font-family: "Nunito", sans-serif;
-	padding: 5px 10px;
-	border-radius: 20px;
-	margin: 30px;
-	color: #2f9cc3;
+.imagen {
+	margin-left: 40px;
+	flex-grow: 3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-.category-1 {
-	cursor: pointer;
+.descripcion {
+	margin-top: 50px;
 }
 
-.login__button,
-.login__button:active,
-.login__button:link {
-	background-color: var(--main-color);
-	padding: 5px 10px;
-	border: none;
-	border-radius: 20px;
-}
-
-.login__button a {
-	text-decoration: none;
-	color: var(--white-color);
-	font-size: 15px;
+#inputProducto {
+	width: 100%;
+	align-self: center;
 }
 
 .form-label-group {
@@ -65,15 +65,20 @@ img {
 }
 
 .envio {
-	color: #2f9cc3;
+	color: var(--white-color);
 	font-family: "Nunito", sans-serif;
-	padding: 5px 5px;
-	text-align: right;
-	margin-bottom: 12px;
-	justify-content: space-around;
+	align-self: center;
+	margin: 30px 0;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 30px;
+	background-color: var(--main-color);
+	transition: all .2s ease;
 }
 
-
-.background {
-	text-align: center;
+.envio:hover {
+	background-color: var(--white-color);
+	color: var(--main-color);
+	border: 1px solid #2f9cc3;
+	font-weight: 600;
 }
