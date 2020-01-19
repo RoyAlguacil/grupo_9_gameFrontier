@@ -1,133 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<%- include('./partials/head-links') %>
-		<link rel="stylesheet" href="/css/productDetail.css">
-	</head>
 
-	<body>
-		<header class="header">
-			<div class="header__logo">
-				<img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
+<head>
+	<%- include('./partials/head-links') %>
+	<link rel="stylesheet" href="/css/globals.css" />
+	<link rel="stylesheet" href="/css/header.css" />
+	<link rel="stylesheet" href="/css/home.css" />
+	<link rel="stylesheet" href="/css/footer.css" />
+	<link rel="stylesheet" href="/css/mediaQueries.css" />
+	<link rel="stylesheet" href="/css/productDetail.css" />
+</head>
+
+<body>
+
+	<%- include('./partials/header') %>
+
+	<section class="container-fluid">
+		<div class="row">
+			<div id="cajaImgPrd" class="col-sm-12 col-md-4">
+				<img src="/images/consolas/ps4-pro.jpg" alt="Play Station 4 Pro" />
 			</div>
-			<div class="header__searchbar">
-				<input class="form-control" type="text" placeholder="Buscar..." />
+
+			<div id="detalle" class="col-sm-12 col-md-4">
+				<h4>Play Station 4 Pro</h4>
+				<h5>Consola</h5>
+				<h6>Cod: 0303456</h6>
+				<h6>Precio: 32000</h6>
+				<h6>Cantidad: 5 disponibles</h6>
+				<a href="productCart"><i class="fas fa-cart-arrow-down"></i></a>
 			</div>
-			<div class="header__login">
-				<button class="btnLogin"><a href="#">Mi cuenta</a></button>
+
+			<div id="descripcion" class="col-sm-12 col-md-4">
+				<h4>Descripción</h4>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+					iusto illo, quas odit ut asperiores adipisci velit at necessitatibus
+					voluptas exercitationem omnis quae tempore. Accusantium, ullam
+					voluptatum. Repellendus, adipisci deleniti!
+				</p>
 			</div>
-			<button class="menu"><i class="fas fa-bars"></i></button>
-		</header>
 
-		<section class="container-fluid">
-			<div class="row">
-				<div id="cajaImgPrd" class="col-12 col-md-4">
-					<img src="/images/consolas/ps4-pro.jpg" alt="Play Station 4 Pro" />
-				</div>
+			<div id="productosRelacionados" class="col-12">
+				<h4>Productos Relacionados</h4>
+			</div>
 
-				<div id="detalle" class="col-12 col-md-4">
-					<h4>Play Station 4 Pro</h4>
-					<h5>Consola</h5>
-					<h6>Cod: 0303456</h6>
-					<h6>Precio: 32000</h6>
-					<h6>Cantidad: 5 disponibles</h6>
-					<a href="#"><i class="fas fa-cart-arrow-down"></i></a>
-				</div>
+			<div class="container-fluid">
+				<div class="row">
 
-				<div id="descripcion" class="col-12 col-md-4">
-					<h4>Descripción</h4>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-						iusto illo, quas odit ut asperiores adipisci velit at necessitatibus
-						voluptas exercitationem omnis quae tempore. Accusantium, ullam
-						voluptatum. Repellendus, adipisci deleniti!
-					</p>
-				</div>
-
-				<div id="productosRelacionados" class="col-12">
-					<h4>Productos Relacionados</h4>
-				</div>
-
-				<section id="imgPrdRelacionados">
-					<div class="col-12 col-md-3">
-						<img
-							src="/images/electro/ps4-joystick-black.png"
-							alt="Joytick PS4 Black"
-						/>
+					<div class="col-sm-12 col-md-3">
+						<div><img src="/images/electro/ps4-joystick-black.png" alt="Joytick PS4 Black"
+								class="imgPrdRelacionado" />
+						</div>
 						<span>Producto Relacionado</span>
 					</div>
-					<div class="col-12 col-md-3">
-						<img src="/images/electro/wd-elements.jpg" alt="Camara PS4" />
+					<div class="col-sm-12 col-md-3">
+						<div><img src="/images/electro/wd-elements.jpg" alt="Camara PS4" class="imgPrdRelacionado" />
+						</div>
 						<span>Producto Relacionado</span>
 					</div>
-					<div class="col-12 col-md-3">
-						<img
-							src="/images/electro/king-64gb-data-travel.jpg"
-							alt="Data Travel 64gb"
-						/>
+					<div class="col-sm-12 col-md-3">
+						<div><img src="/images/electro/king-64gb-data-travel.jpg" alt="Data Travel 64gb"
+								class="imgPrdRelacionado" /></div>
 						<span>Producto Relacionado</span>
 					</div>
-					<div class="col-12 col-md-3">
-						<img
-							src="/images/electro/pendrive-leatherface.jpg"
-							alt="Pendrive Leatherface"
-						/>
+					<div class="col-sm-12 col-md-3">
+						<div><img src="/images/electro/pendrive-leatherface.jpg" alt="Pendrive Leatherface"
+								class="imgPrdRelacionado" /></div>
 						<span>Producto Relacionado</span>
 					</div>
-				</section>
-			</div>
-		</section>
 
-		<footer>
-			<div class="footer__container">
-				<div class="footer__container-item">
-					<ul>
-						<li><a href="#">Nosotros</a></li>
-						<li><a href="#">Contacto</a></li>
-						<li><a href="#">Locales</a></li>
-						<li><a href="#">Soporte</a></li>
-					</ul>
-				</div>
-				<div class="footer__container-item">
-					<ul>
-						<li><a href="#">Política de privacidad</a></li>
-						<li><a href="#">Términos y condiciones</a></li>
-					</ul>
-				</div>
-				<div class="footer__container-item social">
-					<img src="/images/logo/logo.jpeg" alt="GameFrontier logo" />
-					<ul>
-						<li>
-							<a href="#"><i class="fab fa-whatsapp"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fab fa-facebook-f"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fab fa-instagram"></i></a>
-						</li>
-						<li>
-							<a href="#"><i class="fab fa-twitter"></i></a>
-						</li>
-					</ul>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</section>
 
-		<script
-			src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-			integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-			integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-			crossorigin="anonymous"
-		></script>
-	</body>
+	<%- include('./partials/footer') %>
+
+	<script src="/js/swiper.min.js"></script>
+	<script>
+		const mySwiper = new Swiper('.swiper-container', {
+			loop: true,
+			loopedSlides: 4,
+			effect: window.innerWidth > 992 ? 'fade' : 'slide',
+			autoplay: {
+				delay: 4000
+			},
+			slidesPerView: 1
+		});
+	</script>
+
+</body>
+
 </html>

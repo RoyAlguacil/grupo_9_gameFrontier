@@ -22,4 +22,9 @@ router.get('/productos', mainController.productos);
 
 router.get('/productCart', mainController.productCart)
 
+/* Carrito de Carga */
+
+router.get('/productLoad', mainController.productLoad)
+
 module.exports = router;
+

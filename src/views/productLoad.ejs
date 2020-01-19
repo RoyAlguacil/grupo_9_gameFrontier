@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head-links')%>
+    <link rel="stylesheet" href="/css/globals.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/productLoad.css" />
+    <link rel="stylesheet" href="/css/mediaQueries.css" />
+</head>
+
+<body>
+    <%- include('./partials/header') %>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Carga de Productos</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h2>Administrador</h2>
+                <img class="photoProfile" src="/images/administrador/admin.jpg" width="150" height="150" />
+            </div>
+            <button class="login__button"><a href="#">Salir</a></button>
+        </div>
+        <h3 class="TituloCat">Seleccione categoría</h3>
+        <div class="row categories">
+            <div class="col-md-3 col-sm-12 category">
+                <img src="/images/categoria-admin/Consola.jpg" width="150" height="150" />
+                <p href="#" class="TituloCat">Consolas</p>
+            </div>
+            <div class="col-md-3 col-sm-12 category">
+                <img src="/images/categoria-admin/Electro.jpg" width="150" height="150" />
+                <p href="#" class="TituloCat">Electro</p>
+            </div>
+            <div class="col-md-3 col-sm-cd 12 category">
+                <img src="/images/categoria-admin/juegos.jpg" width="150" height="150" />
+                <p href="#" class="TituloCat">Juegos</p>
+            </div>
+            <div class="col-md-3 col-sm-12 category">
+                <img src="/images/categoria-admin/merchandising-thanos.jpg" width="150" height="150" />
+                <p href="#" class="TituloCat">Merchandising</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h3 class="TituloCat">Detalle de Carga</h3>
+            </div>
+            <div class="col-md-4 col-sm-12 background">
+                <img src="/images/electro/pendrive-sandisk-16-gb-ultra-fit-negro.jpg" width="150" height="150" />
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <form action="./data/productos.json" method="POST" style="width: 100%" id="creacion">
+                    <div class="form-label-group">
+                        <input type="text" id="inputProducto" class="form-control" placeholder="Ingrese el Nombre"
+                            required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="number" id="inputCantidad" class="form-control" placeholder="Ingrese la cantidad"
+                            required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo" required>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor" required>
+                    </div>
+                    <div class="form-label-group">
+                        <label for="sucursales">Seleccione la Sucursal</label>
+                        <select id="sucursales" class="form-control">
+                            <option value="sucursal1">Av. la Plata 3500</option>
+                            <option value="sucursal2">Av Rivadavia 11200</option>
+                            <option value="sucursal3">Ukrania 2929</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 background">
+                <h3>Detalle del Producto</h3>
+                <textarea form="creacion" name="Descripcion del Producto" id="inputProducto" cols="60"
+                    rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button class="envio" type="submit" form="creacion">GUARDAR</button>
+            </div>
+        </div>
+    </div>
+    <%- include('./partials/footer') %>
+</body>
+
+</html>
