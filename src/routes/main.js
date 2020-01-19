@@ -5,46 +5,45 @@ const multer = require("multer");
 const path = require("path");
 
 let storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/images/multer"));
-  },
-  filename: function(req, file, cb) {
-    let finalName = Date.now() + path.extname(file.originalname);
-    cb(null, finalName);
-  }
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, "../../public/images/multer"));
+    },
+    filename: function (req, file, cb) {
+        let finalName = Date.now() + path.extname(file.originalname);
+        cb(null, finalName);
+    }
 });
 
-let upload = multer({ storage: storage });
+let upload = multer({
+    storage: storage
+});
 
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 
-/* GET - home page. */
+/* Index GET */
 router.get("/", mainController.root);
 
-/* GET - Pagina de Registracion*/
+/* Registro GET*/
 router.get("/registro", mainController.register);
 
-/* Detalle de Producto */
-
-router.get("/detalle", mainController.detail);
-
-/* GET - Catálogo*/
+/* Products obtain --> GET */
 router.get("/productos", mainController.productos);
 
-/* POST - Catálogo*/
+/* Products/:id obtain --> GET */
+router.get("/productos/:id", mainController.detail);
+
+/* Products create --> POST*/
 router.post(
-  "/productos",
-  upload.single("image_input"),
-  mainController.productos
+    "/productos",
+    upload.single("image_input"),
+    mainController.productos
 );
 
-/* Carrito de Compras */
-
+/* Cart GET */
 router.get("/carrito", mainController.productCart);
 
-/* Carrito de Carga */
-
+/* Products create GET */
 router.get("/carga-producto", mainController.productLoad);
 
 module.exports = router;

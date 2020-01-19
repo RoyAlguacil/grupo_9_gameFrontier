@@ -17,25 +17,22 @@
 	<section class="container-fluid">
 		<div class="row">
 			<div id="cajaImgPrd" class="col-sm-12 col-md-4">
-				<img src="/images/consolas/ps4-pro.jpg" alt="Play Station 4 Pro" />
+				<img src="/images/multer/<%= producto.image %>" alt="<%= producto.nombre %>" />
 			</div>
 
 			<div id="detalle" class="col-sm-12 col-md-4">
-				<h4>Play Station 4 Pro</h4>
-				<h5>Consola</h5>
-				<h6>Cod: 0303456</h6>
-				<h6>Precio: 32000</h6>
-				<h6>Cantidad: 5 disponibles</h6>
-				<a href="productCart"><i class="fas fa-cart-arrow-down"></i></a>
+				<h4><%= producto.nombre %></h4>
+				<h5><%= producto.categoria %></h5>
+				<h6>Código: <%= producto.codigo %></h6>
+				<h6>$ <%= producto.valor %></h6>
+				<h6><%= producto.cantidad %></h6>
+				<a href="/carrito"><i class="fas fa-cart-arrow-down"></i></a>
 			</div>
 
 			<div id="descripcion" class="col-sm-12 col-md-4">
 				<h4>Descripción</h4>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-					iusto illo, quas odit ut asperiores adipisci velit at necessitatibus
-					voluptas exercitationem omnis quae tempore. Accusantium, ullam
-					voluptatum. Repellendus, adipisci deleniti!
+					<%= producto.descripcion %>
 				</p>
 			</div>
 

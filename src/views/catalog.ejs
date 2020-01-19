@@ -90,7 +90,7 @@
         <div class="blue">
             <% productos.forEach(producto => { %>
             <div class="product">
-                <a href="#">
+                <a href="/productos/<%= producto.id %>">
                     <img src="/images/multer/<%= producto.image %>" alt="<%= producto.name %>" />
                     <p><%= producto.nombre %></p>
                 </a>

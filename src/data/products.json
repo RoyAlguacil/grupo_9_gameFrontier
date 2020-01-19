@@ -1,0 +1,17 @@
+[
+ {
+  "id": 1,
+  "image": "1579463141010.jpg",
+  "nombre": "Roy Hernan Alguacil",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "234",
+  "codigo": "324324",
+  "valor": "32432",
+  "descripcion": "234324"
+ },
+ {
+  "id": 2,
+  "image": null
+ }
+]
