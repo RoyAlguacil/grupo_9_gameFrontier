@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/css/header.css" />
     <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/productLoad.css" />
-    <link rel="stylesheet" href="/css/mediaQueries.css" />
 </head>
 
 <body>
@@ -28,16 +27,16 @@
             <div class="col-12">
                 <h3 class="TituloCat">Detalle de Carga</h3>
             </div>
-            <form action="./data/productos.json" method="POST" style="width: 100%" id="creacion">
+            <form action="/productos" method="POST" style="width: 100%" id="creacion">
                 <div class="row detalle_imagen">
                     <div class="detalle">
                         <div class="form-label-group">
-                            <input type="text" id="inputProducto" class="form-control" placeholder="Ingrese el nombre"
-                                required>
+                            <input name="nombre" type="text" id="nombre" class="form-control"
+                                placeholder="Ingrese el nombre" required>
                         </div>
                         <div class="form-label-group">
-                            <label for="subcategoria">Categoría</label>
-                            <select id="subcategoria" class="form-control">
+                            <label for="categoria">Categoría</label>
+                            <select name="categoria" id="categoria" class="form-control">
                                 <option value="consolas">Consolas</option>
                                 <option value="videojuegos">Videojuegos</option>
                                 <option value="electro">Electro</option>
@@ -46,7 +45,7 @@
                         </div>
                         <div class="form-label-group">
                             <label for="subcategoria">Subcategoría</label>
-                            <select id="subcategoria" class="form-control">
+                            <select name="subcategoria" id="subcategoria" class="form-control">
                                 <option value="play4">PlayStation 4</option>
                                 <option value="xbox">Xbox One</option>
                                 <option value="nintendoS">Nintendo Switch</option>
@@ -57,16 +56,16 @@
                             </select>
                         </div>
                         <div class="form-label-group">
-                            <input type="number" id="inputCantidad" class="form-control"
+                            <input name="cantidad" type="number" id="inputCantidad" class="form-control"
                                 placeholder="Ingrese la cantidad" required>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo"
-                                required>
+                            <input name="codigo" type="text" id="inputCodigo" class="form-control"
+                                placeholder="Ingrese codigo" required>
                         </div>
                         <div class="form-label-group">
-                            <input type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor"
-                                required>
+                            <input name="valor" type="text" id="inputValor" class="form-control"
+                                placeholder="Ingrese el valor" required>
                         </div>
                     </div>
                     <div class="imagen">
@@ -78,7 +77,7 @@
                 </div>
                 <div class="descripcion">
                     <h3>Descripción del Producto</h3>
-                    <textarea name="Descripcion del Producto" id="inputProducto" cols="60" rows="10"></textarea>
+                    <textarea name="descripcion" id="inputProducto" cols="60" rows="10"></textarea>
                     <button class="envio" type="submit">GUARDAR</button>
                 </div>
             </form>

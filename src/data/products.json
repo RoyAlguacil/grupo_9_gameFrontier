@@ -1,0 +1,31 @@
+[{
+        "id": 1,
+        "nombre": "rrff",
+        "categoria": "videojuegos",
+        "subcategoria": "play4",
+        "cantidad": "3",
+        "codigo": "efef",
+        "valor": "2243",
+        "descripcion": "rfffe"
+    },
+    {
+        "id": 2,
+        "nombre": "ewfwf",
+        "categoria": "videojuegos",
+        "subcategoria": "nintendoS",
+        "cantidad": "34324",
+        "codigo": "efefe",
+        "valor": "32434",
+        "descripcion": "efefefefe"
+    },
+    {
+        "id": 4,
+        "nombre": "rrff",
+        "categoria": "videojuegos",
+        "subcategoria": "play4",
+        "cantidad": "3",
+        "codigo": "efef",
+        "valor": "2243",
+        "descripcion": "rfffe"
+    }
+]

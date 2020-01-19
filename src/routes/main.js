@@ -18,6 +18,9 @@ router.get('/detalle', mainController.detail);
 /* GET - Catálogo*/
 router.get('/productos', mainController.productos);
 
+/* POST - catálogo*/
+router.post('/productos', mainController.productos);
+
 /* Carrito de Compras */
 
 router.get('/carrito', mainController.productCart)

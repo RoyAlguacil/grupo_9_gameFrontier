@@ -1,31 +1,73 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
+const bcrypt = require("bcrypt");
 
-// ************ Function to Read an HTML File ************
-/* function readHTML (fileName) {
-	let filePath = path.join(__dirname, `/../views/${fileName}.html`);
-	let htmlFile = fs.readFileSync(filePath, 'utf-8');
-	return htmlFile;
-} */
+const rutaProductos = path.join(__dirname, "../data/products.json");
+
+const getAllProducts = () => {
+	let productosJson = fs.readFileSync(rutaProductos, "utf-8");
+	let content;
+	if (productosJson == "") {
+		content = [];
+	} else {
+		content = JSON.parse(productosJson);
+	}
+	return content;
+};
+
+const generateId = () => {
+	let products = getAllProducts();
+	if (products.length == 0) {
+		return 1;
+	}
+	let ultimoProducto = products.pop();
+	return ultimoProducto.id + 1;
+};
+
+const guardaProducto = bodyProducto => {
+	let products = getAllProducts();
+	products.push(bodyProducto);
+	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
+};
 
 const controller = {
 	root: (req, res) => {
-		res.render('index', { title: 'Home page' });
+		res.render("index", {
+			title: "Home page"
+		});
 	},
 	productos: (req, res) => {
-		res.render('catalog', { title: 'Productos' });
+		const id = generateId();
+		if (req.body.name && req.body.categoria && req.body.subcategoria && req.body.descripcion) {
+			guardaProducto({
+				id,
+				...req.body
+			});
+		}
+		res.render("catalog", {
+			title: "Productos",
+			productos: getAllProducts()
+		});
 	},
 	detail: (req, res) => {
-		res.render('productDetail', { title: 'Detalle de producto' });
+		res.render("productDetail", {
+			title: "Detalle de producto"
+		});
 	},
 	register: (req, res) => {
-		res.render('register', { title: 'Registro' });
+		res.render("register", {
+			title: "Registro"
+		});
 	},
 	productCart: (req, res) => {
-		res.render('productCart', { title: 'Carrito de compras' });
+		res.render("productCart", {
+			title: "Carrito de compras"
+		});
 	},
 	productLoad: (req, res) => {
-		res.render('productLoad', { title: 'Carga de Producto' });
+		res.render("productLoad", {
+			title: "Carga de Producto"
+		});
 	}
 };
 
