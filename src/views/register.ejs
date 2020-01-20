@@ -16,41 +16,40 @@
               <div class="card card-signin my-5">
                 <div class="card-body">
                   <h5 class="card-title text-center">Registro</h5>
-                  <form class="form-signin">
+                  <form class="form-signin" action="/registro" method="POST">
                     <div class="form-label-group">
-                        <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required>
-                        <label for="inputUsuario">Usuario</label>
-                        <p style="color: red; margin: 5px 0 0 10px;">Este nombre de usuario ya existe</p> 
+                        <input name="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required>
+                        <label for="inputUsuario">Usuario</label> 
                     </div>
                 
                     <div class="form-label-group">
-                      <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
+                      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required>
                       <label for="inputPassword">Contraseña</label>
                     </div>
                       <div class="form-label-group">
-                        <input type="text" id="inputNombre" class="form-control" placeholder="Nombre" required>
+                        <input name="nombre" type="text" id="inputNombre" class="form-control" placeholder="Nombre" required>
                         <label for="inputNombre">Nombre</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="text" id="inputTelefono" class="form-control" placeholder="Telefono" required>
+                        <input name="telefono" type="text" id="inputTelefono" class="form-control" placeholder="Telefono" required>
                         <label for="inputTelefono">Telefono</label>
                       </div>  
                       <div class="form-label-group">
-                        <input type="text" id="inputProvincia" class="form-control" placeholder="Provincia" required>
+                        <input name="provincia" type="text" id="inputProvincia" class="form-control" placeholder="Provincia" required>
                         <label for="inputProvincia">Provincia</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="text" id="inputLocalidad" class="form-control" placeholder="Localidad" required>
+                        <input name="localidad" type="text" id="inputLocalidad" class="form-control" placeholder="Localidad" required>
                         <label for="inputLocalidad">Localidad</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="number" id="inputDNI" class="form-control" placeholder="DNI" required>
+                        <input name="dni" type="number" id="inputDNI" class="form-control" placeholder="DNI" required>
                         <label for="inputDNI">DNI</label>
                       </div>
                       <div class="form-label-group">
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+                        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
                         <label for="inputEmail">Correo Electronico</label>
-                       </div> 
+                      </div> 
                      
                     <div class="custom-control custom-checkbox mb-3">
                       <input type="checkbox" class="custom-control-input" id="customCheck1">

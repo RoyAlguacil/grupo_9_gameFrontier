@@ -1,1 +1,21 @@
-[{"id":1,"image":"1579466961958.jpg","nombre":"Pendrive","categoria":"electro","subcategoria":"pendrives","cantidad":"1","codigo":"13214234","valor":"500","descripcion":"eferfre"},{"id":7,"image":null}]
+[
+ {
+  "id": 1,
+  "image": "1579466961958.jpg",
+  "nombre": "Pendrive",
+  "categoria": "electro",
+  "subcategoria": "pendrives",
+  "cantidad": "1",
+  "codigo": "13214234",
+  "valor": "500",
+  "descripcion": "eferfre"
+ },
+ {
+  "id": 7,
+  "image": null
+ },
+ {
+  "id": 8,
+  "image": null
+ }
+]

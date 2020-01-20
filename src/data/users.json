@@ -1,0 +1,35 @@
+[
+ {
+  "id": 1,
+  "usuario": "hiteple",
+  "password": "$2b$10$WkiFSfZHsiy5MyxOQTz/NOQo4unlTVt5G9velI1gZb1Z9IZWOHxLK",
+  "nombre": "Alex",
+  "telefono": "353453345",
+  "provincia": "Buenos Aires",
+  "localidad": "CABA",
+  "dni": "323454353",
+  "email": "efefe@fewfew.com"
+ },
+ {
+  "id": 2,
+  "usuario": "Roy",
+  "password": "$2b$10$Ef9x6AmHMK3ncJjmjDBx9uYnurwnGFb8fcVoSwQsrNW3s.nQcbAHa",
+  "nombre": "Roy",
+  "telefono": "4346456",
+  "provincia": "Buenos Aires",
+  "localidad": "CABA",
+  "dni": "3454353",
+  "email": "ergergerg@fewf.com"
+ },
+ {
+  "id": 3,
+  "usuario": "Juan",
+  "password": "$2b$10$sCYMCPoQmHS2qj9tWTtjne7QrOAV/Gw5ZgkjQ9SE0xdjssocOmo86",
+  "nombre": "Juan",
+  "telefono": "35435345",
+  "provincia": "Buenos Aires",
+  "localidad": "CABA",
+  "dni": "345345435345",
+  "email": "rgregregr@feef.com"
+ }
+]
