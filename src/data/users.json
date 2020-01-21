@@ -31,5 +31,16 @@
   "localidad": "CABA",
   "dni": "345345435345",
   "email": "rgregregr@feef.com"
+ },
+ {
+  "id": 4,
+  "usuario": "ferf",
+  "password": "$2b$10$AVh6Ark/0iQJcmiV/dz7wOebsGdxCrhLMg.7CTuEXjVWyp6n7Mqc2",
+  "nombre": "erf",
+  "telefono": "erf",
+  "provincia": "erf",
+  "localidad": "erf",
+  "dni": "435345",
+  "email": "efrfer@fwef.com"
  }
 ]

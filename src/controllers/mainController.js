@@ -73,6 +73,19 @@ const guardaProducto = bodyProducto => {
 	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
 };
 
+const updateProduct = (id, producto) => {
+	let products = getAllProducts();
+	console.log(products)
+	products.forEach(item => {
+		if (item.id == id) {
+			console.log(item)
+			item = producto
+			console.log(item)
+		}
+	})
+	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
+};
+
 const guardaUser = bodyUser => {
 	let users = getAllUsers();
 	users.push(bodyUser);
@@ -86,23 +99,26 @@ const controller = {
 		});
 	},
 	productos: (req, res) => {
+		res.render("catalog", {
+			title: "Productos",
+			productos: getAllProducts()
+		});
+	},
+	addProducto: (req, res) => {
 		const id = generateId();
 		guardaProducto({
 			id,
 			image: req.file ? req.file.filename : null,
 			...req.body
 		});
+		const productos = getAllProducts();
 
-		res.render("catalog", {
-			title: "Productos",
-			productos: getAllProducts()
-		});
+		res.render('catalog', {title: 'Productos', productos: productos});
 	},
 	detail: (req, res) => {
 		const id = req.params.id;
 
 		const producto = getProduct(id);
-		console.log(producto)
 
 		res.render("productDetail", {
 			title: "Detalle de producto",
@@ -118,19 +134,38 @@ const controller = {
 			producto
 		});
 	},
+	updateProduct: (req, res) => {
+		const id = req.params.id;
+		const producto = getProduct(id);
+
+		updateProduct(id, producto);
+
+		res.render("catalog", {
+			title: "Productos",
+			productos: getAllProducts()
+		});
+	},
 	delete: (req, res) => {
 		const id = req.params.id;
 		let filtrados = deleteProduct(id);
 		let jsonFiltrados = JSON.stringify(filtrados);
 
 		fs.writeFileSync(rutaProductos, jsonFiltrados, "utf-8");
-		const productos = getAllProducts();
 
-		res.render('catalog', {
-			title: "Productos",
-			productos: productos
-		})
+		res.redirect('/productos');
 	},
+	productCart: (req, res) => {
+		res.render("productCart", {
+			title: "Carrito de compras"
+		});
+	},
+	productLoad: (req, res) => {
+		res.render("productLoad", {
+			title: "Carga de Producto",
+			producto: null
+		});
+	},
+	// Usuarios
 	formRegister: (req, res) => {
 		res.render('register', {title: "Registro"});
 	},
@@ -150,18 +185,8 @@ const controller = {
 
 		guardaUser(userFinalData);
 
-		res.render('index', {title: "Home page"});
+		res.redirect('/');
 	},
-	productCart: (req, res) => {
-		res.render("productCart", {
-			title: "Carrito de compras"
-		});
-	},
-	productLoad: (req, res) => {
-		res.render("productLoad", {
-			title: "Carga de Producto"
-		});
-	}
 };
 
 module.exports = controller;

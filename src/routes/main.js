@@ -28,9 +28,6 @@ const mainController = require("../controllers/mainController");
 /* Index GET */
 router.get("/", mainController.root);
 
-/* Registro GET*/
-router.get("/registro", mainController.formRegister);
-
 /* Products obtain --> GET */
 router.get("/productos", mainController.productos);
 
@@ -44,11 +41,14 @@ router.get("/carga-producto", mainController.productLoad);
 router.post(
     "/productos",
     upload.single("image_input"),
-    mainController.productos
+    mainController.addProducto
 );
 
-/* Products update --> POST */
+/* Products update --> GER */
 router.get("/productos/editar/:id", mainController.update);
+
+/* Products update --> POST */
+router.post("/productos/editar/:id", mainController.updateProduct);
 
 /* Products delete --> POST */
 router.get("/productos/eliminar/:id", mainController.delete);
@@ -56,8 +56,11 @@ router.get("/productos/eliminar/:id", mainController.delete);
 /* Cart GET */
 router.get("/carrito", mainController.productCart);
 
-/* Users POST */
+// Users
+/* Registro GET*/
+router.get("/registro", mainController.formRegister);
 
+/* Users POST */
 router.post("/registro", mainController.register);
 
 module.exports = router;

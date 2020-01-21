@@ -1,21 +1,200 @@
 [
  {
   "id": 1,
-  "image": "1579466961958.jpg",
+  "image": null,
   "nombre": "Pendrive",
-  "categoria": "electro",
-  "subcategoria": "pendrives",
-  "cantidad": "1",
-  "codigo": "13214234",
-  "valor": "500",
-  "descripcion": "eferfre"
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
+ },
+ {
+  "id": 2,
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 3,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
+ },
+ {
+  "id": 4,
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 5,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
  },
  {
   "id": 7,
-  "image": null
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
  },
  {
   "id": 8,
-  "image": null
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 9,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
+ },
+ {
+  "id": 10,
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 11,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
+ },
+ {
+  "id": 12,
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 13,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": "rtyrtrthhrh"
+ },
+ {
+  "id": 14,
+  "image": null,
+  "nombre": "456",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456",
+  "codigo": "456",
+  "valor": "456",
+  "descripcion": ""
+ },
+ {
+  "id": 15,
+  "image": null,
+  "nombre": "Pendriveeeee",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": ""
+ },
+ {
+  "id": 16,
+  "image": null,
+  "nombre": "Pendriveeee",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": ""
+ },
+ {
+  "id": 17,
+  "image": null,
+  "nombre": "Pendriveee",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": ""
+ },
+ {
+  "id": 18,
+  "image": null,
+  "nombre": "Pendriveeeee",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": ""
+ },
+ {
+  "id": 19,
+  "image": null,
+  "nombre": "Pendrive",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "456456",
+  "codigo": "etrte",
+  "valor": "ett",
+  "descripcion": ""
  }
 ]
