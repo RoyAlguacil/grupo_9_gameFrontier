@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head-links') %>
+    <link rel="stylesheet" href="/css/globals.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="../css/loginForm.css">
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+    <h2>Regístrate</h2>
+    <div class="container">
+
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+            <div class="ingreso-email">
+                <label>Ingrese su email: </label>
+                <input type="text" name="user_email">
+            </div>
+            <div class="ingreso-password">
+                <label>Contraseña:</label>
+                <input type="password" name="user_password">
+            </div>
+            <div class="ingreso-avatar">
+                <label> Avatar: </label> <input type="file" name="user_avatar">
+            </div>
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+
+</html>

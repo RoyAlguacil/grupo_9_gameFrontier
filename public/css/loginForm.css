@@ -1,0 +1,34 @@
+:root {
+    --input-padding-x: 1.5rem;
+    --input-padding-y: .75rem;
+}
+
+.nav-bar {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+}
+
+body {
+    background: rgb(47, 156, 195);
+    background: linear-gradient(to right, #0062E6, );
+    padding: 0 10px;
+}
+
+.ingreso-email,
+.ingreso-password,
+.ingreso-avatar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.btn-avatar {
+    background: linear-gradient(to right, #0062E6, );
+    padding: 0 10px;
+}

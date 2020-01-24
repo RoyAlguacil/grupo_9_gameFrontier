@@ -15,6 +15,7 @@
 }
 
 .header__login button,
+.login__button,
 .header__login button:active,
 .header__login button:link {
 	background-color: var(--main-color);
@@ -24,11 +25,13 @@
 	margin-right: 80px;
 }
 
+.login__button a,
 .header__login button a {
 	text-decoration: none;
 	color: var(--white-color);
 	font-size: 15px;
 }
+
 
 .header__searchbar {
 	display: none;
