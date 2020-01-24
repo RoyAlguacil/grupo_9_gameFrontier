@@ -28,115 +28,113 @@
         <h3 class="TituloCat">Detalle de Carga</h3>
       </div>
       <% if (producto) { %>
-      <form action="/productos" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
-        <div class="row detalle_imagen">
-          <div class="detalle">
-            <div class="form-label-group">
-              <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Ingrese el nombre"
-                value="<%= producto.nombre %>" required />
+        <form action="/productos/editar/<%= producto.id %>" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
+          <div class="row detalle_imagen">
+            <div class="detalle">
+              <div class="form-label-group">
+                <input name="nombre" type="text" id="nombre" class="form-control" value="<%= producto.nombre %>" placeholder="Ingrese el nombre"
+                  required />
+              </div>
+              <div class="form-label-group">
+                <label for="categoria">Categoría</label>
+                <select value="<%= producto.categoria %>" name="categoria" id="categoria" class="form-control">
+                  <option value="consolas">Consolas</option>
+                  <option value="videojuegos">Videojuegos</option>
+                  <option value="electro">Electro</option>
+                  <option value="merchandising">Merchandising</option>
+                </select>
+              </div>
+              <div class="form-label-group">
+                <label for="subcategoria">Subcategoría</label>
+                <select value="<%= producto.subcategoria %>" name="subcategoria" id="subcategoria" class="form-control">
+                  <option value="play4">PlayStation 4</option>
+                  <option value="xbox">Xbox One</option>
+                  <option value="nintendoS">Nintendo Switch</option>
+                  <option value="perifericos">Periféricos</option>
+                  <option value="memorias">Memorias externas</option>
+                  <option value="pendrives">Pendrives</option>
+                  <option value="figuras_coleccionables">Figuras coleccionables</option>
+                </selectvalue="<%= producto.nombre %>">
+              </div>
+              <div class="form-label-group">
+                <input value="<%= producto.cantidad %>" name="cantidad" type="number" id="inputCantidad" class="form-control"
+                  placeholder="Ingrese la cantidad" required />
+              </div>
+              <div class="form-label-group">
+                <input value="<%= producto.codigo %>" name="codigo" type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo"
+                  required />
+              </div>
+              <div class="form-label-group">
+                <input value="<%= producto.valor %>" name="valor" type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor"
+                  required />
+              </div>
             </div>
-            <div class="form-label-group">
-              <label for="categoria">Categoría</label>
-              <select name="categoria" id="categoria" class="form-control" selected="<%= producto.categoria %>">
-                <option value="consolas">Consolas</option>
-                <option value="videojuegos">Videojuegos</option>
-                <option value="electro">Electro</option>
-                <option value="merchandising">Merchandising</option>
-              </select>
-            </div>
-            <div class="form-label-group">
-              <label for="subcategoria">Subcategoría</label>
-              <select name="subcategoria" id="subcategoria" class="form-control"
-                selected="<%= producto.subcategoria %>">
-                <option value="play4">PlayStation 4</option>
-                <option value="xbox">Xbox One</option>
-                <option value="nintendoS">Nintendo Switch</option>
-                <option value="perifericos">Periféricos</option>
-                <option value="memorias">Memorias externas</option>
-                <option value="pendrives">Pendrives</option>
-                <option value="figuras_coleccionables">Figuras coleccionables</option>
-              </select>
-            </div>
-            <div class="form-label-group">
-              <input name="cantidad" type="number" id="inputCantidad" class="form-control"
-                placeholder="Ingrese la cantidad" value="<%= producto.cantidad %>" required />
-            </div>
-            <div class="form-label-group">
-              <input name="codigo" type="text" id="inputCodigo" class="form-control" value="<%= producto.codigo %>"
-                placeholder="Ingrese codigo" required />
-            </div>
-            <div class="form-label-group">
-              <input name="valor" type="text" value="<%= producto.valor %>" id="inputValor" class="form-control"
-                placeholder="Ingrese el valor" required />
-            </div>
-          </div>
-          <div class="imagen">
-            <div class="col-md-4 col-sm-12 background">
-              <input type="file" name="image_input" />
-            </div>
-          </div>
-        </div>
-        <div class="descripcion">
-          <h3>Descripción del Producto</h3>
-          <textarea name="descripcion" id="inputProducto" cols="60" rows="10"><%= producto.descripcion %></textarea>
-          <button class="envio" type="submit">GUARDAR</button>
-        </div>
-      </form>
-
-      <% } else { %>
-      <form action="/productos" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
-        <div class="row detalle_imagen">
-          <div class="detalle">
-            <div class="form-label-group">
-              <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Ingrese el nombre"
-                required />
-            </div>
-            <div class="form-label-group">
-              <label for="categoria">Categoría</label>
-              <select name="categoria" id="categoria" class="form-control">
-                <option value="consolas">Consolas</option>
-                <option value="videojuegos">Videojuegos</option>
-                <option value="electro">Electro</option>
-                <option value="merchandising">Merchandising</option>
-              </select>
-            </div>
-            <div class="form-label-group">
-              <label for="subcategoria">Subcategoría</label>
-              <select name="subcategoria" id="subcategoria" class="form-control">
-                <option value="play4">PlayStation 4</option>
-                <option value="xbox">Xbox One</option>
-                <option value="nintendoS">Nintendo Switch</option>
-                <option value="perifericos">Periféricos</option>
-                <option value="memorias">Memorias externas</option>
-                <option value="pendrives">Pendrives</option>
-                <option value="figuras_coleccionables">Figuras coleccionables</option>
-              </select>
-            </div>
-            <div class="form-label-group">
-              <input name="cantidad" type="number" id="inputCantidad" class="form-control"
-                placeholder="Ingrese la cantidad" required />
-            </div>
-            <div class="form-label-group">
-              <input name="codigo" type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo"
-                required />
-            </div>
-            <div class="form-label-group">
-              <input name="valor" type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor"
-                required />
+            <div class="imagen">
+              <div class="col-md-4 col-sm-12 background">
+                <input type="file" name="image_input" />
+              </div>
             </div>
           </div>
-          <div class="imagen">
-            <div class="col-md-4 col-sm-12 background">
-              <input type="file" name="image_input" />
+          <div class="descripcion">
+            <h3>Descripción del Producto</h3>
+            <textarea name="descripcion" id="inputProducto" cols="60" rows="10"></textarea>
+            <button class="envio" type="submit">GUARDAR</button>
+          </div>
+        </form>
+      <% } else if (!producto) { %>
+        <form action="/productos" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
+          <div class="row detalle_imagen">
+            <div class="detalle">
+              <div class="form-label-group">
+                <input name="nombre" type="text" id="nombre" class="form-control" placeholder="Ingrese el nombre"
+                  required />
+              </div>
+              <div class="form-label-group">
+                <label for="categoria">Categoría</label>
+                <select name="categoria" id="categoria" class="form-control">
+                  <option value="consolas">Consolas</option>
+                  <option value="videojuegos">Videojuegos</option>
+                  <option value="electro">Electro</option>
+                  <option value="merchandising">Merchandising</option>
+                </select>
+              </div>
+              <div class="form-label-group">
+                <label for="subcategoria">Subcategoría</label>
+                <select name="subcategoria" id="subcategoria" class="form-control">
+                  <option value="play4">PlayStation 4</option>
+                  <option value="xbox">Xbox One</option>
+                  <option value="nintendoS">Nintendo Switch</option>
+                  <option value="perifericos">Periféricos</option>
+                  <option value="memorias">Memorias externas</option>
+                  <option value="pendrives">Pendrives</option>
+                  <option value="figuras_coleccionables">Figuras coleccionables</option>
+                </select>
+              </div>
+              <div class="form-label-group">
+                <input name="cantidad" type="number" id="inputCantidad" class="form-control"
+                  placeholder="Ingrese la cantidad" required />
+              </div>
+              <div class="form-label-group">
+                <input name="codigo" type="text" id="inputCodigo" class="form-control" placeholder="Ingrese codigo"
+                  required />
+              </div>
+              <div class="form-label-group">
+                <input name="valor" type="text" id="inputValor" class="form-control" placeholder="Ingrese el valor"
+                  required />
+              </div>
+            </div>
+            <div class="imagen">
+              <div class="col-md-4 col-sm-12 background">
+                <input type="file" name="image_input" />
+              </div>
             </div>
           </div>
-        </div>
-        <div class="descripcion">
-          <h3>Descripción del Producto</h3>
-          <textarea name="descripcion" id="inputProducto" cols="60" rows="10"></textarea>
-          <button class="envio" type="submit">GUARDAR</button>
-        </div>
-      </form>
+          <div class="descripcion">
+            <h3>Descripción del Producto</h3>
+            <textarea name="descripcion" id="inputProducto" cols="60" rows="10"></textarea>
+            <button class="envio" type="submit">GUARDAR</button>
+          </div>
+        </form>
       <% } %>
     </div>
   </div>

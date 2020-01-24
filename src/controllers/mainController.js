@@ -3,6 +3,7 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 
 const rutaProductos = path.join(__dirname, "../data/products.json");
+const rutaUsers = path.join(__dirname, "../data/users.json");
 
 const getAllProducts = () => {
 	let productosJson = fs.readFileSync(rutaProductos, "utf-8");
@@ -11,6 +12,17 @@ const getAllProducts = () => {
 		content = [];
 	} else {
 		content = JSON.parse(productosJson);
+	}
+	return content;
+};
+
+const getAllUsers = () => {
+	let usersJson = fs.readFileSync(rutaUsers, "utf-8");
+	let content;
+	if (usersJson == "") {
+		content = [];
+	} else {
+		content = JSON.parse(usersJson);
 	}
 	return content;
 };
@@ -46,10 +58,38 @@ const generateId = () => {
 	return ultimoProducto.id + 1;
 };
 
+const generateUsersId = () => {
+	let users = getAllUsers();
+	if (users.length == 0) {
+		return 1;
+	}
+	let ultimoUser = users.pop();
+	return ultimoUser.id + 1;
+};
+
 const guardaProducto = bodyProducto => {
 	let products = getAllProducts();
 	products.push(bodyProducto);
 	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
+};
+
+const updateProduct = (id, producto) => {
+	let products = getAllProducts();
+	console.log(products)
+	products.forEach(item => {
+		if (item.id == id) {
+			console.log(item)
+			item = producto
+			console.log(item)
+		}
+	})
+	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
+};
+
+const guardaUser = bodyUser => {
+	let users = getAllUsers();
+	users.push(bodyUser);
+	fs.writeFileSync(rutaUsers, JSON.stringify(users, null, " "));
 };
 
 const controller = {
@@ -59,23 +99,26 @@ const controller = {
 		});
 	},
 	productos: (req, res) => {
+		res.render("catalog", {
+			title: "Productos",
+			productos: getAllProducts()
+		});
+	},
+	addProducto: (req, res) => {
 		const id = generateId();
 		guardaProducto({
 			id,
 			image: req.file ? req.file.filename : null,
 			...req.body
 		});
+		const productos = getAllProducts();
 
-		res.render("catalog", {
-			title: "Productos",
-			productos: getAllProducts()
-		});
+		res.render('catalog', {title: 'Productos', productos: productos});
 	},
 	detail: (req, res) => {
 		const id = req.params.id;
 
 		const producto = getProduct(id);
-		console.log(producto)
 
 		res.render("productDetail", {
 			title: "Detalle de producto",
@@ -91,23 +134,25 @@ const controller = {
 			producto
 		});
 	},
+	updateProduct: (req, res) => {
+		const id = req.params.id;
+		const producto = getProduct(id);
+
+		updateProduct(id, producto);
+
+		res.render("catalog", {
+			title: "Productos",
+			productos: getAllProducts()
+		});
+	},
 	delete: (req, res) => {
 		const id = req.params.id;
 		let filtrados = deleteProduct(id);
 		let jsonFiltrados = JSON.stringify(filtrados);
 
 		fs.writeFileSync(rutaProductos, jsonFiltrados, "utf-8");
-		const productos = getAllProducts();
 
-		res.render('catalog', {
-			title: "Productos",
-			productos: productos
-		})
-	},
-	register: (req, res) => {
-		res.render("register", {
-			title: "Registro"
-		});
+		res.redirect('/productos');
 	},
 	productCart: (req, res) => {
 		res.render("productCart", {
@@ -116,9 +161,32 @@ const controller = {
 	},
 	productLoad: (req, res) => {
 		res.render("productLoad", {
-			title: "Carga de Producto"
+			title: "Carga de Producto",
+			producto: null
 		});
-	}
+	},
+	// Usuarios
+	formRegister: (req, res) => {
+		res.render('register', {title: "Registro"});
+	},
+	register: (req, res) => {
+
+		let userFinalData = {
+			id: generateUsersId(),
+			usuario: req.body.usuario,
+			password: bcrypt.hashSync(req.body.password, 10),
+			nombre: req.body.nombre,
+			telefono: req.body.telefono,
+			provincia: req.body.provincia,
+			localidad: req.body.localidad,
+			dni: req.body.dni,
+			email: req.body.email
+		};
+
+		guardaUser(userFinalData);
+
+		res.redirect('/');
+	},
 };
 
 module.exports = controller;

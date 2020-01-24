@@ -29,9 +29,12 @@ const usersController = require("../controllers/usersController");
 /* Index GET */
 router.get("/", mainController.root);
 
+<<<<<<< HEAD
 /* Registro GET*/
 router.get("/users/register", mainController.register);
 
+=======
+>>>>>>> 146ee44fd2d9aa95762bb80c0b4b30c6f1a541fc
 /* Products obtain --> GET */
 router.get("/productos", mainController.productos);
 
@@ -45,9 +48,10 @@ router.get("/carga-producto", mainController.productLoad);
 router.post(
     "/productos",
     upload.single("image_input"),
-    mainController.productos
+    mainController.addProducto
 );
 
+<<<<<<< HEAD
 /* Formulario de Login --> GET */
 router.get("/users/loginForm", usersController.loginForm);
 
@@ -55,12 +59,25 @@ router.get("/users/loginForm", usersController.loginForm);
 router.post("/users/register", usersController.processLogin)
 
 /* Products update --> POST */
+=======
+/* Products update --> GER */
+>>>>>>> 146ee44fd2d9aa95762bb80c0b4b30c6f1a541fc
 router.get("/productos/editar/:id", mainController.update);
+
+/* Products update --> POST */
+router.post("/productos/editar/:id", mainController.updateProduct);
 
 /* Products delete --> POST */
 router.get("/productos/eliminar/:id", mainController.delete);
 
 /* Cart GET */
 router.get("/carrito", mainController.productCart);
+
+// Users
+/* Registro GET*/
+router.get("/registro", mainController.formRegister);
+
+/* Users POST */
+router.post("/registro", mainController.register);
 
 module.exports = router;
