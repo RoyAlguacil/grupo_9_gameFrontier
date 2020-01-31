@@ -74,16 +74,21 @@ const guardaProducto = bodyProducto => {
 };
 
 const updateProduct = (id, producto) => {
+	console.log('23432', producto)
 	let products = getAllProducts();
-	console.log(products)
 	products.forEach(item => {
 		if (item.id == id) {
-			console.log(item)
-			item = producto
-			console.log(item)
+			item.image = producto.image,
+				item.nombre = producto.nombre,
+				item.categoria = producto.categoria,
+				item.subcategoria = producto.subcategoria,
+				item.cantidad = producto.cantidad,
+				item.codigo = producto.codigo,
+				item.valor = producto.valor,
+				item.descripcion = producto.descripcion
 		}
 	})
-	fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
+	//fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
 };
 
 const guardaUser = bodyUser => {
@@ -113,7 +118,10 @@ const controller = {
 		});
 		const productos = getAllProducts();
 
-		res.render('catalog', {title: 'Productos', productos: productos});
+		res.render('catalog', {
+			title: 'Productos',
+			productos: productos
+		});
 	},
 	detail: (req, res) => {
 		const id = req.params.id;
@@ -135,8 +143,9 @@ const controller = {
 		});
 	},
 	updateProduct: (req, res) => {
+		console.log(req.body)
 		const id = req.params.id;
-		const producto = getProduct(id);
+		const producto = req.body;
 
 		updateProduct(id, producto);
 
@@ -167,7 +176,9 @@ const controller = {
 	},
 	// Usuarios
 	formRegister: (req, res) => {
-		res.render('register', {title: "Registro"});
+		res.render('register', {
+			title: "Registro"
+		});
 	},
 	register: (req, res) => {
 

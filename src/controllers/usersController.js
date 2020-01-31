@@ -105,6 +105,10 @@ const controller = {
         });
         // Redirección
         return res.redirect('/users/loginForm');
+    },
+    test: (req, res) => {
+
+        return res.send('HOLA')
     }
 
 };

@@ -5,10 +5,42 @@
 	font-weight: 700;
 }
 
+@keyframes animatedMenu {
+	0% {
+		transform: translateX(50%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
 /* Carousel */
 
 .main {
 	min-width: 100%;
+}
+
+.main-menu {
+	min-width: 300px;
+	max-width: 500px;
+	height: 700px;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 9999999;
+	display: none;
+	border-left: 1px solid black;
+	animation: animatedMenu .3s ease forwards;
+}
+
+.menu-is-open {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .swiper-container,
@@ -43,12 +75,13 @@
 }
 
 .swiper-slide.hero-slider::after {
-	content:'';
-  	position:absolute;
-  	left:0; top:0;
-  	width:100%;
-	height:100%;
-	display:inline-block;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: inline-block;
 	background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .6));
 	background-size: cover;
 }
@@ -77,6 +110,7 @@
 .swiper-slide .btnInfo:hover {
 	background-color: var(--white-color);
 }
+
 .swiper-slide .btnInfo:hover a {
 	color: var(--main-color);
 }
@@ -174,18 +208,21 @@
 	background-position: center;
 	background-size: cover;
 }
+
 .split .games {
 	background-image: url('/images/categorias/a8efde39d47d591af2e973eb31a45ed5.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 }
+
 .split .electro {
 	background-image: url('/images/categorias/console-controller-gamer-gaming-21067.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 }
+
 .split .merch {
 	background-image: url('/images/categorias/merchandising.jpg');
 	background-repeat: no-repeat;
@@ -256,7 +293,7 @@
 	color: var(--white-color);
 }
 
-form {
+.newsletter__form {
 	width: 90%;
 	margin-top: 10px;
 	background-color: var(--white-color);
@@ -268,7 +305,7 @@ form {
 	align-items: center;
 }
 
-form input {
+.newsletter__form input {
 	width: 80%;
 	border: none;
 	border: 1px solid #2f9cc3;
@@ -277,11 +314,11 @@ form input {
 	padding: 10px 30px;
 }
 
-form input::placeholder {
+.newsletter__form input::placeholder {
 	color: var(--main-color);
 }
 
-form button {
+.newsletter__form button {
 	margin-top: 20px;
 	background-color: var(--main-color);
 	color: var(--white-color);
@@ -311,6 +348,7 @@ form button {
 		margin-left: 25%;
 		margin-top: 40px;
 	}
+
 	.swiper-slide .btnInfo-destacado {
 		bottom: 90%;
 		right: 50%;
@@ -334,35 +372,40 @@ form button {
 		height: 700px;
 	}
 }
+
 @media only screen and (min-width: 992px) {
 	.swiper-container {
 		height: 600px;
 	}
+
 	.swiper-heading {
 		position: absolute;
 		left: 30px;
 		bottom: 60px;
 		padding: 20px;
 	}
+
 	.swiper-heading h2 {
 		font-size: 40px;
 	}
-	
+
 	.swiper-heading h3 {
 		font-size: 25px;
 	}
+
 	.swiper-slide.hero-slider img {
 		position: relative;
 		z-index: -1;
 	}
-	
+
 	.swiper-slide.hero-slider::after {
-		content:'';
-		position:absolute;
-		left:0; top:0;
-		width:100%;
-		height:100%;
-		display:inline-block;
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: inline-block;
 		background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .6));
 		background-size: cover;
 	}
@@ -376,6 +419,7 @@ form button {
 		border-radius: 40px;
 		transform: translateX(-50%);
 	}
+
 	.split {
 		flex-direction: row;
 		height: 400px;
@@ -390,6 +434,7 @@ form button {
 		width: 400px;
 		height: 150px;
 	}
+
 	.categories__screen-item p {
 		font-size: 15px;
 	}
@@ -402,6 +447,7 @@ form button {
 		width: 50%;
 	}
 }
+
 @media only screen and (min-width: 1200px) {
 	.split {
 		height: 800px;
@@ -425,10 +471,12 @@ form button {
 		width: 500px;
 		margin: 0 0 0 20%;
 	}
+
 	.swiper-wrapper.trending-items button {
 		margin-bottom: -250px;
 		margin-right: -200px;
 	}
+
 	.split {
 		flex-direction: row;
 		height: 400px;
@@ -448,4 +496,3 @@ form button {
 		width: 450px;
 	}
 }
-

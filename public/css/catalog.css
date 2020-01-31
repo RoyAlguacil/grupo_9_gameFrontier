@@ -48,8 +48,9 @@
     .main-content {
         flex-direction: row;
     }
+
     .red {
-        min-width: 300px;
+        min-width: 400px;
         max-width: 400px;
     }
 }

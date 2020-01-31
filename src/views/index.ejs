@@ -13,6 +13,9 @@
 	<%- include('./partials/header') %>
 
 	<main class="main">
+		<div class="main-menu">
+			<p>ACA VA LA MAGIA</p>
+		</div>
 		<div class="swiper-container">
 			<!-- Additional required wrapper -->
 			<div class="swiper-wrapper" id="swiper-hero">
@@ -149,7 +152,7 @@
 			<div class="newsletter__title">
 				<h2 class="heading">Newsletter</h2>
 			</div>
-			<form action="">
+			<form class="newsletter__form" action="">
 				<input type="text" placeholder="Email" />
 				<button type="submit">Enviar</button>
 			</form>
@@ -159,6 +162,13 @@
 
 	<script src="/js/swiper.min.js"></script>
 	<script>
+		const menu = document.querySelector('.menu');
+		const mainMenu = document.querySelector('.main-menu');
+
+		console.log(menu)
+		menu.addEventListener('click', () => {
+			mainMenu.classList.toggle('menu-is-open');
+		})
 		const mySwiper = new Swiper('.swiper-container', {
 			loop: true,
 			loopedSlides: 4,

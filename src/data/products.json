@@ -1,1 +1,13 @@
-[{"id":19,"image":null,"nombre":"Pendrive","categoria":"consolas","subcategoria":"play4","cantidad":"456456","codigo":"etrte","valor":"ett","descripcion":""}]
+[
+ {
+  "id": 1,
+  "image": "1580422888717.jpg",
+  "nombre": "Deadpool",
+  "categoria": "merchandising",
+  "subcategoria": "figuras_coleccionables",
+  "cantidad": "3",
+  "codigo": "324",
+  "valor": "3242",
+  "descripcion": ""
+ }
+]

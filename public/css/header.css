@@ -14,27 +14,39 @@
 	margin-left: 10px;
 }
 
-.header__login button,
+.buttons {
+	display: flex;
+}
+
 .login__button,
-.header__login button:active,
-.header__login button:link {
+.login__button:active,
+.login__button:link {
 	background-color: var(--main-color);
 	padding: 5px 10px;
 	border: none;
 	border-radius: 20px;
-	margin-right: 80px;
+	margin-right: 30px;
+	justify-self: flex-end;
 }
 
 .login__button a,
-.header__login button a {
+.login__button a {
 	text-decoration: none;
 	color: var(--white-color);
 	font-size: 15px;
 }
 
+.account__button {
+	margin-right: 100px;
+	background-color: var(--main-color);
+	padding: 5px 10px;
+	border: none;
+	border-radius: 20px;
+}
 
-.header__searchbar {
-	display: none;
+.account__button a {
+	color: #fff;
+	text-decoration: none;
 }
 
 .menu {
@@ -45,7 +57,8 @@
 	border: 1px solid var(--black-color);
 	position: fixed;
 	right: 20px;
-	z-index: 999;
+	z-index: 9999999999999;
+	outline: none !important;
 }
 
 .menu i {

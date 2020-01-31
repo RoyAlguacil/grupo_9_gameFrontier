@@ -64,7 +64,11 @@ router.get("/registro", mainController.formRegister);
 /* Users POST */
 router.post("/registro", mainController.register);
 
-
+/* Users */
+/* Login GET */
 router.get('/users/loginForm', usersController.loginForm)
+
+/* Login POST */
+router.post('/test', usersController.test)
 
 module.exports = router;

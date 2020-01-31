@@ -12,23 +12,24 @@
 
 <body>
   <%- include('../partials/header') %>
-  <h2>Regístrate</h2>
-  <div class="container">
-    <form action="/users/register" method="POST" enctype="multipart/form-data">
-      <div class="ingreso-email">
+  <main>
+    <h2>Regístrate</h2>
+    <form action="/test" method="POST" enctype="multipart/form-data">
+      <div class="form-group email">
         <label>Ingrese su email: </label>
-        <input type="text" name="user_email" />
+        <input class="credentials" type="text" name="user_email" />
       </div>
-      <div class="ingreso-password">
+      <div class="form-group  password">
         <label>Contraseña:</label>
-        <input type="password" name="user_password" />
+        <input class="credentials" type="password" name="user_password" />
       </div>
-      <div class="ingreso-avatar">
-        <label> Avatar: </label> <input type="file" name="user_avatar" />
+      <div class="form-group image">
+        <label>Avatar:</label>
+        <input type="file" name="user_avatar" />
       </div>
-      <button type="submit">Registrarse</button>
+      <button class="register" type="submit">Registrarse</button>
     </form>
-  </div>
+  </main>
   <%- include('../partials/footer') %>
 </body>
 

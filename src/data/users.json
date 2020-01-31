@@ -42,5 +42,16 @@
   "localidad": "erf",
   "dni": "435345",
   "email": "efrfer@fwef.com"
+ },
+ {
+  "id": 5,
+  "usuario": "Alex",
+  "password": "$2b$10$oQyvzgqmwck2kOf5EjOZouFzqbHqmcSIY1/DOxKeC5vNgmRb8SYJi",
+  "nombre": "Alex",
+  "telefono": "35345",
+  "provincia": "buenos Aires",
+  "localidad": "CABA",
+  "dni": "23345435",
+  "email": "fewf@gmail.com"
  }
 ]
