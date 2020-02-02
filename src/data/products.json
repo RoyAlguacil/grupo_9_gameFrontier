@@ -1,13 +1,24 @@
 [
  {
   "id": 1,
-  "image": "1580422888717.jpg",
-  "nombre": "Deadpool",
-  "categoria": "merchandising",
-  "subcategoria": "figuras_coleccionables",
+  "nombre": "Texas12333",
+  "categoria": "consolas",
+  "subcategoria": "play4",
   "cantidad": "3",
   "codigo": "324",
   "valor": "3242",
+  "descripcion": "",
+  "image": "1580660902086.jpg"
+ },
+ {
+  "id": 2,
+  "image": "1580660253157.jpg",
+  "nombre": "frewfer",
+  "categoria": "consolas",
+  "subcategoria": "play4",
+  "cantidad": "5345",
+  "codigo": "345",
+  "valor": "3543",
   "descripcion": ""
  }
 ]

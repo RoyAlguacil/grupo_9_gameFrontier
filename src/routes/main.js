@@ -45,11 +45,11 @@ router.post(
     mainController.addProducto
 );
 
-/* Products update --> GER */
+/* Products update --> GET */
 router.get("/productos/editar/:id", mainController.update);
 
 /* Products update --> POST */
-router.post("/productos/editar/:id", mainController.updateProduct);
+router.post("/productos/editar/:id", upload.single('image_input'), mainController.updateProduct);
 
 /* Products delete --> POST */
 router.get("/productos/eliminar/:id", mainController.delete);
@@ -62,7 +62,7 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", mainController.formRegister);
 
 /* Users POST */
-router.post("/registro", mainController.register);
+router.post("/registro", upload.single('user_avatar'), mainController.register);
 
 /* Users */
 /* Login GET */
