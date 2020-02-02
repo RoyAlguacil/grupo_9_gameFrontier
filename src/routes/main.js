@@ -75,7 +75,7 @@ router.post("/registro", upload.single("user_avatar"), mainController.register);
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
 /* Login POST */
-router.post("/test", usersController.test);
+router.post("/users/processLogin", usersController.processLogin);
 
 /* Logout GET*/
 router.get("/users/logout", usersController.logout);

@@ -178,12 +178,14 @@
       const account = document.querySelector('.account__button').addEventListener('click', () => {
 
         if (typeof userId === 'undefined') {
-          Swal.fire({
-            icon: 'error',
-            title: 'Advertencia',
-            text: 'Debe estar logueado',
-            timer: 2000
-          })
+          setTimeout(() => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Advertencia',
+              text: 'Debe estar logueado',
+              timer: 3000
+            })
+          }, 1000)
         }
       })
 

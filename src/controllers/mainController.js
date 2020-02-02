@@ -190,7 +190,7 @@ const controller = {
     } else {
       setTimeout(() => {
         res.redirect('/users/loginForm');
-      }, 2000)
+      }, 3000)
     }
   },
   // Usuarios

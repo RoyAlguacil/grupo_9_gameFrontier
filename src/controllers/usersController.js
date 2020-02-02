@@ -34,7 +34,8 @@ function storeUser(userData) {
 
 function getUserByEmail(email) {
   let allUsers = getAllUsers();
-  let userFind = allUsers.find(oneUser => oneUser.user_email == email);
+  let userFind = allUsers.find(oneUser => oneUser.email == email);
+
   return userFind;
 }
 
@@ -66,35 +67,29 @@ const controller = {
 
     // Valido si existe el usuario
     if (userToLogin != undefined) {
-      // Magia
       if (
-        bcrypt.compareSync(req.body.user_password, userToLogin.user_password)
+        bcrypt.compareSync(req.body.user_password, userToLogin.password)
       ) {
         // Borramos la contraseña del objeto usuario
-        delete userToLogin.user_password;
+        delete userToLogin.password;
 
         // Pasamos al usuario a session
-        req.session.user = userToLogin;
+        req.session.userId = userToLogin.id;
 
-        if (req.body.remember) {
-          res.cookie("user", userToLogin.id, {
+        if (req.body.recordame) {
+          res.cookie("userCookie", userToLogin.id, {
             maxAge: 180000
           });
         }
 
         // Redirección
-        return res.redirect("/users/profile");
+        res.redirect("/");
       } else {
         res.send("Datos incorrectos");
       }
     } else {
-      return res.redirect("/users/register");
+      return res.redirect("/registro");
     }
-  },
-  profile: (req, res) => {
-    res.render("users/profile", {
-      user: req.session.user
-    });
   },
   logout: (req, res) => {
     // Destruimos la session
@@ -106,9 +101,6 @@ const controller = {
     // Redirección
     res.render("index", { userId: null, title: 'Home Page' });
   },
-  test: (req, res) => {
-    return res.send("HOLA");
-  }
 };
 
 module.exports = controller;
