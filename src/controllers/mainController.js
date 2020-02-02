@@ -183,6 +183,7 @@ const controller = {
 	register: (req, res) => {
 
 		let userFinalData = {
+
 			id: generateUsersId(),
 			usuario: req.body.usuario,
 			password: bcrypt.hashSync(req.body.password, 10),
@@ -194,9 +195,13 @@ const controller = {
 			email: req.body.email
 		};
 
+
+
 		guardaUser(userFinalData);
 
 		res.redirect('/');
+
+		res.send('Hola');
 	},
 };
 

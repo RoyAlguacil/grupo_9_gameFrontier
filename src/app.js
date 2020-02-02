@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
-const bodyParser = require('body-parser');
 
 // ************ express() - (don't touch) ************
 const app = express();
