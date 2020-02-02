@@ -3,19 +3,21 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
+const invMiddleware = require("../middlewares/invMiddleware");
+const logMiddleware = require("../middlewares/logMiddleware");
 
 let storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, "../../public/images/multer"));
-    },
-    filename: function (req, file, cb) {
-        let finalName = Date.now() + path.extname(file.originalname);
-        cb(null, finalName);
-    }
+  destination: function (req, file, cb) {
+    cb(null, path.join(__dirname, "../../public/images/multer"));
+  },
+  filename: function (req, file, cb) {
+    let finalName = Date.now() + path.extname(file.originalname);
+    cb(null, finalName);
+  }
 });
 
 let upload = multer({
-    storage: storage
+  storage: storage
 });
 
 // ************ Controller Require ************
@@ -40,16 +42,20 @@ router.get("/carga-producto", mainController.productLoad);
 
 /* Products create --> POST */
 router.post(
-    "/productos",
-    upload.single("image_input"),
-    mainController.addProducto
+  "/productos",
+  upload.single("image_input"),
+  mainController.addProducto
 );
 
 /* Products update --> GET */
 router.get("/productos/editar/:id", mainController.update);
 
 /* Products update --> POST */
-router.post("/productos/editar/:id", upload.single('image_input'), mainController.updateProduct);
+router.post(
+  "/productos/editar/:id",
+  upload.single("image_input"),
+  mainController.updateProduct
+);
 
 /* Products delete --> POST */
 router.get("/productos/eliminar/:id", mainController.delete);
@@ -62,13 +68,16 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", mainController.formRegister);
 
 /* Users POST */
-router.post("/registro", upload.single('user_avatar'), mainController.register);
+router.post("/registro", upload.single("user_avatar"), mainController.register);
 
 /* Users */
 /* Login GET */
-router.get('/users/loginForm', usersController.loginForm)
+router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
 /* Login POST */
-router.post('/test', usersController.test)
+router.post("/test", usersController.test);
+
+/* Logout GET*/
+router.get("/users/logout", usersController.logout);
 
 module.exports = router;

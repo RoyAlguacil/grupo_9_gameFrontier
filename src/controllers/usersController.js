@@ -39,9 +39,6 @@ function getUserByEmail(email) {
 }
 
 const controller = {
-  loginForm: (req, res) => {
-    res.render("users/loginForm");
-  },
   storeUser: (req, res) => {
     // Hasheo la contraseña
     req.body.user_password = bcrypt.hashSync(req.body.user_password, 11);
@@ -58,7 +55,9 @@ const controller = {
   },
   loginForm: (req, res) => {
     res.render("users/loginForm", {
-      title: "Pagina Login"
+      title: "Pagina Login",
+      userId: null,
+      loginBtn: false
     });
   },
   processLogin: (req, res) => {
@@ -101,11 +100,11 @@ const controller = {
     // Destruimos la session
     req.session.destroy();
     // Pisar la cookie
-    res.cookie("user", null, {
+    res.cookie("userCookie", null, {
       maxAge: -1
     });
     // Redirección
-    return res.redirect("/users/loginForm");
+    res.render("index", { userId: null, title: 'Home Page' });
   },
   test: (req, res) => {
     return res.send("HOLA");

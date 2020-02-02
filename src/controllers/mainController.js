@@ -98,14 +98,23 @@ const guardaUser = bodyUser => {
 
 const controller = {
   root: (req, res) => {
-    res.render("index", {
-      title: "Home page"
-    });
+    if (req.session.userId) {
+      res.render("index", {
+        title: "Home page",
+        userId: req.session.userId
+      });
+    } else {
+      res.render("index", {
+        title: "Home page",
+        userId: null
+      });
+    }
   },
   productos: (req, res) => {
     res.render("catalog", {
       title: "Productos",
-      productos: getAllProducts()
+      productos: getAllProducts(),
+      userId: req.session.userId ? req.session.userId : null
     });
   },
   addProducto: (req, res) => {
@@ -129,7 +138,8 @@ const controller = {
 
     res.render("productDetail", {
       title: "Detalle de producto",
-      producto
+      producto,
+      userId: req.session.userId ? req.session.userId : null
     });
   },
   update: (req, res) => {
@@ -138,11 +148,11 @@ const controller = {
 
     res.render("productLoad", {
       title: "Edición de Producto",
-      producto
+      producto,
+      userId: req.session.userId ? req.session.userId : null
     });
   },
   updateProduct: (req, res) => {
-    console.log("REQUEST BODY", req.body);
     const id = req.params.id;
     const producto = req.body;
     const image = req.file ? req.file.filename : null;
@@ -151,7 +161,8 @@ const controller = {
 
     res.render("catalog", {
       title: "Productos",
-      productos: getAllProducts()
+      productos: getAllProducts(),
+      userId: req.session.userId ? req.session.userId : null
     });
   },
   delete: (req, res) => {
@@ -165,14 +176,22 @@ const controller = {
   },
   productCart: (req, res) => {
     res.render("productCart", {
-      title: "Carrito de compras"
+      title: "Carrito de compras",
+      userId: req.session.userId ? req.session.userId : null
     });
   },
   productLoad: (req, res) => {
-    res.render("productLoad", {
-      title: "Carga de Producto",
-      producto: null
-    });
+    if (req.session.userId) {
+      res.render("productLoad", {
+        title: "Carga de Producto",
+        producto: null,
+        userId: req.session.userId
+      });
+    } else {
+      setTimeout(() => {
+        res.redirect('/users/loginForm');
+      }, 2000)
+    }
   },
   // Usuarios
   formRegister: (req, res) => {
@@ -194,11 +213,13 @@ const controller = {
       image: req.file ? req.file.filename : null
     };
 
-    console.log(userFinalData);
-
     guardaUser(userFinalData);
 
-    res.redirect("/");
+    req.session.userId = userFinalData.id;
+
+    res.cookie("userCookie", userFinalData.id, { maxAge: 60000 * 60 });
+
+    res.render("index", { userId: req.session.userId, title: "Home Page" });
   }
 };
 
