@@ -94,7 +94,9 @@
                     <img src="/images/multer/<%= producto.image %>" alt="<%= producto.name %>" />
                     <p><%= producto.nombre %></p>
                     <a href="/productos/editar/<%= producto.id %>">Editar</a>
-                    <a href="/productos/eliminar/<%= producto.id %>">Borrar</a>
+                    <form action="/productos/eliminar/<%= producto.id %>?_method=DELETE" method="POST">
+                        <button type="submit">Borrar</button>
+                    </form>
                 </a>
             </div>
             <% }) %>

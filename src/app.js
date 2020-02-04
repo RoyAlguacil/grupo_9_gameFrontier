@@ -3,6 +3,7 @@ const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 const session = require("express-session");
+const method = require("method-override");
 const logger = require("morgan");
 const path = require("path");
 const cookieMiddleware = require("./middlewares/cookieMiddleware");
@@ -28,6 +29,7 @@ app.use(
   })
 );
 app.use(cookieMiddleware);
+app.use(method("_method"));
 
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");

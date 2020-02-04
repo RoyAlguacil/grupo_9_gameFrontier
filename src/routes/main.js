@@ -7,17 +7,17 @@ const invMiddleware = require("../middlewares/invMiddleware");
 const logMiddleware = require("../middlewares/logMiddleware");
 
 let storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/images/multer"));
-  },
-  filename: function (req, file, cb) {
-    let finalName = Date.now() + path.extname(file.originalname);
-    cb(null, finalName);
-  }
+    destination: function (req, file, cb) {
+        cb(null, path.join(__dirname, "../../public/images/multer"));
+    },
+    filename: function (req, file, cb) {
+        let finalName = Date.now() + path.extname(file.originalname);
+        cb(null, finalName);
+    }
 });
 
 let upload = multer({
-  storage: storage
+    storage: storage
 });
 
 // ************ Controller Require ************
@@ -42,9 +42,9 @@ router.get("/carga-producto", mainController.productLoad);
 
 /* Products create --> POST */
 router.post(
-  "/productos",
-  upload.single("image_input"),
-  mainController.addProducto
+    "/productos",
+    upload.single("image_input"),
+    mainController.addProducto
 );
 
 /* Products update --> GET */
@@ -52,13 +52,13 @@ router.get("/productos/editar/:id", mainController.update);
 
 /* Products update --> POST */
 router.post(
-  "/productos/editar/:id",
-  upload.single("image_input"),
-  mainController.updateProduct
+    "/productos/editar/:id",
+    upload.single("image_input"),
+    mainController.updateProduct
 );
 
 /* Products delete --> POST */
-router.get("/productos/eliminar/:id", mainController.delete);
+router.delete("/productos/eliminar/:id", mainController.delete);
 
 /* Cart GET */
 router.get("/carrito", mainController.productCart);
