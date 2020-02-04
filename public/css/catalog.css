@@ -10,6 +10,7 @@
     flex-grow: 4;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 
@@ -30,18 +31,39 @@
 }
 
 .product {
-    width: 200px;
-    margin: 0 10px;
+    width: 220px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 30px;
     text-align: center;
+    transition: all .2s ease;
+}
+
+.product:hover {
+    background-color: #6db7d1;
+}
+
+.product:hover p {
+    color: #fff;
+}
+
+.product a {
+    text-decoration: none;
 }
 
 .product p {
-    font-size: 17px;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--main-color);
+    margin-top: 10px;
 }
 
 .product img {
     width: 200px;
+    height: 143px;
+    margin-left: -10px;
     border-radius: 20px;
+    object-fit: cover;
 }
 
 @media only screen and (min-width: 768px) {

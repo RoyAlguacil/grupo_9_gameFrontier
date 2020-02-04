@@ -78,13 +78,13 @@ const updateProduct = (id, producto, image) => {
   products.forEach(item => {
     if (item.id == id) {
       (item.image = image),
-        (item.nombre = producto.nombre),
-        (item.categoria = producto.categoria),
-        (item.subcategoria = producto.subcategoria),
-        (item.cantidad = producto.cantidad),
-        (item.codigo = producto.codigo),
-        (item.valor = producto.valor),
-        (item.descripcion = producto.descripcion);
+      (item.nombre = producto.nombre),
+      (item.categoria = producto.categoria),
+      (item.subcategoria = producto.subcategoria),
+      (item.cantidad = producto.cantidad),
+      (item.codigo = producto.codigo),
+      (item.valor = producto.valor),
+      (item.descripcion = producto.descripcion);
     }
   });
   fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
@@ -128,7 +128,8 @@ const controller = {
 
     res.render("catalog", {
       title: "Productos",
-      productos: productos
+      productos: productos,
+      userId: req.session.userId
     });
   },
   detail: (req, res) => {
@@ -217,9 +218,14 @@ const controller = {
 
     req.session.userId = userFinalData.id;
 
-    res.cookie("userCookie", userFinalData.id, { maxAge: 60000 * 60 });
+    res.cookie("userCookie", userFinalData.id, {
+      maxAge: 60000 * 60
+    });
 
-    res.render("index", { userId: req.session.userId, title: "Home Page" });
+    res.render("index", {
+      userId: req.session.userId,
+      title: "Home Page"
+    });
   }
 };
 
