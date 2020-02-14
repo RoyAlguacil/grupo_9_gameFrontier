@@ -26,11 +26,26 @@ function generateId() {
   return lastUser.id + 1;
 }
 
+const generateUsersId = () => {
+  let users = getAllUsers();
+  if (users.length == 0) {
+    return 1;
+  }
+  let ultimoUser = users.pop();
+  return ultimoUser.id + 1;
+};
+
 function storeUser(userData) {
   let users = getAllUsers();
   users.push(userData);
   fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
 }
+
+const guardaUser = bodyUser => {
+  let users = getAllUsers();
+  users.push(bodyUser);
+  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
+};
 
 function getUserByEmail(email) {
   let allUsers = getAllUsers();
@@ -90,6 +105,39 @@ const controller = {
     } else {
       return res.redirect("/registro");
     }
+  },
+  // Usuarios
+  formRegister: (req, res) => {
+    res.render("register", {
+      title: "Registro"
+    });
+  },
+  register: (req, res) => {
+    let userFinalData = {
+      id: generateUsersId(),
+      usuario: req.body.usuario,
+      password: bcrypt.hashSync(req.body.password, 10),
+      nombre: req.body.nombre,
+      telefono: req.body.telefono,
+      provincia: req.body.provincia,
+      localidad: req.body.localidad,
+      dni: req.body.dni,
+      email: req.body.email,
+      image: req.file ? req.file.filename : null
+    };
+
+    guardaUser(userFinalData);
+
+    req.session.userId = userFinalData.id;
+
+    res.cookie("userCookie", userFinalData.id, {
+      maxAge: 60000 * 60
+    });
+
+    res.render("index", {
+      userId: req.session.userId,
+      title: "Home Page"
+    });
   },
   logout: (req, res) => {
     // Destruimos la session

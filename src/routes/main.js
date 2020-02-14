@@ -5,6 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const invMiddleware = require("../middlewares/invMiddleware");
 const logMiddleware = require("../middlewares/logMiddleware");
+const { check } = require('express-validator');
 
 let storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -65,10 +66,10 @@ router.get("/carrito", mainController.productCart);
 
 // Users
 /* Registro GET*/
-router.get("/registro", mainController.formRegister);
+router.get("/registro", usersController.formRegister);
 
 /* Users POST */
-router.post("/registro", upload.single("user_avatar"), mainController.register);
+router.post("/registro", upload.single("user_avatar"), usersController.register);
 
 /* Users */
 /* Login GET */

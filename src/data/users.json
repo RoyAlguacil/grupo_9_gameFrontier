@@ -22,5 +22,41 @@
   "dni": "435345",
   "email": "alex@gmail.com",
   "image": "1580678724625.jpg"
+ },
+ {
+  "id": 3,
+  "usuario": "Juan",
+  "password": "$2b$10$23H8KF3o51nCDS4X1zdkMu6RXAymlDYpcMlfKynQhCERC3urZc6vW",
+  "nombre": "Juan",
+  "telefono": "456798456",
+  "provincia": "bs as",
+  "localidad": "caba",
+  "dni": "4513",
+  "email": "27@casc.com",
+  "image": "1581715913141.jpg"
+ },
+ {
+  "id": 4,
+  "usuario": "Alex",
+  "password": "$2b$10$7BccW3b/ZDXcoMR8FAw/V.OsYMntgMlMboa3BYRCnd.P9Q3wlOXc6",
+  "nombre": "Alex",
+  "telefono": "24235",
+  "provincia": "Buenos Aires",
+  "localidad": "CABA",
+  "dni": "35959483",
+  "email": "event@event.com",
+  "image": "1581718440630.jpg"
+ },
+ {
+  "id": 5,
+  "usuario": "hiteple",
+  "password": "$2b$10$X1uwaRggULIBgwciTezRWu5AkdNruRdAd08BzPVjGHWVdR2Zekos6",
+  "nombre": "lol",
+  "telefono": "34234",
+  "provincia": "gfgref",
+  "localidad": "CABA",
+  "dni": "53534534451",
+  "email": "yo@test.com",
+  "image": null
  }
 ]

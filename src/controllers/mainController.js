@@ -3,7 +3,6 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 
 const rutaProductos = path.join(__dirname, "../data/products.json");
-const rutaUsers = path.join(__dirname, "../data/users.json");
 
 const getAllProducts = () => {
   let productosJson = fs.readFileSync(rutaProductos, "utf-8");
@@ -12,17 +11,6 @@ const getAllProducts = () => {
     content = [];
   } else {
     content = JSON.parse(productosJson);
-  }
-  return content;
-};
-
-const getAllUsers = () => {
-  let usersJson = fs.readFileSync(rutaUsers, "utf-8");
-  let content;
-  if (usersJson == "") {
-    content = [];
-  } else {
-    content = JSON.parse(usersJson);
   }
   return content;
 };
@@ -58,15 +46,6 @@ const generateId = () => {
   return ultimoProducto.id + 1;
 };
 
-const generateUsersId = () => {
-  let users = getAllUsers();
-  if (users.length == 0) {
-    return 1;
-  }
-  let ultimoUser = users.pop();
-  return ultimoUser.id + 1;
-};
-
 const guardaProducto = bodyProducto => {
   let products = getAllProducts();
   products.push(bodyProducto);
@@ -78,22 +57,16 @@ const updateProduct = (id, producto, image) => {
   products.forEach(item => {
     if (item.id == id) {
       (item.image = image),
-      (item.nombre = producto.nombre),
-      (item.categoria = producto.categoria),
-      (item.subcategoria = producto.subcategoria),
-      (item.cantidad = producto.cantidad),
-      (item.codigo = producto.codigo),
-      (item.valor = producto.valor),
-      (item.descripcion = producto.descripcion);
+        (item.nombre = producto.nombre),
+        (item.categoria = producto.categoria),
+        (item.subcategoria = producto.subcategoria),
+        (item.cantidad = producto.cantidad),
+        (item.codigo = producto.codigo),
+        (item.valor = producto.valor),
+        (item.descripcion = producto.descripcion);
     }
   });
   fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
-};
-
-const guardaUser = bodyUser => {
-  let users = getAllUsers();
-  users.push(bodyUser);
-  fs.writeFileSync(rutaUsers, JSON.stringify(users, null, " "));
 };
 
 const controller = {
@@ -194,39 +167,6 @@ const controller = {
       }, 3000)
     }
   },
-  // Usuarios
-  formRegister: (req, res) => {
-    res.render("register", {
-      title: "Registro"
-    });
-  },
-  register: (req, res) => {
-    let userFinalData = {
-      id: generateUsersId(),
-      usuario: req.body.usuario,
-      password: bcrypt.hashSync(req.body.password, 10),
-      nombre: req.body.nombre,
-      telefono: req.body.telefono,
-      provincia: req.body.provincia,
-      localidad: req.body.localidad,
-      dni: req.body.dni,
-      email: req.body.email,
-      image: req.file ? req.file.filename : null
-    };
-
-    guardaUser(userFinalData);
-
-    req.session.userId = userFinalData.id;
-
-    res.cookie("userCookie", userFinalData.id, {
-      maxAge: 60000 * 60
-    });
-
-    res.render("index", {
-      userId: req.session.userId,
-      title: "Home Page"
-    });
-  }
 };
 
 module.exports = controller;

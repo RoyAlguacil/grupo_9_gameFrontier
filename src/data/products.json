@@ -1,14 +1,14 @@
 [
  {
   "id": 3,
-  "image": "1580776661638.jpg",
+  "image": "1581718547738.jpg",
   "nombre": "xnudsho",
   "categoria": "consolas",
   "subcategoria": "play4",
   "cantidad": "66",
   "codigo": "7686",
   "valor": "86",
-  "descripcion": ""
+  "descripcion": "Deberia precargarse"
  },
  {
   "id": 4,
@@ -19,17 +19,6 @@
   "cantidad": "76796",
   "codigo": "7687687",
   "valor": "645",
-  "descripcion": ""
- },
- {
-  "id": 5,
-  "image": "1580777106101.jpg",
-  "nombre": "fef",
-  "categoria": "consolas",
-  "subcategoria": "play4",
-  "cantidad": "435",
-  "codigo": "435",
-  "valor": "435435",
   "descripcion": ""
  }
 ]
