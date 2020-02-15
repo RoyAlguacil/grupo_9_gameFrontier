@@ -69,7 +69,9 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", usersController.formRegister);
 
 /* Users POST */
-router.post("/registro", upload.single("user_avatar"), usersController.register);
+router.post("/registro", upload.single("user_avatar"), [
+
+], usersController.register);
 
 /* Users */
 /* Login GET */
@@ -77,8 +79,12 @@ router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
 /* Login POST */
 router.post("/users/processLogin", [
-    check('user_email', 'Datos inválidos').isEmail().bail(),
-    check('user_password', 'Datos inválidos').isEmpty()
+    // valido usuario
+    check('user_email')
+        .notEmpty().withMessage('Dato necesario para loguearse').bail()
+        .isEmail().withMessage('Formato inválido'),
+    //valido password
+    check('user_password', 'Datos inválidos').notEmpty()
 ], usersController.processLogin);
 
 /* Logout GET*/

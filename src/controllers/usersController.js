@@ -78,7 +78,16 @@ const controller = {
     });
   },
   processLogin: (req, res) => {
+
     let errors = validationResult(req);
+
+    const errorAndMessage = (field, errors) => {
+      for (let oneError of errors) {
+        if (oneError.param == field) {
+          return oneError.msg;
+        }
+      } return false;
+    };
 
     // Busco al usuario por email
     let userToLogin = getUserByEmail(req.body.user_email);
@@ -105,14 +114,16 @@ const controller = {
         res.render("users/loginForm", {
           title: "Login",
           userId: req.session.userId,
-          errors: errors.array()
+          errors: errors.errors,
+          errorAndMessage,
         });
       }
     } else {
       res.render("users/loginForm", {
         title: "Login",
         userId: req.session.userId,
-        errors: errors.array()
+        errors: errors.errors,
+        errorAndMessage
       });
     }
   },

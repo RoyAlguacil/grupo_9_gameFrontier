@@ -14,17 +14,35 @@
     <%- include('../partials/header') %>
     <main>
       <form action="/users/processLogin" method="POST">
+
         <div class="form-group email">
           <label>Ingrese su email: </label>
-          <input class="credentials" type="text" name="user_email" />
+          <input name="user_email" class="credentials 
+          <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_email', errors) ? 'is-invalid' : null %>
+            <% } %>
+            " />
+          <i class="invalid-feedback">
+            <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_email', errors) ? errorAndMessage('user_email', errors) : null %>
+            <% } %>
+          </i>
         </div>
+
         <div class="form-group  password">
           <label>Contraseña:</label>
-          <input class="credentials" type="password" name="user_password" />
+          <input class="credentials
+          <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_password', errors) ? 'is-invalid' : null %>
+            <% } %>
+          " type="password" name="user_password" />
+          <i class="invalid-feedback">
+            <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_password', errors) ? errorAndMessage('user_password', errors) : null %>
+            <% } %>
+          </i>
         </div>
-        <% if (typeof errors !== "undefined") { %>
-        <p style="color: red;"><%= errors[0].msg %></p>
-        <%}%>
+
         <button class="register" type="submit">Continuar</button>
         <br>
         <p style="margin-top: 20px;">No tenés cuenta?... <a href="/registro">Registrate</a></p>
