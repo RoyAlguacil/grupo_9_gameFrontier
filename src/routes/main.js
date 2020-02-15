@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
-const invMiddleware = require("../middlewares/invMiddleware");
+/* const invMiddleware = require("../middlewares/invMiddleware"); */
 const logMiddleware = require("../middlewares/logMiddleware");
 const { check } = require('express-validator');
 
@@ -76,7 +76,10 @@ router.post("/registro", upload.single("user_avatar"), usersController.register)
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
 /* Login POST */
-router.post("/users/processLogin", usersController.processLogin);
+router.post("/users/processLogin", [
+    check('user_email', 'Datos inválidos').isEmail().bail(),
+    check('user_password', 'Datos inválidos').isEmpty()
+], usersController.processLogin);
 
 /* Logout GET*/
 router.get("/users/logout", usersController.logout);

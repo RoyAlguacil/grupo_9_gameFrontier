@@ -22,9 +22,12 @@
           <label>Contraseña:</label>
           <input class="credentials" type="password" name="user_password" />
         </div>
+        <% if (typeof errors !== "undefined") { %>
+        <p style="color: red;"><%= errors[0].msg %></p>
+        <%}%>
         <button class="register" type="submit">Continuar</button>
         <br>
-        <p>No tenés cuenta?... <a href="/registro">Registrate</a></p>
+        <p style="margin-top: 20px;">No tenés cuenta?... <a href="/registro">Registrate</a></p>
       </form>
 
     </main>

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcrypt");
+const { validationResult } = require('express-validator');
 
 // Users File Path
 const usersFilePath = path.join(__dirname, "../data/users.json");
@@ -77,14 +78,14 @@ const controller = {
     });
   },
   processLogin: (req, res) => {
+    let errors = validationResult(req);
+
     // Busco al usuario por email
     let userToLogin = getUserByEmail(req.body.user_email);
 
     // Valido si existe el usuario
     if (userToLogin != undefined) {
-      if (
-        bcrypt.compareSync(req.body.user_password, userToLogin.password)
-      ) {
+      if (bcrypt.compareSync(req.body.user_password, userToLogin.password)) {
         // Borramos la contraseña del objeto usuario
         delete userToLogin.password;
 
@@ -100,10 +101,19 @@ const controller = {
         // Redirección
         res.redirect("/");
       } else {
-        res.send("Datos incorrectos");
+        // Si la contraseña falla
+        res.render("users/loginForm", {
+          title: "Login",
+          userId: req.session.userId,
+          errors: errors.array()
+        });
       }
     } else {
-      return res.redirect("/registro");
+      res.render("users/loginForm", {
+        title: "Login",
+        userId: req.session.userId,
+        errors: errors.array()
+      });
     }
   },
   // Usuarios
