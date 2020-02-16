@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const bcrypt = require("bcrypt");
+const db = require('../database/models/');
 
 const rutaProductos = path.join(__dirname, "../data/products.json");
 
