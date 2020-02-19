@@ -58,5 +58,17 @@
   "dni": "53534534451",
   "email": "yo@test.com",
   "image": null
+ },
+ {
+  "id": 6,
+  "usuario": "",
+  "password": "$2b$10$QcmRxbOgUt/cGiPetcVBTe0gHR95CaxBL2ACWGDrG48vDA2AN7E9y",
+  "nombre": "",
+  "telefono": "",
+  "provincia": "",
+  "localidad": "",
+  "dni": "",
+  "email": "",
+  "image": null
  }
 ]
