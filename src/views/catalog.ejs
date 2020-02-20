@@ -148,6 +148,7 @@
                 method="POST"
               >
                 <button
+                  id="delete"
                   style="margin: 10px;"
                   class="btn btn-danger"
                   type="submit"
@@ -178,5 +179,19 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <script>
+      const deleteButton = document
+        .querySelector("#delete")
+        .addEventListener("click", () => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Producto eliminado",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        });
+    </script>
   </body>
 </html>

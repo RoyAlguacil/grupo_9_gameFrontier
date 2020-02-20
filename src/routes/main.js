@@ -5,20 +5,20 @@ const multer = require("multer");
 const path = require("path");
 /* const invMiddleware = require("../middlewares/invMiddleware"); */
 const logMiddleware = require("../middlewares/logMiddleware");
-const { check } = require('express-validator');
+const { check } = require("express-validator");
 
 let storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, "../../public/images/multer"));
-    },
-    filename: function (req, file, cb) {
-        let finalName = Date.now() + path.extname(file.originalname);
-        cb(null, finalName);
-    }
+  destination: function(req, file, cb) {
+    cb(null, path.join(__dirname, "../../public/images/multer"));
+  },
+  filename: function(req, file, cb) {
+    let finalName = Date.now() + path.extname(file.originalname);
+    cb(null, finalName);
+  }
 });
 
 let upload = multer({
-    storage: storage
+  storage: storage
 });
 
 // ************ Controller Require ************
@@ -43,9 +43,9 @@ router.get("/carga-producto", mainController.productLoad);
 
 /* Products create --> POST */
 router.post(
-    "/productos",
-    upload.single("image_input"),
-    mainController.addProducto
+  "/productos",
+  upload.single("image_input"),
+  mainController.addProducto
 );
 
 /* Products update --> GET */
@@ -53,9 +53,9 @@ router.get("/productos/editar/:id", mainController.update);
 
 /* Products update --> POST */
 router.post(
-    "/productos/editar/:id",
-    upload.single("image_input"),
-    mainController.updateProduct
+  "/productos/editar/:id",
+  upload.single("image_input"),
+  mainController.updateProduct
 );
 
 /* Products delete --> POST */
@@ -69,23 +69,33 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", usersController.formRegister);
 
 /* Users POST */
-router.post("/registro", upload.single("user_avatar"), [
-
-], usersController.register);
+router.post(
+  "/registro",
+  upload.single("user_avatar"),
+  [],
+  usersController.register
+);
 
 /* Users */
 /* Login GET */
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
 /* Login POST */
-router.post("/users/processLogin", [
+router.post(
+  "/users/processLogin",
+  [
     // valido usuario
-    check('user_email')
-        .notEmpty().withMessage('Dato necesario para loguearse').bail()
-        .isEmail().withMessage('Formato inválido'),
+    check("user_email")
+      .notEmpty()
+      .withMessage("Dato necesario para loguearse")
+      .bail()
+      .isEmail()
+      .withMessage("Formato inválido"),
     //valido password
-    check('user_password', 'Datos inválidos').notEmpty()
-], usersController.processLogin);
+    check("user_password", "Datos inválidos").notEmpty()
+  ],
+  usersController.processLogin
+);
 
 /* Logout GET*/
 router.get("/users/logout", usersController.logout);

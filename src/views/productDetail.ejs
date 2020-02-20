@@ -1,90 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <%- include('./partials/head-links') %>
+    <link rel="stylesheet" href="/css/globals.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/productDetail.css" />
+  </head>
 
-<head>
-	<%- include('./partials/head-links') %>
-	<link rel="stylesheet" href="/css/globals.css" />
-	<link rel="stylesheet" href="/css/header.css" />
-	<link rel="stylesheet" href="/css/home.css" />
-	<link rel="stylesheet" href="/css/footer.css" />
-	<link rel="stylesheet" href="/css/productDetail.css" />
-</head>
+  <body>
+    <%- include('./partials/header') %>
 
-<body>
+    <section class="container-fluid">
+      <div class="row">
+        <div id="cajaImgPrd" class="col-sm-12 col-md-4">
+          <img
+            src="/images/multer/<%= producto.imagen %>"
+            alt="<%= producto.nombre %>"
+          />
+        </div>
 
-	<%- include('./partials/header') %>
+        <div id="detalle" class="col-sm-12 col-md-4">
+          <h4><%= producto.nombre %></h4>
+          <h5><%= producto.categoria %></h5>
+          <h6>Código: <%= producto.codigo %></h6>
+          <h6>$ <%= producto.valor %></h6>
+          <h6><%= producto.cantidad %></h6>
+          <a href="/carrito"><i class="fas fa-cart-arrow-down"></i></a>
+        </div>
 
-	<section class="container-fluid">
-		<div class="row">
-			<div id="cajaImgPrd" class="col-sm-12 col-md-4">
-				<img src="/images/multer/<%= producto.image %>" alt="<%= producto.nombre %>" />
-			</div>
+        <div id="descripcion" class="col-sm-12 col-md-4">
+          <h4>Descripción</h4>
+          <p>
+            <%= producto.descripcion %>
+          </p>
+        </div>
 
-			<div id="detalle" class="col-sm-12 col-md-4">
-				<h4><%= producto.nombre %></h4>
-				<h5><%= producto.categoria %></h5>
-				<h6>Código: <%= producto.codigo %></h6>
-				<h6>$ <%= producto.valor %></h6>
-				<h6><%= producto.cantidad %></h6>
-				<a href="/carrito"><i class="fas fa-cart-arrow-down"></i></a>
-			</div>
+        <div id="productosRelacionados" class="col-12">
+          <h4>Productos Relacionados</h4>
+        </div>
 
-			<div id="descripcion" class="col-sm-12 col-md-4">
-				<h4>Descripción</h4>
-				<p>
-					<%= producto.descripcion %>
-				</p>
-			</div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-12 col-md-3">
+              <div>
+                <img
+                  src="/images/electro/ps4-joystick-black.png"
+                  alt="Joytick PS4 Black"
+                  class="imgPrdRelacionado"
+                />
+              </div>
+              <span>Producto Relacionado</span>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div>
+                <img
+                  src="/images/electro/wd-elements.jpg"
+                  alt="Camara PS4"
+                  class="imgPrdRelacionado"
+                />
+              </div>
+              <span>Producto Relacionado</span>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div>
+                <img
+                  src="/images/electro/king-64gb-data-travel.jpg"
+                  alt="Data Travel 64gb"
+                  class="imgPrdRelacionado"
+                />
+              </div>
+              <span>Producto Relacionado</span>
+            </div>
+            <div class="col-sm-12 col-md-3">
+              <div>
+                <img
+                  src="/images/electro/pendrive-leatherface.jpg"
+                  alt="Pendrive Leatherface"
+                  class="imgPrdRelacionado"
+                />
+              </div>
+              <span>Producto Relacionado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-			<div id="productosRelacionados" class="col-12">
-				<h4>Productos Relacionados</h4>
-			</div>
+    <%- include('./partials/footer') %>
 
-			<div class="container-fluid">
-				<div class="row">
-
-					<div class="col-sm-12 col-md-3">
-						<div><img src="/images/electro/ps4-joystick-black.png" alt="Joytick PS4 Black"
-								class="imgPrdRelacionado" />
-						</div>
-						<span>Producto Relacionado</span>
-					</div>
-					<div class="col-sm-12 col-md-3">
-						<div><img src="/images/electro/wd-elements.jpg" alt="Camara PS4" class="imgPrdRelacionado" />
-						</div>
-						<span>Producto Relacionado</span>
-					</div>
-					<div class="col-sm-12 col-md-3">
-						<div><img src="/images/electro/king-64gb-data-travel.jpg" alt="Data Travel 64gb"
-								class="imgPrdRelacionado" /></div>
-						<span>Producto Relacionado</span>
-					</div>
-					<div class="col-sm-12 col-md-3">
-						<div><img src="/images/electro/pendrive-leatherface.jpg" alt="Pendrive Leatherface"
-								class="imgPrdRelacionado" /></div>
-						<span>Producto Relacionado</span>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<%- include('./partials/footer') %>
-
-	<script src="/js/swiper.min.js"></script>
-	<script>
-		const mySwiper = new Swiper('.swiper-container', {
-			loop: true,
-			loopedSlides: 4,
-			effect: window.innerWidth > 992 ? 'fade' : 'slide',
-			autoplay: {
-				delay: 4000
-			},
-			slidesPerView: 1
-		});
-	</script>
-
-</body>
-
+    <script src="/js/swiper.min.js"></script>
+    <script>
+      const mySwiper = new Swiper(".swiper-container", {
+        loop: true,
+        loopedSlides: 4,
+        effect: window.innerWidth > 992 ? "fade" : "slide",
+        autoplay: {
+          delay: 4000
+        },
+        slidesPerView: 1
+      });
+    </script>
+  </body>
 </html>

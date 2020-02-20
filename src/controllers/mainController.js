@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const db = require('../database/models/');
+const db = require("../database/models/");
 
 const rutaProductos = path.join(__dirname, "../data/products.json");
 
@@ -86,36 +86,41 @@ const controller = {
   productos: async (req, res) => {
     let allProducts;
     try {
-      allProducts = await db.productos.findAll({raw:true})
-    } catch(error) {
+      allProducts = await db.productos.findAll({ raw: true });
+    } catch (error) {
       console.log(error);
     }
-    
+
     res.render("catalog", {
       title: "Productos",
       productos: allProducts,
       userId: req.session.userId ? req.session.userId : null
     });
   },
-  addProducto: (req, res) => {
-    const id = generateId();
-    guardaProducto({
-      id,
-      image: req.file ? req.file.filename : null,
-      ...req.body
+  addProducto: async (req, res) => {
+    await db.productos.create({
+      imagen: req.file ? req.file.filename : null,
+      nombre: req.body.nombre,
+      precio: req.body.precio,
+      codigo: req.body.codigo,
+      descripcion: req.body.descripcion
     });
-    const productos = getAllProducts();
+
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({ raw: true });
+    } catch (error) {
+      console.log(error);
+    }
 
     res.render("catalog", {
       title: "Productos",
-      productos: productos,
+      productos: allProducts,
       userId: req.session.userId
     });
   },
-  detail: (req, res) => {
-    const id = req.params.id;
-
-    const producto = getProduct(id);
+  detail: async (req, res) => {
+    const producto = await db.productos.findByPk(req.params.id);
 
     res.render("productDetail", {
       title: "Detalle de producto",
@@ -123,9 +128,8 @@ const controller = {
       userId: req.session.userId ? req.session.userId : null
     });
   },
-  update: (req, res) => {
-    const id = req.params.id;
-    const producto = getProduct(id);
+  update: async (req, res) => {
+    const producto = await db.productos.findByPk(req.params.id);
 
     res.render("productLoad", {
       title: "Edición de Producto",
@@ -133,27 +137,45 @@ const controller = {
       userId: req.session.userId ? req.session.userId : null
     });
   },
-  updateProduct: (req, res) => {
-    const id = req.params.id;
-    const producto = req.body;
-    const image = req.file ? req.file.filename : null;
+  updateProduct: async (req, res) => {
+    await db.productos.update(
+      {
+        imagen: req.file ? req.file.filename : null,
+        nombre: req.body.nombre,
+        precio: req.body.precio,
+        codigo: req.body.codigo,
+        descripcion: req.body.descripcion
+      },
+      {
+        where: {
+          id: req.params.id
+        }
+      }
+    );
 
-    updateProduct(id, producto, image);
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({ raw: true });
+    } catch (error) {
+      console.log(error);
+    }
 
     res.render("catalog", {
       title: "Productos",
-      productos: getAllProducts(),
+      productos: allProducts,
       userId: req.session.userId ? req.session.userId : null
     });
   },
   delete: (req, res) => {
-    const id = req.params.id;
-    let filtrados = deleteProduct(id);
-    let jsonFiltrados = JSON.stringify(filtrados);
+    db.productos.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
 
-    fs.writeFileSync(rutaProductos, jsonFiltrados, "utf-8");
-
-    res.redirect("/productos");
+    setTimeout(() => {
+      res.redirect("/productos");
+    }, 1500);
   },
   productCart: (req, res) => {
     res.render("productCart", {
@@ -170,10 +192,10 @@ const controller = {
       });
     } else {
       setTimeout(() => {
-        res.redirect('/users/loginForm');
-      }, 3000)
+        res.redirect("/users/loginForm");
+      }, 3000);
     }
-  },
+  }
 };
 
 module.exports = controller;
