@@ -83,10 +83,17 @@ const controller = {
       });
     }
   },
-  productos: (req, res) => {
+  productos: async (req, res) => {
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({raw:true})
+    } catch(error) {
+      console.log(error);
+    }
+    
     res.render("catalog", {
       title: "Productos",
-      productos: getAllProducts(),
+      productos: allProducts,
       userId: req.session.userId ? req.session.userId : null
     });
   },
