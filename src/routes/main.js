@@ -5,7 +5,9 @@ const multer = require("multer");
 const path = require("path");
 /* const invMiddleware = require("../middlewares/invMiddleware"); */
 const logMiddleware = require("../middlewares/logMiddleware");
-const { check } = require("express-validator");
+const {
+  check
+} = require("express-validator");
 
 let storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -25,79 +27,55 @@ let upload = multer({
 const mainController = require("../controllers/mainController");
 const usersController = require("../controllers/usersController");
 
-/******
- * Productos
- */
-
+// ************ Rutas de Productos ************
 /* Index GET */
 router.get("/", mainController.root);
 
-/* Products obtain --> GET */
+/* Lista de Productos --> GET */
 router.get("/productos", mainController.productos);
 
-/* Products/:id obtain --> GET */
+/* Detalle de Producto --> GET */
 router.get("/productos/:id", mainController.detail);
 
-/* Products create GET */
+/* Formulario Carga de Producto --> GET */
 router.get("/carga-producto", mainController.productLoad);
 
-/* Products create --> POST */
-router.post(
-  "/productos",
-  upload.single("image_input"),
-  mainController.addProducto
-);
+/* Carga de Producto --> POST */
+router.post("/productos", upload.single("image_input"), mainController.addProducto);
 
-/* Products update --> GET */
+/* Formulario de Update Producto --> GET */
 router.get("/productos/editar/:id", mainController.update);
 
-/* Products update --> POST */
-router.post(
-  "/productos/editar/:id",
-  upload.single("image_input"),
-  mainController.updateProduct
-);
+/* Update Producto --> POST */
+router.post("/productos/editar/:id", upload.single("image_input"), mainController.updateProduct);
 
-/* Products delete --> POST */
+/* Eliminación de Productos --> DELETE */
 router.delete("/productos/eliminar/:id", mainController.delete);
 
-/* Cart GET */
+/* Carro de Compras --> GET */
 router.get("/carrito", mainController.productCart);
 
-// Users
-/* Registro GET*/
+// ************ Rutas de Usuarios ************
+/* Formulario de Registro --> GET */
 router.get("/registro", usersController.formRegister);
 
-/* Users POST */
-router.post(
-  "/registro",
-  upload.single("user_avatar"),
-  [],
-  usersController.register
-);
+/* Registro de Usuario --> POST */
+router.post("/registro", upload.single("user_avatar"), [], usersController.register);
 
-/* Users */
-/* Login GET */
+/* Formulario de Login --> GET */
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
 
-/* Login POST */
-router.post(
-  "/users/processLogin",
-  [
-    // valido usuario
-    check("user_email")
-      .notEmpty()
-      .withMessage("Dato necesario para loguearse")
-      .bail()
-      .isEmail()
-      .withMessage("Formato inválido"),
-    //valido password
-    check("user_password", "Datos inválidos").notEmpty()
-  ],
-  usersController.processLogin
-);
+/* Alta de Login --> POST */
+router.post("/users/processLogin", [
+  // valido usuario
+  check("user_email")
+  .notEmpty().withMessage("Dato necesario para loguearse").bail()
+  .isEmail().withMessage("Formato inválido"),
+  //valido password
+  check("user_password", "Datos inválidos").notEmpty()
+], usersController.processLogin);
 
-/* Logout GET*/
+/* Logout --> GET*/
 router.get("/users/logout", usersController.logout);
 
 module.exports = router;

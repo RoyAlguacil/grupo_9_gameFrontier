@@ -1,7 +1,9 @@
 const fs = require("fs");
 const path = require("path");
 const bcrypt = require("bcrypt");
-const { validationResult } = require('express-validator');
+const {
+  validationResult
+} = require('express-validator');
 
 // Users File Path
 const usersFilePath = path.join(__dirname, "../data/users.json");
@@ -86,7 +88,8 @@ const controller = {
         if (oneError.param == field) {
           return oneError.msg;
         }
-      } return false;
+      }
+      return false;
     };
 
     // Busco al usuario por email
@@ -168,7 +171,10 @@ const controller = {
       maxAge: -1
     });
     // Redirección
-    res.render("index", { userId: null, title: 'Home Page' });
+    res.render("index", {
+      userId: null,
+      title: 'Home Page'
+    });
   },
 };
 

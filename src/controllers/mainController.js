@@ -1,73 +1,4 @@
-const fs = require("fs");
-const path = require("path");
 const db = require("../database/models/");
-
-const rutaProductos = path.join(__dirname, "../data/products.json");
-
-const getAllProducts = () => {
-  let productosJson = fs.readFileSync(rutaProductos, "utf-8");
-  let content;
-  if (productosJson == "") {
-    content = [];
-  } else {
-    content = JSON.parse(productosJson);
-  }
-  return content;
-};
-
-const getProduct = id => {
-  const productosJson = fs.readFileSync(rutaProductos, "utf-8");
-  const content = JSON.parse(productosJson);
-
-  let producto = content.filter(pro => {
-    return pro.id == id;
-  });
-
-  return (producto = producto[0]);
-};
-
-const deleteProduct = id => {
-  const productosJson = fs.readFileSync(rutaProductos, "utf-8");
-  const content = JSON.parse(productosJson);
-
-  const producto = content.filter(pro => {
-    return pro.id !== parseInt(id);
-  });
-
-  return producto;
-};
-
-const generateId = () => {
-  let products = getAllProducts();
-  if (products.length == 0) {
-    return 1;
-  }
-  let ultimoProducto = products.pop();
-  return ultimoProducto.id + 1;
-};
-
-const guardaProducto = bodyProducto => {
-  let products = getAllProducts();
-  products.push(bodyProducto);
-  fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
-};
-
-const updateProduct = (id, producto, image) => {
-  let products = getAllProducts();
-  products.forEach(item => {
-    if (item.id == id) {
-      (item.image = image),
-        (item.nombre = producto.nombre),
-        (item.categoria = producto.categoria),
-        (item.subcategoria = producto.subcategoria),
-        (item.cantidad = producto.cantidad),
-        (item.codigo = producto.codigo),
-        (item.valor = producto.valor),
-        (item.descripcion = producto.descripcion);
-    }
-  });
-  fs.writeFileSync(rutaProductos, JSON.stringify(products, null, " "));
-};
 
 const controller = {
   root: (req, res) => {
@@ -86,7 +17,9 @@ const controller = {
   productos: async (req, res) => {
     let allProducts;
     try {
-      allProducts = await db.productos.findAll({ raw: true });
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
     } catch (error) {
       console.log(error);
     }
@@ -108,7 +41,9 @@ const controller = {
 
     let allProducts;
     try {
-      allProducts = await db.productos.findAll({ raw: true });
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
     } catch (error) {
       console.log(error);
     }
@@ -138,24 +73,23 @@ const controller = {
     });
   },
   updateProduct: async (req, res) => {
-    await db.productos.update(
-      {
-        imagen: req.file ? req.file.filename : null,
-        nombre: req.body.nombre,
-        precio: req.body.precio,
-        codigo: req.body.codigo,
-        descripcion: req.body.descripcion
-      },
-      {
-        where: {
-          id: req.params.id
-        }
+    await db.productos.update({
+      imagen: req.file ? req.file.filename : null,
+      nombre: req.body.nombre,
+      precio: req.body.precio,
+      codigo: req.body.codigo,
+      descripcion: req.body.descripcion
+    }, {
+      where: {
+        id: req.params.id
       }
-    );
+    });
 
     let allProducts;
     try {
-      allProducts = await db.productos.findAll({ raw: true });
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
     } catch (error) {
       console.log(error);
     }
