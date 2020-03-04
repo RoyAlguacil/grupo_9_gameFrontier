@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         usuario: DataTypes.STRING,
+        dni: DataTypes.INTEGER,
         nombre: DataTypes.STRING,
         email: DataTypes.STRING,
         telefono: DataTypes.INTEGER,
@@ -21,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     let config = {
         tableName: 'usuarios'
     };
-
+    
     const usuario = sequelize.define(alias, cols, config);
     return usuario;
 };
