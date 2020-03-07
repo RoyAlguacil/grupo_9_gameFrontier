@@ -25,7 +25,7 @@
                     <% if(typeof errorAndMessage != 'undefined') { %>
                       <%= errorAndMessage('usuario', errors) ? 'is-invalid' : null %>
                       <% } %>
-                      " value="<%= oldData.usuario %>">
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.usuario : null %>">
                       <i class="invalid-feedback">  
                         <% if(typeof errorAndMessage != 'undefined') { %>
                           <%= errorAndMessage('usuario', errors) ? errorAndMessage('usuario', errors) : null %>
@@ -53,7 +53,7 @@
                             <% if(typeof errorAndMessage != 'undefined') { %>
                               <%= errorAndMessage('nombre', errors) ? 'is-invalid' : null %>
                               <% } %>
-                              " value="<%= oldData.nombre %>">
+                              " value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>">
                               <i class="invalid-feedback">  
                                 <% if(typeof errorAndMessage != 'undefined') { %>
                                   <%= errorAndMessage('nombre', errors) ? errorAndMessage('nombre', errors) : null %>
@@ -67,7 +67,7 @@
                                 <% if(typeof errorAndMessage != 'undefined') { %>
                                   <%= errorAndMessage('telefono', errors) ? 'is-invalid' : null %>
                                   <% } %>
-                                  " value="<%= oldData.telefono %>">
+                                  " value="<%= typeof oldData !== 'undefined' ? oldData.telefono : null %>">
                                   <i class="invalid-feedback">  
                                     <% if(typeof errorAndMessage != 'undefined') { %>
                                       <%= errorAndMessage('telefono', errors) ? errorAndMessage('telefono', errors) : null %>
@@ -82,7 +82,7 @@
                                     <% if(typeof errorAndMessage != 'undefined') { %>
                                       <%= errorAndMessage('provincia', errors) ? 'is-invalid' : null %>
                                       <% } %>
-                                      " value="<%= oldData.provincia %>">
+                                      " value="<%= typeof oldData !== 'undefined' ? oldData.provincia : null %>">
                                       <i class="invalid-feedback">  
                                         <% if(typeof errorAndMessage != 'undefined') { %>
                                           <%= errorAndMessage('provincia', errors) ? errorAndMessage('provincia', errors) : null %>
@@ -96,7 +96,7 @@
                                         <% if(typeof errorAndMessage != 'undefined') { %>
                                           <%= errorAndMessage('localidad', errors) ? 'is-invalid' : null %>
                                           <% } %>
-                                          " value="<%= oldData.localidad %>">
+                                          " value="<%= typeof oldData !== 'undefined' ? oldData.localidad : null %>">
                                           <i class="invalid-feedback">  
                                             <% if(typeof errorAndMessage != 'undefined') { %>
                                               <%= errorAndMessage('localidad', errors) ? errorAndMessage('localidad', errors) : null %>
@@ -110,7 +110,7 @@
                                             <% if(typeof errorAndMessage != 'undefined') { %>
                                               <%= errorAndMessage('dni', errors) ? 'is-invalid' : null %>
                                               <% } %>
-                                              " value="<%= oldData.dni %>">
+                                              " value="<%= typeof oldData !== 'undefined' ? oldData.dni : null %>">
                                               <i class="invalid-feedback">  
                                                 <% if(typeof errorAndMessage != 'undefined') { %>
                                                   <%= errorAndMessage('dni', errors) ? errorAndMessage('dni', errors) : null %>
@@ -124,7 +124,7 @@
                                                 <% if(typeof errorAndMessage != 'undefined') { %>
                                                   <%= errorAndMessage('email', errors) ? 'is-invalid' : null %>
                                                   <% } %>
-                                                  " value="<%= oldData.email %>">
+                                                  " value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>">
                                                   <i class="invalid-feedback">
                                                     <% if(typeof errorAndMessage != 'undefined') { %>
                                                       <%= errorAndMessage('email', errors) ? errorAndMessage('email', errors) : null %>
