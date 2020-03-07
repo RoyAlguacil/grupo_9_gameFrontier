@@ -130,18 +130,26 @@ const controller = {
       });
     }
   },
-
+  
   // Usuarios
   formRegister: (req, res) => {
     res.render("register", {
       title: "Registro"
     });
   },
-
+  
   register: (req, res) => {
-
+    
     let errors = validationResult(req);
-console.log(errors);
+    
+    const errorAndMessage = (field, errors) => {
+      for (let oneError of errors) {
+        if (oneError.param == field) {
+          return oneError.msg;
+        }
+      }
+      return false;
+    };
     
     if (errors.isEmpty()) {
       Usuarios
@@ -151,7 +159,7 @@ console.log(errors);
       })
       .catch(error => console.log(error))
     } else {
-      res.render('register', {title:'Registro', errors: errors.errors})
+      res.render('register', {title:'Registro', errors: errors.errors, oldData: req.body, errorAndMessage})
     }
   },
   

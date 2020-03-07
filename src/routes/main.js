@@ -59,7 +59,33 @@ router.get("/registro", usersController.formRegister);
 
 /* Registro de Usuario --> POST */
 router.post("/registro", upload.single("user_avatar"), [
-check('usuario').notEmpty().withMessage('Este campo es obligatorio')
+check('usuario').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('usuario').isLength({min:6}).withMessage('Debe contener al menos 6 caracteres'),
+
+check('password').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('password').isAlphanumeric().withMessage('La contraseña solo debe contener letras y números'),
+
+check('nombre').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('nombre').isLength({min:6}).withMessage('Debe contener al menos 6 caracteres').bail(),
+check('nombre').isAlphanumeric().withMessage('El nombre solo debe contener letras y números'),
+
+check('telefono').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('telefono').isLength({min:8, max:15}).withMessage('Debe contener al menos 6 caracteres').bail(),
+check('telefono').isInt().withMessage('El número de telefono debe contener entre 8 y 15 dígitos'),
+
+check('provincia').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('provincia').isAlpha().withMessage('Este campo solo recibe letras'),
+
+check('localidad').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('localidad').isAlpha().withMessage('Este campo solo recibe letras'),
+
+check('dni').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('dni').isLength({min:8, max:8}).withMessage('Debe contener 8 dígitos').bail(),
+check('dni').isInt().withMessage('Este campo solo recibe números'),
+
+check('email').notEmpty().withMessage('Este campo es obligatorio').bail(),
+check('email').isEmail().withMessage('Formato de email inválido'),
+
 ], usersController.register);
 
 /* Formulario de Login --> GET */
