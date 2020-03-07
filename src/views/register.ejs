@@ -1,78 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <%- include('./partials/head-links') %>
-    <link rel="stylesheet" href="/css/register.css" />
-  </head>
+<head>
+  <%- include('./partials/head-links') %>
+  <link rel="stylesheet" href="/css/register.css" />
+</head>
 
-  <body>
-    <div class="row">
-      <div class="nav-bar">
-        <a href="/"><img src="\images\logo\logo.jpeg"></a>
-        <div>
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="card card-signin my-5">
-                <div class="card-body">
-                  <h5 class="card-title text-center">Registro</h5>
-                  <form class="form-signin" action="/registro" method="POST" enctype="multipart/form-data">
+<body>
+  <div class="row">
+    <div class="nav-bar">
+      <a href="/"><img src="\images\logo\logo.jpeg"></a>
+      <div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="card card-signin my-5">
+              <div class="card-body">
+                <h5 class="card-title text-center">Registro</h5>
+                <form class="form-signin" action="/registro" method="POST" enctype="multipart/form-data">
+                  
+                  <div class="form-label-group">
+                    <input name="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuario"
+                    data-name="Usuario">
+                    <label for="inputUsuario">Usuario</label>
+                    
+                    <% if(typeof errors != 'undefined') { %>
+                      <ul>
+                      <% for(let i=0; i < errors.length; i++) { %>
+                       <li style=color:red>  <%= errors[i].msg %> </li>
+                      <% } %>
+                      </ul>
 
-                    <div class="form-label-group">
-                      <input name="usuario" type="text" id="inputUsuario" class="form-control" placeholder="Usuario"
-                        data-name="Usuario">
-                      <label for="inputUsuario">Usuario</label>
+                      <% } %>
+                      
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="password" type="password" id="inputPassword" class="form-control"
-                        placeholder="Contraseña" data-name="Contraseña">
+                      placeholder="Contraseña" data-name="Contraseña">
                       <label for="inputPassword">Contraseña</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="nombre" type="text" id="inputNombre" class="form-control" placeholder="Nombre"
-                        data-name="Nombre">
+                      data-name="Nombre">
                       <label for="inputNombre">Nombre</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="telefono" type="text" id="inputTelefono" class="form-control" placeholder="Telefono"
-                        data-name="Teléfono">
+                      data-name="Teléfono">
                       <label for="inputTelefono">Telefono</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="provincia" type="text" id="inputProvincia" class="form-control"
-                        placeholder="Provincia" data-name="Provincia">
+                      placeholder="Provincia" data-name="Provincia">
                       <label for="inputProvincia">Provincia</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="localidad" type="text" id="inputLocalidad" class="form-control"
-                        placeholder="Localidad" data-name="Localidad">
+                      placeholder="Localidad" data-name="Localidad">
                       <label for="inputLocalidad">Localidad</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="dni" type="text" id="inputDNI" class="form-control" placeholder="DNI"
-                        data-name="DNI">
+                      data-name="DNI">
                       <label for="inputDNI">DNI</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address"
-                        data-name="Email">
+                      data-name="Email">
                       <label for="inputEmail">Correo Electronico</label>
                     </div>
-
+                    
                     <div class="form-label-group">
                       <input type="file" name="user_avatar" id="inputAvatar" class="form-control avatar"
-                        textfile="Elegí tu imagén de perfil..." data-name="Avatar">
+                      textfile="Elegí tu imagén de perfil..." data-name="Avatar">
                     </div>
-
+                    
                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrate</button>
                     <hr class="my-4">
                   </form>
@@ -81,9 +91,9 @@
             </div>
           </div>
         </div>
-
+        
         <script src="./js/validator.min.js"> </script>
         <script src="./js/registerValidator.js"> </script>
-  </body>
-
-</html>
+      </body>
+      
+      </html>

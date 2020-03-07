@@ -130,43 +130,29 @@ const controller = {
       });
     }
   },
+
   // Usuarios
   formRegister: (req, res) => {
     res.render("register", {
       title: "Registro"
     });
   },
+
   register: (req, res) => {
-    /*
-    let userFinalData = {
-      id: generateUsersId(),
-      usuario: req.body.usuario,
-      password: bcrypt.hashSync(req.body.password, 10),
-      nombre: req.body.nombre,
-      telefono: req.body.telefono,
-      provincia: req.body.provincia,
-      localidad: req.body.localidad,
-      dni: req.body.dni,
-      email: req.body.email,
-      image: req.file ? req.file.filename : null
-    };
-    guardaUser(userFinalData);
-    req.session.userId = userFinalData.id;
-    res.cookie("userCookie", userFinalData.id, {
-      maxAge: 60000 * 60
-    });
-    res.render("index", {
-      userId: req.session.userId,
-      title: "Home Page"
-    });
-    */
+
+    let errors = validationResult(req);
+console.log(errors);
     
-    Usuarios
-    .create(req.body)
-    .then( () => {
-      res.render('index', {title: 'Home Page', userId: null})
-    })
-.catch(error => console.log(error))
+    if (errors.isEmpty()) {
+      Usuarios
+      .create(req.body)
+      .then( () => {
+        res.render('index', {title: 'Home Page', userId: null})
+      })
+      .catch(error => console.log(error))
+    } else {
+      res.render('register', {title:'Registro', errors: errors.errors})
+    }
   },
   
   logout: (req, res) => {
