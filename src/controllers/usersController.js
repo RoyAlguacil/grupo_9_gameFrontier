@@ -152,8 +152,18 @@ const controller = {
     };
     
     if (errors.isEmpty()) {
+      
+      let userPassword = bcrypt.hashSync(req.body.password, 11);
+      console.log(userPassword);
+      
       Usuarios
-      .create(req.body)
+      
+      .create({
+        password: userPassword,
+        avatar: req.file ? req.file.filename : null,
+        ... req.body
+      })
+      
       .then( () => {
         res.render('index', {title: 'Home Page', userId: null})
       })

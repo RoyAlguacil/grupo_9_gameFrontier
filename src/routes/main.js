@@ -1,29 +1,17 @@
 // ************ Require's ************
 const express = require("express");
 const router = express.Router();
-const multer = require("multer");
-const path = require("path");
-/* const invMiddleware = require("../middlewares/invMiddleware"); */
-const logMiddleware = require("../middlewares/logMiddleware");
 const { check } = require("express-validator");
-
-let storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, path.join(__dirname, "../../public/images/multer"));
-  },
-  filename: function(req, file, cb) {
-    let finalName = Date.now() + path.extname(file.originalname);
-    cb(null, finalName);
-  }
-});
-
-let upload = multer({
-  storage: storage
-});
 
 // ************ Controller Require ************
 const mainController = require("../controllers/mainController");
 const usersController = require("../controllers/usersController");
+
+// ************ Middlewares ************
+/* const invMiddleware = require("../middlewares/invMiddleware"); */
+const logMiddleware = require("../middlewares/logMiddleware");
+const upload = require("../middlewares/uploadMiddleware");
+const registerValidation = require("../middlewares/registerValidations");
 
 // ************ Rutas de Productos ************
 /* Index GET */
@@ -58,34 +46,7 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", usersController.formRegister);
 
 /* Registro de Usuario --> POST */
-router.post("/registro", upload.single("user_avatar"), [
-check('usuario').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('usuario').isLength({min:6}).withMessage('Debe contener al menos 6 caracteres'),
-
-check('password').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('password').isAlphanumeric().withMessage('La contraseña solo debe contener letras y números'),
-
-check('nombre').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('nombre').isLength({min:6}).withMessage('Debe contener al menos 6 caracteres'),
-
-check('telefono').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('telefono').isLength({min:8, max:15}).withMessage('Debe contener al menos 6 caracteres').bail(),
-check('telefono').isInt().withMessage('El número de telefono debe contener entre 8 y 15 dígitos'),
-
-check('provincia').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('provincia').isLength({min:3, max:15}).withMessage('Debe contener al menos 3 caracteres'),
-
-check('localidad').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('localidad').isLength({min:6}).withMessage('Debe contener al menos 6 caracteres'),
-
-check('dni').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('dni').isLength({min:8, max:8}).withMessage('Debe contener 8 dígitos').bail(),
-check('dni').isInt().withMessage('Este campo solo recibe números'),
-
-check('email').notEmpty().withMessage('Este campo es obligatorio').bail(),
-check('email').isEmail().withMessage('Formato de email inválido'),
-
-], usersController.register);
+router.post("/registro", upload.single("user_avatar"), registerValidation, usersController.register);
 
 /* Formulario de Login --> GET */
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
