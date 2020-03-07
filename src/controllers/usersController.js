@@ -159,7 +159,7 @@ const controller = {
       Usuarios
       
       .create({
-        password: userPassword,
+        password: userPassword.trim(), 
         avatar: req.file ? req.file.filename : null,
         ... req.body
       })
