@@ -138,7 +138,7 @@ const controller = {
     });
   },
   
-  register: (req, res) => {
+  register: /*async*/ (req, res) => {
     
     let errors = validationResult(req);
     
@@ -154,12 +154,11 @@ const controller = {
     if (errors.isEmpty()) {
       
       let userPassword = bcrypt.hashSync(req.body.password, 11);
-      console.log(userPassword);
       
       Usuarios
       
       .create({
-        password: userPassword.trim(), 
+        password: /*await*/ userPassword, 
         avatar: req.file ? req.file.filename : null,
         ... req.body
       })
@@ -169,7 +168,7 @@ const controller = {
       })
       .catch(error => console.log(error))
     } else {
-      res.render('register', {title:'Registro', errors: errors.errors, oldData: req.body, errorAndMessage})
+      res.render('register', {title:'Registro', errors: errors.array(), oldData: req.body, errorAndMessage})
     }
   },
   
