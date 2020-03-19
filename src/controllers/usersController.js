@@ -80,9 +80,9 @@ const controller = {
     });
   },
   processLogin: (req, res) => {
-    
+
     let errors = validationResult(req);
-    
+
     const errorAndMessage = (field, errors) => {
       for (let oneError of errors) {
         if (oneError.param == field) {
@@ -91,27 +91,25 @@ const controller = {
       }
       return false;
     };
-    
+
     // Busco al usuario por email
-    let userToLogin = findOne({
-      where: {email: req.body.email}      
-});
-    
+    let userToLogin = getUserByEmail(req.body.user_email);
+
     // Valido si existe el usuario
     if (userToLogin != undefined) {
       if (bcrypt.compareSync(req.body.user_password, userToLogin.password)) {
         // Borramos la contraseña del objeto usuario
         delete userToLogin.password;
-        
+
         // Pasamos al usuario a session
         req.session.userId = userToLogin.id;
-        
+
         if (req.body.recordame) {
           res.cookie("userCookie", userToLogin.id, {
             maxAge: 180000
           });
         }
-        
+
         // Redirección
         res.redirect("/");
       } else {
@@ -132,18 +130,14 @@ const controller = {
       });
     }
   },
-  
   // Usuarios
   formRegister: (req, res) => {
     res.render("register", {
       title: "Registro"
     });
   },
-  
-  register: async (req, res) => {
-    
+  register: (req, res) => {
     let errors = validationResult(req);
-    
     const errorAndMessage = (field, errors) => {
       for (let oneError of errors) {
         if (oneError.param == field) {
@@ -154,17 +148,13 @@ const controller = {
     };
     
     if (errors.isEmpty()) {
-      
-      let userPassword = await bcrypt.hashSync(req.body.password, 11);
-      console.log(userPassword);
+      req.body.password = bcrypt.hashSync(req.body.password, 11);
       
       Usuarios
-      
-      .create({
-        password: userPassword,
-        avatar: req.file ? req.file.filename : null,
-        ... req.body
-      })
+        .create({
+          avatar: req.file ? req.file.filename : null,
+          ... req.body
+        })
       
       .then( () => {
         res.render('index', {title: 'Home Page', userId: null})
