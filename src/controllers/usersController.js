@@ -93,7 +93,9 @@ const controller = {
     };
     
     // Busco al usuario por email
-    let userToLogin = getUserByEmail(req.body.user_email);
+    let userToLogin = findOne({
+      where: {email: req.body.email}      
+});
     
     // Valido si existe el usuario
     if (userToLogin != undefined) {
@@ -138,7 +140,7 @@ const controller = {
     });
   },
   
-  register: /*async*/ (req, res) => {
+  register: async (req, res) => {
     
     let errors = validationResult(req);
     
@@ -153,12 +155,13 @@ const controller = {
     
     if (errors.isEmpty()) {
       
-      let userPassword = bcrypt.hashSync(req.body.password, 11);
+      let userPassword = await bcrypt.hashSync(req.body.password, 11);
+      console.log(userPassword);
       
       Usuarios
       
       .create({
-        password: /*await*/ userPassword, 
+        password: userPassword,
         avatar: req.file ? req.file.filename : null,
         ... req.body
       })

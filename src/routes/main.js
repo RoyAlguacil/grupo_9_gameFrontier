@@ -10,7 +10,8 @@ const usersController = require("../controllers/usersController");
 // ************ Middlewares ************
 /* const invMiddleware = require("../middlewares/invMiddleware"); */
 const logMiddleware = require("../middlewares/logMiddleware");
-const upload = require("../middlewares/uploadMiddleware");
+const uploadAvatar = require("../middlewares/uploadMiddleware");
+const uploadProduct = require("../middlewares/uploadProductsMiddleware");
 const registerValidation = require("../middlewares/registerValidations");
 
 // ************ Rutas de Productos ************
@@ -27,13 +28,13 @@ router.get("/productos/:id", mainController.detail);
 router.get("/carga-producto", mainController.productLoad);
 
 /* Carga de Producto --> POST */
-router.post("/productos", upload.single("image_input"), mainController.addProducto);
+router.post("/productos", uploadProduct.single("image_input"), mainController.addProducto);
 
 /* Formulario de Update Producto --> GET */
 router.get("/productos/editar/:id", mainController.update);
 
 /* Update Producto --> POST */
-router.post("/productos/editar/:id", upload.single("image_input"), mainController.updateProduct);
+router.post("/productos/editar/:id", uploadProduct.single("image_input"), mainController.updateProduct);
 
 /* Eliminación de Productos --> DELETE */
 router.delete("/productos/eliminar/:id", mainController.delete);
@@ -46,7 +47,7 @@ router.get("/carrito", mainController.productCart);
 router.get("/registro", usersController.formRegister);
 
 /* Registro de Usuario --> POST */
-router.post("/registro", upload.single("user_avatar"), registerValidation, usersController.register);
+router.post("/registro", uploadAvatar.single("user_avatar"), registerValidation, usersController.register);
 
 /* Formulario de Login --> GET */
 router.get("/users/loginForm", logMiddleware, usersController.loginForm);
