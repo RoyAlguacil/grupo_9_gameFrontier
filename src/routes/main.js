@@ -18,6 +18,7 @@ const registerValidation = require("../middlewares/registerValidations");
 /* Index GET */
 router.get("/", mainController.root);
 
+
 /* Lista de Productos --> GET */
 router.get("/productos", mainController.productos);
 

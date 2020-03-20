@@ -1,77 +1,9 @@
-const fs = require("fs");
-const path = require("path");
 const bcrypt = require("bcrypt");
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const Usuarios = db.usuarios;
 
-// Users File Path
-const usersFilePath = path.join(__dirname, "../data/users.json");
-
-// Helper Functions
-function getAllUsers() {
-  let usersFileContent = fs.readFileSync(usersFilePath, "utf-8");
-  let usersArray;
-  if (usersFileContent == "") {
-    usersArray = [];
-  } else {
-    usersArray = JSON.parse(usersFileContent);
-  }
-  return usersArray;
-}
-
-function generateId() {
-  let users = getAllUsers();
-  if (users.length == 0) {
-    return 1;
-  }
-  let lastUser = users.pop();
-  return lastUser.id + 1;
-}
-
-/*const generateUsersId = () => {
-  let users = getAllUsers();
-  if (users.length == 0) {
-    return 1;
-  }
-  let ultimoUser = users.pop();
-  return ultimoUser.id + 1;
-};*/
-
-function storeUser(userData) {
-  let users = getAllUsers();
-  users.push(userData);
-  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
-}
-
-/*const guardaUser = bodyUser => {
-  let users = getAllUsers();
-  users.push(bodyUser);
-  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, " "));
-};*/
-
-function getUserByEmail(email) {
-  let allUsers = getAllUsers();
-  let userFind = allUsers.find(oneUser => oneUser.email == email);
-  
-  return userFind;
-}
-
 const controller = {
-  storeUser: (req, res) => {
-    // Hasheo la contraseña
-    req.body.user_password = bcrypt.hashSync(req.body.user_password, 11);
-    // Genero la data del usuario
-    let newUserData = {
-      id: generateId(),
-      avatar: req.file ? req.file.filename : null,
-      ...req.body
-    };
-    // Guardo al usuario en el JSON
-    storeUser(newUserData);
-    // Redirección
-    res.redirect("/");
-  },
   loginForm: (req, res) => {
     res.render("users/loginForm", {
       title: "Pagina Login",
@@ -80,9 +12,9 @@ const controller = {
     });
   },
   processLogin: (req, res) => {
-
+    
     let errors = validationResult(req);
-
+    
     const errorAndMessage = (field, errors) => {
       for (let oneError of errors) {
         if (oneError.param == field) {
@@ -91,44 +23,45 @@ const controller = {
       }
       return false;
     };
-
+    
     // Busco al usuario por email
-    let userToLogin = getUserByEmail(req.body.user_email);
-
-    // Valido si existe el usuario
-    if (userToLogin != undefined) {
-      if (bcrypt.compareSync(req.body.user_password, userToLogin.password)) {
-        // Borramos la contraseña del objeto usuario
-        delete userToLogin.password;
-
-        // Pasamos al usuario a session
-        req.session.userId = userToLogin.id;
-
-        if (req.body.recordame) {
-          res.cookie("userCookie", userToLogin.id, {
-            maxAge: 180000
+    Usuarios
+    .findOne({
+      where:{email: req.body.user_email}
+    })
+    .then(usuario => {      
+      // Valido si existe el usuario
+      if (usuario != undefined) {
+        // Hasheo la contraseña
+        
+        if (bcrypt.compareSync(req.body.user_password, usuario.password)) {
+          // Borramos la contraseña del objeto usuario
+          delete usuario.password;
+          
+          // Pasamos al usuario a session
+          req.session.userId = usuario.id;
+          
+          // Redirección
+          res.redirect("/");
+        } else {
+          // Si la contraseña falla
+          res.render("users/loginForm", {
+            title: "Login",
+            userId: req.session.userId,
+            errors: errors.errors,
+            errorAndMessage,
           });
         }
-
-        // Redirección
-        res.redirect("/");
-      } else {
-        // Si la contraseña falla
+      } else {   
         res.render("users/loginForm", {
           title: "Login",
           userId: req.session.userId,
           errors: errors.errors,
-          errorAndMessage,
+          errorAndMessage
         });
       }
-    } else {
-      res.render("users/loginForm", {
-        title: "Login",
-        userId: req.session.userId,
-        errors: errors.errors,
-        errorAndMessage
-      });
-    }
+    })
+    .catch(error => console.log(error)); 
   },
   // Usuarios
   formRegister: (req, res) => {
@@ -151,10 +84,10 @@ const controller = {
       req.body.password = bcrypt.hashSync(req.body.password, 11);
       
       Usuarios
-        .create({
-          avatar: req.file ? req.file.filename : null,
-          ... req.body
-        })
+      .create({
+        avatar: req.file ? req.file.filename : null,
+        ... req.body
+      })
       
       .then( () => {
         res.render('index', {title: 'Home Page', userId: null})
