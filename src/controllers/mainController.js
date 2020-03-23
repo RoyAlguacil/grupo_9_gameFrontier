@@ -1,4 +1,10 @@
 const db = require("../database/models/");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 const controller = {
   root: (req, res) => {
@@ -31,12 +37,32 @@ const controller = {
     });
   },
   addProducto: async (req, res) => {
+    const categoriaId = await db.categorias.findOne(
+        {
+          where: {
+            nombre: {
+              [Op.like]: capitalizeFirstLetter(req.body.categoria)
+            }
+          }
+        }
+    );
+    const subcategoriaId = await db.subcategorias.findOne(
+        {
+          where: {
+            nombre: {
+              [Op.like]: req.body.subcategoria
+            }
+          }
+        }
+    );
     await db.productos.create({
       imagen: req.file ? req.file.filename : null,
       nombre: req.body.nombre,
       precio: req.body.precio,
       codigo: req.body.codigo,
-      descripcion: req.body.descripcion
+      descripcion: req.body.descripcion,
+      categoriaId: categoriaId.dataValues.id,
+      subcategoriaId: subcategoriaId.dataValues.id
     });
 
     let allProducts;
@@ -55,7 +81,12 @@ const controller = {
     });
   },
   detail: async (req, res) => {
-    const producto = await db.productos.findByPk(req.params.id);
+    let producto = await db.productos.findByPk(req.params.id);
+    const productoCategoria = await db.categorias.findByPk(producto.categoriaId);
+    const productoSubcategoria = await db.subcategorias.findByPk(producto.subcategoriaId);
+
+    producto.categoria = productoCategoria.dataValues.nombre;
+    producto.subcategoria = productoSubcategoria.dataValues.nombre;
 
     res.render("productDetail", {
       title: "Detalle de producto",
@@ -73,12 +104,34 @@ const controller = {
     });
   },
   updateProduct: async (req, res) => {
+    const categoriaId = await db.categorias.findOne(
+        {
+          where: {
+            nombre: {
+              [Op.like]: capitalizeFirstLetter(req.body.categoria)
+            }
+          }
+        }
+    );
+
+    const subcategoriaId = await db.subcategorias.findOne(
+        {
+          where: {
+            nombre: {
+              [Op.like]: req.body.subcategoria
+            }
+          }
+        }
+    );
+
     await db.productos.update({
       imagen: req.file ? req.file.filename : null,
       nombre: req.body.nombre,
       precio: req.body.precio,
       codigo: req.body.codigo,
-      descripcion: req.body.descripcion
+      descripcion: req.body.descripcion,
+      categoriaId: categoriaId.dataValues.id,
+      subcategoriaId: subcategoriaId.dataValues.id
     }, {
       where: {
         id: req.params.id

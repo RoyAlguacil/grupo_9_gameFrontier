@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     marcaId: DataTypes.INTEGER,
     categoriaId: DataTypes.INTEGER,
+    subcategoriaId: DataTypes.INTEGER,
     colorId: DataTypes.INTEGER
   };
   let config = {
@@ -32,19 +33,23 @@ module.exports = (sequelize, DataTypes) => {
     producto.belongsTo(models.usuarios, {
       as: "usuarios",
       foreignKey: "usuarioId"
-    }),
-      producto.belongsTo(models.marcas, {
-        as: "marcas",
-        foreignKey: "marcaId"
-      }),
-      producto.belongsTo(models.colores, {
-        as: "colores",
-        foreignKey: "colorId"
-      }),
-      producto.belongsTo(models.categorias, {
-        as: "categorias",
-        foreignKey: "categoriaId"
-      });
+    });
+    producto.belongsTo(models.marcas, {
+      as: "marcas",
+      foreignKey: "marcaId"
+    });
+    producto.belongsTo(models.colores, {
+      as: "colores",
+      foreignKey: "colorId"
+    });
+    producto.belongsTo(models.categorias, {
+      as: "categorias",
+      foreignKey: "categoriaId"
+    });
+    producto.belongsTo(models.subcategorias, {
+      as: "subcategorias",
+      foreignKey: "subcategoriaId"
+    });
   };
   return producto;
 };

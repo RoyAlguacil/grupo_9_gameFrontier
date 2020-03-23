@@ -21,8 +21,9 @@
 
         <div id="detalle" class="col-sm-12 col-md-4">
           <h3><%= producto.nombre %></h3>
-          <h5><%= 'marca' %></h5>
-          <h5><%= 'categoria' %></h5>
+          <h5><%= 'Por ahora: marca' %></h5>
+          <h5><%= producto.categoria %></h5>
+          <h5><%= producto.subcategoria %></h5>
           <h6>Código: <%= producto.codigo %></h6>
           <h6>$ <%= producto.precio %></h6>
           <a href="/carrito"><i class="fas fa-cart-arrow-down"></i></a>

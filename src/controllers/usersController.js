@@ -29,7 +29,7 @@ const controller = {
     .findOne({
       where:{email: req.body.user_email}
     })
-    .then(usuario => {      
+    .then(usuario => {
       // Valido si existe el usuario
       if (usuario != undefined) {
         // Hasheo la contraseña
@@ -88,7 +88,6 @@ const controller = {
         avatar: req.file ? req.file.filename : null,
         ... req.body
       })
-      
       .then( () => {
         res.render('index', {title: 'Home Page', userId: null})
       })
