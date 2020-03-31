@@ -7,6 +7,7 @@ const method = require("method-override");
 const logger = require("morgan");
 const path = require("path");
 const cookieMiddleware = require("./middlewares/cookieMiddleware");
+const cartMiddleware = require("./middlewares/cartMiddleware");
 
 // ************ express() - (don't touch) ************
 const app = express();
@@ -21,15 +22,10 @@ app.use(
 app.use(logger("dev"));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  session({
-    secret: "game-frontier",
-    resave: false,
-    saveUninitialized: true
-  })
-);
+app.use(session({secret: "game-frontier", resave: false, saveUninitialized: true}));
 app.use(cookieMiddleware);
 app.use(method("_method"));
+app.use(cartMiddleware);
 
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");

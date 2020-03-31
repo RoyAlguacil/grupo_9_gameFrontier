@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "547yp4ft",
+    "password": "root",
     "database": "gamefrontier",
     "host": "127.0.0.1",
     "dialect": "mysql",
