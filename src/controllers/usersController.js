@@ -1,12 +1,12 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const Usuarios = db.usuarios;
 
 const controller = {
   loginForm: (req, res) => {
-    res.render("users/loginForm", {
-      title: "Pagina Login",
+    res.render('users/loginForm', {
+      title: 'Pagina Login',
       userId: null,
       loginBtn: false
     });
@@ -42,19 +42,19 @@ const controller = {
           req.session.userId = usuario.id;
           
           // Redirección
-          res.redirect("/");
+          res.redirect('/');
         } else {
           // Si la contraseña falla
-          res.render("users/loginForm", {
-            title: "Login",
+          res.render('users/loginForm', {
+            title: 'Login',
             userId: req.session.userId,
             errors: errors.errors,
             errorAndMessage,
           });
         }
       } else {   
-        res.render("users/loginForm", {
-          title: "Login",
+        res.render('users/loginForm', {
+          title: 'Login',
           userId: req.session.userId,
           errors: errors.errors,
           errorAndMessage
@@ -65,8 +65,8 @@ const controller = {
   },
   // Usuarios
   formRegister: (req, res) => {
-    res.render("register", {
-      title: "Registro"
+    res.render('register', {
+      title: 'Registro'
     });
   },
   register: (req, res) => {
@@ -101,11 +101,11 @@ const controller = {
     // Destruimos la session
     req.session.destroy();
     // Pisar la cookie
-    res.cookie("userCookie", null, {
+    res.cookie('userCookie', null, {
       maxAge: -1
     });
     // Redirección
-    res.render("index", {
+    res.render('index', {
       userId: null,
       title: 'Home Page'
     });

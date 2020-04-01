@@ -10,7 +10,7 @@ window.onload = function () {
             let valorInput = this.value;
             if (validator.isEmpty(valorInput, { ignore_whitespace: true })) {
                 this.classList.add('is-invalid');
-                this.nextElementSibling.innerHTML = `El campo "${this.dataset.name}" es obligatorio`;
+                this.nextElementSibling.innerHTML = `El campo '${this.dataset.name}' es obligatorio`;
                 errores[this.name] = true;
                 console.log(errores);
             } else {

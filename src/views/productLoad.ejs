@@ -63,22 +63,22 @@
 
             <div class="form-label-group">
               <input value="<%= producto.cantidad %>" name="cantidad" type="text" id="inputCantidad"
-                class="form-control" placeholder="Ingrese la cantidad del producto..." required />
+                class="form-control" placeholder="Ingrese la cantidad del producto..." />
             </div>
 
             <div class="form-label-group">
               <input value="<%= producto.codigo %>" name="codigo" type="text" id="inputCodigo" class="form-control"
-                placeholder="Ingrese el código del producto..." required />
+                placeholder="Ingrese el código del producto..." />
             </div>
 
             <div class="form-label-group">
               <input name="color" type="text" id="inputColor" class="form-control"
-                placeholder="Ingrese el color del producto..." required />
+                placeholder="Ingrese el color del producto..." />
             </div>
 
             <div class="form-label-group">
               <input value="<%= producto.valor %>" name="valor" type="text" id="inputValor" class="form-control"
-                placeholder="Ingrese el valor del producto..." required />
+                placeholder="Ingrese el valor del producto..." />
             </div>
           </div>
 
@@ -98,7 +98,7 @@
       </form>
       <!-- Formulario de creacion para producto nuevo -->
       <% } else if (!producto) { %>
-      <form action="/productos" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
+      <form action="/carga-producto" method="POST" style="width: 100%" id="creacion" enctype="multipart/form-data">
         <div class="row detalle_imagen">
           <div class="detalle">
             <div class="form-label-group">
@@ -128,21 +128,21 @@
             </div>
             <div class="form-label-group">
               <input name="cantidad" type="text" id="inputCantidad" class="form-control"
-                placeholder="Ingrese la cantidad del producto..." required />
+                placeholder="Ingrese la cantidad del producto..." />
             </div>
             <div class="form-label-group">
               <input name="codigo" type="text" id="inputCodigo" class="form-control"
-                placeholder="Ingrese el código del producto..." required />
+                placeholder="Ingrese el código del producto..." />
             </div>
 
             <div class="form-label-group">
               <input name="color" type="text" id="inputColor" class="form-control"
-                placeholder="Ingrese el color del producto..." required />
+                placeholder="Ingrese el color del producto..."/>
             </div>
 
             <div class="form-label-group">
               <input name="precio" type="text" id="inputValor" class="form-control"
-                placeholder="Ingrese el valor del producto..." required />
+                placeholder="Ingrese el valor del producto..."/>
             </div>
           </div>
 

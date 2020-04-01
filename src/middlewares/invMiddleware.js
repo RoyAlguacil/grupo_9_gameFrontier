@@ -1,6 +1,6 @@
 const invMiddleware = (req, res, next) => {
   if (req.session.userId != undefined) {
-    return res.redirect("/users/loginForm");
+    return res.redirect('/users/loginForm');
   }
   next();
 };

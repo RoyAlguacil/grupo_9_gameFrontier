@@ -75,7 +75,7 @@
 }
 
 .swiper-slide.hero-slider::after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -207,28 +207,28 @@
 }
 
 .split .consoles {
-  background-image: url("/images/categorias/consoles.jpg");
+  background-image: url('/images/categorias/consoles.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .split .games {
-  background-image: url("/images/categorias/a8efde39d47d591af2e973eb31a45ed5.jpg");
+  background-image: url('/images/categorias/a8efde39d47d591af2e973eb31a45ed5.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .split .electro {
-  background-image: url("/images/categorias/console-controller-gamer-gaming-21067.jpg");
+  background-image: url('/images/categorias/console-controller-gamer-gaming-21067.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
 .split .merch {
-  background-image: url("/images/categorias/merchandising.jpg");
+  background-image: url('/images/categorias/merchandising.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -407,7 +407,7 @@
   }
 
   .swiper-slide.hero-slider::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
