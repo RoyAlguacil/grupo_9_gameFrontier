@@ -24,32 +24,22 @@
       </div>
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
-          <div class="card__item">
-            <div class="item-img">
-              <img src="/images/consolas/ps4-pro.jpg" width="200" height="200" alt="Play Station 4 Pro" />
+          <% productosSession.forEach(producto => { %>
+            <div class="card__item">
+              <h2><%= producto.nombre %></h2>
+              <div class="item-img">
+                <img src="/images/multer/<%= producto.imagen %>" width="200" height="200" alt="<%= producto.nombre %>" />
+              </div>
+              <div>
+                <p>Cantidad</p>
+                <input class="form-control" type="number" name="quantity" value="<%= producto.cantidadProducto %>" />
+              </div>
+              <div>
+                <p>Precio unitario</p>
+                <p>$<%= producto.precio %></p>
+              </div>
             </div>
-            <div>
-              <p>Cantidad</p>
-              <input type="number" name="quantity" value="1" />
-            </div>
-            <div>
-              <p>Precio</p>
-              <p>$35.000</p>
-            </div>
-          </div>
-          <div class="card__item">
-            <div class="item-img">
-              <img src="/images/juegos/ps4/mass-effect-andromeda.jpg" width="200" height="200" alt="Play Station 4 Pro" />
-            </div>
-            <div>
-              <p>Cantidad</p>
-              <input type="number" name="quantity" value="1" />
-            </div>
-            <div>
-              <p>Precio</p>
-              <p>$4.000</p>
-            </div>
-          </div>
+          <% }) %>
         </div>
       </div>
     </div>
@@ -89,7 +79,6 @@
               <label for="telefono">Teléfono</label>
               <input type="tel" class="form-control" id="telefono" placeholder="N° de Teléfono" />
             </div>
-            <button type="submit">Guardar datos</button>
           </form>
         </div>
       </div>

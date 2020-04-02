@@ -26,7 +26,17 @@
         <h5><%= producto.subcategoria %></h5>
         <h6>Código: <%= producto.codigo %></h6>
         <h6>$ <%= producto.precio %></h6>
-        <a href="/carrito"><i class="fas fa-cart-arrow-down" id="cartBtn"></i></a>
+
+        <div class="carrito">
+          <h2>Añadir a carrito</h2>
+          <form action="/carrito/<%= producto.id %>%>" method="post">
+            <div class="control">
+              <label for="cantidad">Cantidad:</label>
+              <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" max="10">
+            </div>
+            <button type="submit" class="btn-carrito"><i class="fas fa-cart-arrow-down" id="cartBtn"></i></button>
+          </form>
+        </div>
       </div>
       
       <div id="descripcion" class="col-sm-12 col-md-4">

@@ -9,7 +9,6 @@ const usersController = require('../controllers/usersController');
 
 // ************ Middlewares ************
 /* const invMiddleware = require('../middlewares/invMiddleware'); */
-const logMiddleware = require('../middlewares/logMiddleware');
 const uploadAvatar = require('../middlewares/uploadMiddleware');
 const uploadProduct = require('../middlewares/uploadProductsMiddleware');
 const registerValidation = require('../middlewares/registerValidations');
@@ -43,6 +42,11 @@ router.delete('/productos/eliminar/:id', mainController.delete);
 /* Carro de Compras --> GET */
 router.get('/carrito', mainController.productCart);
 
+/* Carro de Compras --> POST */
+router.post('/carrito/:id', mainController.addToCart);
+
+////////////////////////////////////////////////////////////////////////////////
+
 // ************ Rutas de Usuarios ************
 /* Formulario de Registro --> GET */
 router.get('/registro', usersController.formRegister);
@@ -51,7 +55,7 @@ router.get('/registro', usersController.formRegister);
 router.post('/registro', uploadAvatar.single('user_avatar'), registerValidation, usersController.register);
 
 /* Formulario de Login --> GET */
-router.get('/users/loginForm', logMiddleware, usersController.loginForm);
+router.get('/users/loginForm', usersController.loginForm);
 
 /* Alta de Login --> POST */
 router.post('/users/processLogin', processLoginMiddleware, usersController.processLogin);

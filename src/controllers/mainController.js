@@ -111,78 +111,109 @@ const controller = {
                 [Op.like]: capitalizeFirstLetter(req.body.categoria)
               }
             }
-          }
-          );
+          });
           
-          const subcategoriaId = await db.subcategorias.findOne(
-            {
-              where: {
-                nombre: {
-                  [Op.like]: req.body.subcategoria
-                }
+        const subcategoriaId = await db.subcategorias.findOne(
+          {
+            where: {
+              nombre: {
+                [Op.like]: req.body.subcategoria
               }
             }
-            );
+          });
             
-            await db.productos.update({
-              imagen: req.file ? req.file.filename : null,
-              nombre: req.body.nombre,
-              precio: req.body.precio,
-              codigo: req.body.codigo,
-              descripcion: req.body.descripcion,
-              categoriaId: categoriaId.dataValues.id,
-              subcategoriaId: subcategoriaId.dataValues.id
-            }, {
-              where: {
-                id: req.params.id
-              }
-            });
-            
-            let allProducts;
-            try {
-              allProducts = await db.productos.findAll({
-                raw: true
-              });
-            } catch (error) {
-              console.log(error);
-            }
-            
-            res.render('catalog', {
-              title: 'Productos',
-              productos: allProducts,
-              userId: req.session.userId ? req.session.userId : null
-            });
-          },
-          delete: (req, res) => {
-            db.productos.destroy({
-              where: {
-                id: req.params.id
-              }
-            });
-            
-            setTimeout(() => {
-              res.redirect('/productos');
-            }, 1500);
-          },
-          productCart: (req, res) => {
-            res.render('productCart', {
-              title: 'Carrito de compras',
-              userId: req.session.userId ? req.session.userId : null
-            });
-          },
-          productLoad: (req, res) => {
-            if (req.session.userId) {
-              res.render('productLoad', {
-                title: 'Carga de Producto',
-                producto: null,
-                userId: req.session.userId
-              });
-            } else {
-              setTimeout(() => {
-                res.redirect('/users/loginForm');
-              }, 3000);
-            }
+        await db.productos.update({
+          imagen: req.file ? req.file.filename : null,
+          nombre: req.body.nombre,
+          precio: req.body.precio,
+          codigo: req.body.codigo,
+          descripcion: req.body.descripcion,
+          categoriaId: categoriaId.dataValues.id,
+          subcategoriaId: subcategoriaId.dataValues.id
+        }, {
+          where: {
+            id: req.params.id
           }
-        };
+        });
+            
+        let allProducts;
+        try {
+          allProducts = await db.productos.findAll({
+            raw: true
+          });
+        } catch (error) {
+          console.log(error);
+        }
+
+        res.render('catalog', {
+          title: 'Productos',
+          productos: allProducts,
+          userId: req.session.userId ? req.session.userId : null
+        });
+        },
+      delete: (req, res) => {
+        db.productos.destroy({
+          where: {
+            id: req.params.id
+          }
+        });
+
+        setTimeout(() => {
+          res.redirect('/productos');
+        }, 1500);
+      },
+      productCart: (req, res) => {
+        res.render('productCart', {
+          title: 'Carrito de compras',
+          userId: req.session.userId ? req.session.userId : null
+        });
+      },
+      productLoad: (req, res) => {
+        if (req.session.userId) {
+          res.render('productLoad', {
+            title: 'Carga de Producto',
+            producto: null,
+            userId: req.session.userId
+          });
+        } else {
+          setTimeout(() => {
+            res.redirect('/users/loginForm');
+          }, 3000);
+        }
+      },
+      addToCart: async (req, res) => {
+        if (req.session.userId) {
+          // Session y cantidad del form
+          const productosSession = req.session.cart;
+          const cantidadProducto = req.body.cantidad;
+
+          // Producto de DB
+          const productoDB = await db.productos.findByPk(req.params.id);
+
+          // Categoria
+          const productoCategoria = await db.categorias.findByPk(productoDB.dataValues.categoriaId);
+          const nombreCategoria = productoCategoria.dataValues.nombre.toLowerCase();
+
+          // Producto con cantidad especificada
+          const producto = {
+            ...productoDB.dataValues,
+            cantidadProducto,
+            nombreCategoria
+          };
+
+          // Añado al array de session
+          productosSession.push(producto);
+
+          res.render('productCart', {
+            title: 'Carrito',
+            productosSession,
+            userId: req.session.userId ? req.session.userId : null
+          });
+        } else {
+          res.redirect('/users/loginForm');
+        }
+
+      }
+};
         
-        module.exports = controller;
+  module.exports = controller;

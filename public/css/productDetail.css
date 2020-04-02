@@ -41,7 +41,24 @@ body {
     margin-bottom: 15px;
 }
 
-.fas {
+.carrito {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carrito .control {
+    display: block;
+}
+
+.btn-carrito {
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+}
+.btn-carrito i {
+    color: var(--main-color);
     font-size: 2rem;
 }
 
