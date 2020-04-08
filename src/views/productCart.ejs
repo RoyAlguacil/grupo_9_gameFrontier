@@ -24,22 +24,25 @@
       </div>
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
         <div class="card-body">
-          <% productosSession.forEach(producto => { %>
-            <div class="card__item">
-              <h2><%= producto.nombre %></h2>
-              <div class="item-img">
-                <img src="/images/multer/<%= producto.imagen %>" width="200" height="200" alt="<%= producto.nombre %>" />
+          <% if (typeof productosSession !== "undefined") { %>
+            <% productosSession.forEach(producto => { %>
+              <div class="card__item">
+                <h2><%= producto.nombre %></h2>
+                <div class="item-img">
+                  <img src="/images/multer/<%= producto.imagen %>" width="200" height="200" alt="<%= producto.nombre %>" />
+                </div>
+                <div>
+                  <p>Cantidad</p>
+                  <input class="form-control" type="number" name="quantity" value="<%= producto.cantidadProducto %>" />
+                </div>
+                <div>
+                  <p>Precio unitario</p>
+                  <p>$<%= producto.precio %></p>
+                </div>
+                <button class="removeProduct btn btn-danger">Eliminar</button>
               </div>
-              <div>
-                <p>Cantidad</p>
-                <input class="form-control" type="number" name="quantity" value="<%= producto.cantidadProducto %>" />
-              </div>
-              <div>
-                <p>Precio unitario</p>
-                <p>$<%= producto.precio %></p>
-              </div>
-            </div>
-          <% }) %>
+            <% }) %>
+          <% } %>
         </div>
       </div>
     </div>
@@ -127,8 +130,6 @@
         </div>
       </div>
     </div>
-  </div>
-  </div>
   </div>
   <%- include('./partials/footer') %>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

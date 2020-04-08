@@ -165,7 +165,8 @@ const controller = {
       productCart: (req, res) => {
         res.render('productCart', {
           title: 'Carrito de compras',
-          userId: req.session.userId ? req.session.userId : null
+          userId: req.session.userId ? req.session.userId : null,
+          productosSession: req.session.cart
         });
       },
       productLoad: (req, res) => {
@@ -188,7 +189,7 @@ const controller = {
           const cantidadProducto = req.body.cantidad;
 
           // Producto de DB
-          const productoDB = await db.productos.findByPk(req.params.id);
+          const productoDB = await db.productos.findByPk(req.body.productoId);
 
           // Categoria
           const productoCategoria = await db.categorias.findByPk(productoDB.dataValues.categoriaId);

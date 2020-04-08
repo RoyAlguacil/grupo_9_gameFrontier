@@ -13,6 +13,7 @@ const uploadAvatar = require('../middlewares/uploadMiddleware');
 const uploadProduct = require('../middlewares/uploadProductsMiddleware');
 const registerValidation = require('../middlewares/registerValidations');
 const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
+const cartMiddleware = require('../middlewares/cartMiddleware');
 
 // ************ Rutas de Productos ************
 /* Index GET */
@@ -40,10 +41,10 @@ router.post('/productos/editar/:id', uploadProduct.single('image_input'), mainCo
 router.delete('/productos/eliminar/:id', mainController.delete);
 
 /* Carro de Compras --> GET */
-router.get('/carrito', mainController.productCart);
+router.get('/carrito', cartMiddleware, mainController.productCart);
 
 /* Carro de Compras --> POST */
-router.post('/carrito/:id', mainController.addToCart);
+router.post('/carrito', cartMiddleware, mainController.addToCart);
 
 ////////////////////////////////////////////////////////////////////////////////
 

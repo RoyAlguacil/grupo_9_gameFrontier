@@ -29,10 +29,11 @@
 
         <div class="carrito">
           <h2>Añadir a carrito</h2>
-          <form action="/carrito/<%= producto.id %>%>" method="post">
+          <form action="/carrito" method="post">
             <div class="control">
               <label for="cantidad">Cantidad:</label>
-              <input type="number" id="cantidad" name="cantidad" class="form-control" min="1" max="10">
+              <input type="number" name="productoId" value="<%= producto.id %>" hidden="hidden">
+              <input type="number" id="cantidad" name="cantidad" class="form-control" value="1" min="1" max="10">
             </div>
             <button type="submit" class="btn-carrito"><i class="fas fa-cart-arrow-down" id="cartBtn"></i></button>
           </form>
