@@ -5,11 +5,8 @@ window.onload = function () {
     addProduct.addEventListener('click', e => {
         let addCart = confirm('¿Quiere agregar este producto al carro de compras?');
 
-        if (addCart) {
-
-        } else {
+        if (!addCart) {
             e.preventDefault();
         }
-        
     })
 }
