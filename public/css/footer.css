@@ -1,5 +1,7 @@
 /* Footer */
 footer {
+	position: relative;
+	bottom: 0;
 	height: auto;
 	width: 100%;
 	background-color: var(--black-color);

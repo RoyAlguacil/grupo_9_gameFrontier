@@ -46,6 +46,9 @@ router.get('/carrito', cartMiddleware, mainController.productCart);
 /* Carro de Compras --> POST */
 router.post('/carrito', cartMiddleware, mainController.addToCart);
 
+/* Carro de Compras --> DELETE */
+router.delete('/carrito/eliminar/:id', cartMiddleware, mainController.removeFromCart);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 // ************ Rutas de Usuarios ************

@@ -4,11 +4,14 @@
   margin: 0;
 }
 
-body {
+main {
   font-family: 'Nunito', sans-serif;
   font-size: unset;
   color: #2f9cc3;
   background-color: #fff;
+  min-height: 618px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-body {
@@ -48,9 +51,12 @@ body {
 header,
 footer,
 .mje-cliente {
-  text-align: center;
   padding: 15px;
   font-weight: bold;
+}
+
+.mje-cliente {
+  margin: 150px auto 0 auto;
 }
 
 .modal fade btn__compras{
@@ -66,6 +72,16 @@ footer,
 }
 
 .btn :hover {
+  text-decoration: none;
+}
+
+.cta {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+.cta:hover {
+  color: var(--main-color);
   text-decoration: none;
 }
 

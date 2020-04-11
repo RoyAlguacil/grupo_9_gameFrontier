@@ -213,7 +213,20 @@ const controller = {
         } else {
           res.redirect('/users/loginForm');
         }
+      },
+      removeFromCart: (req, res) => {
+        const products = req.session.cart;
 
+        const filtered = products.filter(product => {
+          if (`${product.id}` !== req.params.id) {
+            return product;
+          }
+        });
+
+        // El nuevo session cart
+        req.session.cart = filtered;
+
+        res.redirect('/carrito');
       }
 };
         
