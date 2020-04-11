@@ -5,42 +5,10 @@
   font-weight: 700;
 }
 
-@keyframes animatedMenu {
-  0% {
-    transform: translateX(50%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
 /* Carousel */
 
 .main {
   min-width: 100%;
-}
-
-.main-menu {
-  min-width: 300px;
-  max-width: 500px;
-  height: 700px;
-  background-color: #fff;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 9999999;
-  display: none;
-  border-left: 1px solid black;
-  animation: animatedMenu 0.3s ease forwards;
-}
-
-.menu-is-open {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .swiper-container,

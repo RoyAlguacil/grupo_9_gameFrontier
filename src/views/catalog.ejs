@@ -12,6 +12,7 @@
 
 <body>
   <%- include('./partials/header') %>
+  <%- include('./partials/menu') %>
   <main class='main-content'>
     <div class='filtros'>
       <div class='accordion' id='accordionExample'>
@@ -118,6 +119,7 @@
   <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'
     integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous'>
   </script>
+  <script src="/js/menu.js"></script>
   <script>
     const deleteButton = document
       .querySelector('#delete')
@@ -130,6 +132,16 @@
           timer: 1500
         });
       });
+
+    const mySwiper = new Swiper(".swiper-container", {
+      loop: true,
+      loopedSlides: 4,
+      effect: window.innerWidth > 992 ? "fade" : "slide",
+      autoplay: {
+        delay: 4000
+      },
+      slidesPerView: 1
+    });
   </script>
 </body>
 

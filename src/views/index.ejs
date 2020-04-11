@@ -12,11 +12,8 @@
 
   <body>
     <%- include('./partials/header') %>
-
+    <%- include('./partials/menu') %>
     <main class='main'>
-      <div class='main-menu'>
-        <p>ACA VA LA MAGIA</p>
-      </div>
       <div class='swiper-container'>
         <!-- Additional required wrapper -->
         <div class='swiper-wrapper' id='swiper-hero'>
@@ -198,6 +195,7 @@
     </main>
     <%- include('./partials/footer') %>
     <!-- Custom scripts -->
+    <script src="/js/menu.js"></script>
     <script>
       // Capturo elementos del DOM
       const menu = document.querySelector(".menu");
@@ -216,11 +214,6 @@
             }, 1000);
           }
         });
-
-      // Muestro menu al clickear boton
-      menu.addEventListener("click", () => {
-        mainMenu.classList.toggle("menu-is-open");
-      });
       const mySwiper = new Swiper(".swiper-container", {
         loop: true,
         loopedSlides: 4,
