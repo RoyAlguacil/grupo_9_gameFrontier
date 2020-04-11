@@ -9,7 +9,7 @@ main {
   font-size: unset;
   color: #2f9cc3;
   background-color: #fff;
-  min-height: 618px;
+  min-height: 680px;
   display: flex;
   flex-direction: column;
 }
@@ -48,14 +48,9 @@ main {
   width: 150px;
 }
 
-header,
-footer,
 .mje-cliente {
   padding: 15px;
   font-weight: bold;
-}
-
-.mje-cliente {
   margin: 150px auto 0 auto;
 }
 

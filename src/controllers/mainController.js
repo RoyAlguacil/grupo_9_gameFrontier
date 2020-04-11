@@ -1,6 +1,7 @@
 const db = require('../database/models/');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const Swal = require('sweetalert2');
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -162,13 +163,6 @@ const controller = {
           res.redirect('/productos');
         }, 1500);
       },
-      productCart: (req, res) => {
-        res.render('productCart', {
-          title: 'Carrito de compras',
-          userId: req.session.userId ? req.session.userId : null,
-          productosSession: req.session.cart
-        });
-      },
       productLoad: (req, res) => {
         if (req.session.userId) {
           res.render('productLoad', {
@@ -181,6 +175,22 @@ const controller = {
             res.redirect('/users/loginForm');
           }, 3000);
         }
+      },
+      productCart: (req, res) => {
+        if (!req.session.userId) {
+          console.log('entro');
+          Swal.fire({
+            icon: "error",
+            title: "Advertencia",
+            text: "Debe estar logueado",
+            timer: 3000
+          });
+        }
+        res.render('productCart', {
+          title: 'Carrito de compras',
+          userId: req.session.userId ? req.session.userId : null,
+          productosSession: req.session.cart
+        });
       },
       addToCart: async (req, res) => {
         if (req.session.userId) {

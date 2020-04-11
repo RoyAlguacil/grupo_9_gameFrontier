@@ -1,9 +1,9 @@
-.red {
+.filtros {
     min-height: 200px;
     flex-grow: 1;
 }
 
-.blue {
+.productos {
     padding: 20px 0;
     background-color: #ddd;
     min-height: 500px;
@@ -17,6 +17,7 @@
 .main-content {
     display: flex;
     flex-direction: column;
+    min-height: 680px;
 }
 
 #accordionExample button,

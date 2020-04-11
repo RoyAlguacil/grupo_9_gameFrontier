@@ -65,8 +65,12 @@ const controller = {
   },
   // Usuarios
   formRegister: (req, res) => {
+    if (req.session.userId) {
+      res.redirect('/');
+    }
     res.render('register', {
-      title: 'Registro'
+      title: 'Registro',
+      userId: req.session.userId
     });
   },
   register: (req, res) => {
@@ -105,10 +109,7 @@ const controller = {
       maxAge: -1
     });
     // Redirección
-    res.render('index', {
-      userId: null,
-      title: 'Home Page'
-    });
+    res.redirect('/');
   },
 };
 

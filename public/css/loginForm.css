@@ -8,7 +8,7 @@ html {
 }
 
 body {
-    background: linear-gradient(to right bottom, rgb(0, 99, 228, 1), rgb(173, 209, 255, .8));
+    background: linear-gradient(to right bottom, rgb(0, 99, 228), rgb(173, 209, 255));
 }
 
 main {
@@ -16,6 +16,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 680px;
 }
 
 h2 {

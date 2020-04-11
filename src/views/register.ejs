@@ -3,15 +3,18 @@
 
 <head>
   <%- include('./partials/head-links') %>
+  <link rel='stylesheet' href='/css/globals.css' />
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/footer.css">
   <link rel="stylesheet" href="/css/register.css" />
 </head>
 
 <body>
   <div class="row">
-    <div class="nav-bar">
-      <a href="/"><img src="\images\logo\logo.jpeg"></a>
-      <div>
-      </div>
+    <%- include('./partials/header') %>
+  </div>
+  <div class="row">
+    <div class="form">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -19,135 +22,137 @@
               <div class="card-body">
                 <h5 class="card-title text-center">Registro</h5>
                 <form class="form-signin" action="/registro" method="POST" enctype="multipart/form-data">
-                  
                   <div class="form-label-group">
                     <input name="usuario" type="text" id="inputUsuario" placeholder="Usuario" data-name="Usuario" class="form-control
                     <% if(typeof errorAndMessage != 'undefined') { %>
                       <%= errorAndMessage('usuario', errors) ? 'is-invalid' : null %>
                       <% } %>
                       " value="<%= typeof oldData !== 'undefined' ? oldData.usuario : null %>">
-                      <i class="invalid-feedback">  
+                      <i class="invalid-feedback">
                         <% if(typeof errorAndMessage != 'undefined') { %>
                           <%= errorAndMessage('usuario', errors) ? errorAndMessage('usuario', errors) : null %>
-                          <% } %>
-                        </i>
-                        <label for="inputUsuario">Usuario</label>            
-                      </div>
-                      
-                      <div class="form-label-group">
-                        <input name="password" type="password" id="inputPassword" placeholder="Contraseña" data-name="Contraseña" class="form-control
+                        <% } %>
+                      </i>
+                    <label for="inputUsuario">Usuario</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="password" type="password" id="inputPassword" placeholder="Contraseña" data-name="Contraseña" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('password', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      ">
+                      <i class="invalid-feedback">
                         <% if(typeof errorAndMessage != 'undefined') { %>
-                          <%= errorAndMessage('password', errors) ? 'is-invalid' : null %>
+                          <%= errorAndMessage('password', errors) ? errorAndMessage('password', errors) : null %>
+                        <% } %>
+                      </i>
+                    <label for="inputPassword">Contraseña</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="nombre" type="text" id="inputNombre" placeholder="Nombre" data-name="Nombre" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('nombre', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('nombre', errors) ? errorAndMessage('nombre', errors) : null %>
+                        <% } %>
+                      </i>
+                    <label for="inputNombre">Nombre</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="telefono" type="text" id="inputTelefono" placeholder="Telefono" data-name="Teléfono" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('telefono', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.telefono : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('telefono', errors) ? errorAndMessage('telefono', errors) : null %>
                           <% } %>
-                          ">
-                          <i class="invalid-feedback">  
-                            <% if(typeof errorAndMessage != 'undefined') { %>
-                              <%= errorAndMessage('password', errors) ? errorAndMessage('password', errors) : null %>
-                              <% } %>
-                            </i>
-                            <label for="inputPassword">Contraseña</label>
-                          </div>
-                          
-                          <div class="form-label-group">
-                            <input name="nombre" type="text" id="inputNombre" placeholder="Nombre" data-name="Nombre" class="form-control
-                            <% if(typeof errorAndMessage != 'undefined') { %>
-                              <%= errorAndMessage('nombre', errors) ? 'is-invalid' : null %>
-                              <% } %>
-                              " value="<%= typeof oldData !== 'undefined' ? oldData.nombre : null %>">
-                              <i class="invalid-feedback">  
-                                <% if(typeof errorAndMessage != 'undefined') { %>
-                                  <%= errorAndMessage('nombre', errors) ? errorAndMessage('nombre', errors) : null %>
-                                  <% } %>
-                                </i>
-                                <label for="inputNombre">Nombre</label>
-                              </div>
-                              
-                              <div class="form-label-group">
-                                <input name="telefono" type="text" id="inputTelefono" placeholder="Telefono" data-name="Teléfono" class="form-control
-                                <% if(typeof errorAndMessage != 'undefined') { %>
-                                  <%= errorAndMessage('telefono', errors) ? 'is-invalid' : null %>
-                                  <% } %>
-                                  " value="<%= typeof oldData !== 'undefined' ? oldData.telefono : null %>">
-                                  <i class="invalid-feedback">  
-                                    <% if(typeof errorAndMessage != 'undefined') { %>
-                                      <%= errorAndMessage('telefono', errors) ? errorAndMessage('telefono', errors) : null %>
-                                      <% } %>
-                                    </i>
+                      </i>
+                    <label for="inputTelefono">Telefono</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="provincia" type="text" id="inputProvincia" placeholder="Provincia" data-name="Provincia" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('provincia', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.provincia : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('provincia', errors) ? errorAndMessage('provincia', errors) : null %>
+                          <% } %>
+                      </i>
+                    <label for="inputProvincia">Provincia</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="localidad" type="text" id="inputLocalidad" placeholder="Localidad" data-name="Localidad" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('localidad', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.localidad : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('localidad', errors) ? errorAndMessage('localidad', errors) : null %>
+                        <% } %>
+                      </i>
+                    <label for="inputLocalidad">Localidad</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="dni" type="text" id="inputDNI" placeholder="DNI" data-name="DNI" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('dni', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.dni : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('dni', errors) ? errorAndMessage('dni', errors) : null %>
+                        <% } %>
+                      </i>
+                    <label for="inputDNI">DNI</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input name="email" type="email" id="inputEmail" placeholder="Email address" data-name="Email" class="form-control
+                    <% if(typeof errorAndMessage != 'undefined') { %>
+                      <%= errorAndMessage('email', errors) ? 'is-invalid' : null %>
+                      <% } %>
+                      " value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>">
+                      <i class="invalid-feedback">
+                        <% if(typeof errorAndMessage != 'undefined') { %>
+                          <%= errorAndMessage('email', errors) ? errorAndMessage('email', errors) : null %>
+                        <% } %>
+                      </i>
+                    <label for="inputEmail">Correo Electronico</label>
+                  </div>
+
+                  <div class="form-label-group">
+                    <input type="file" name="user_avatar" id="inputAvatar" class="form-control avatar" textfile="Elegí tu imagén de perfil..." data-name="Avatar">
+                  </div>
+
+                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrate</button>
+                  <hr class="my-4">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%- include('./partials/footer') %>
+  </div>
+  <script src="./js/validator.min.js"> </script>
+  <script src="./js/registerValidator.js"> </script>
+</body>
                                     
-                                    <label for="inputTelefono">Telefono</label>
-                                  </div>
-                                  
-                                  <div class="form-label-group">
-                                    <input name="provincia" type="text" id="inputProvincia" placeholder="Provincia" data-name="Provincia" class="form-control
-                                    <% if(typeof errorAndMessage != 'undefined') { %>
-                                      <%= errorAndMessage('provincia', errors) ? 'is-invalid' : null %>
-                                      <% } %>
-                                      " value="<%= typeof oldData !== 'undefined' ? oldData.provincia : null %>">
-                                      <i class="invalid-feedback">  
-                                        <% if(typeof errorAndMessage != 'undefined') { %>
-                                          <%= errorAndMessage('provincia', errors) ? errorAndMessage('provincia', errors) : null %>
-                                          <% } %>
-                                        </i>
-                                        <label for="inputProvincia">Provincia</label>
-                                      </div>
-                                      
-                                      <div class="form-label-group">
-                                        <input name="localidad" type="text" id="inputLocalidad" placeholder="Localidad" data-name="Localidad" class="form-control
-                                        <% if(typeof errorAndMessage != 'undefined') { %>
-                                          <%= errorAndMessage('localidad', errors) ? 'is-invalid' : null %>
-                                          <% } %>
-                                          " value="<%= typeof oldData !== 'undefined' ? oldData.localidad : null %>">
-                                          <i class="invalid-feedback">  
-                                            <% if(typeof errorAndMessage != 'undefined') { %>
-                                              <%= errorAndMessage('localidad', errors) ? errorAndMessage('localidad', errors) : null %>
-                                              <% } %>
-                                            </i>
-                                            <label for="inputLocalidad">Localidad</label>
-                                          </div>
-                                          
-                                          <div class="form-label-group">
-                                            <input name="dni" type="text" id="inputDNI" placeholder="DNI" data-name="DNI" class="form-control
-                                            <% if(typeof errorAndMessage != 'undefined') { %>
-                                              <%= errorAndMessage('dni', errors) ? 'is-invalid' : null %>
-                                              <% } %>
-                                              " value="<%= typeof oldData !== 'undefined' ? oldData.dni : null %>">
-                                              <i class="invalid-feedback">  
-                                                <% if(typeof errorAndMessage != 'undefined') { %>
-                                                  <%= errorAndMessage('dni', errors) ? errorAndMessage('dni', errors) : null %>
-                                                  <% } %>
-                                                </i>
-                                                <label for="inputDNI">DNI</label>
-                                              </div>
-                                              
-                                              <div class="form-label-group">
-                                                <input name="email" type="email" id="inputEmail" placeholder="Email address" data-name="Email" class="form-control
-                                                <% if(typeof errorAndMessage != 'undefined') { %>
-                                                  <%= errorAndMessage('email', errors) ? 'is-invalid' : null %>
-                                                  <% } %>
-                                                  " value="<%= typeof oldData !== 'undefined' ? oldData.email : null %>">
-                                                  <i class="invalid-feedback">
-                                                    <% if(typeof errorAndMessage != 'undefined') { %>
-                                                      <%= errorAndMessage('email', errors) ? errorAndMessage('email', errors) : null %>
-                                                      <% } %>
-                                                    </i>
-                                                    <label for="inputEmail">Correo Electronico</label>
-                                                  </div>
-                                                  
-                                                  <div class="form-label-group">
-                                                    <input type="file" name="user_avatar" id="inputAvatar" class="form-control avatar" textfile="Elegí tu imagén de perfil..." data-name="Avatar">
-                                                  </div>
-                                                  
-                                                  <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrate</button>
-                                                  <hr class="my-4">
-                                                </form>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      
-                                      <script src="./js/validator.min.js"> </script>
-                                      <script src="./js/registerValidator.js"> </script>
-                                    </body>
-                                    
-                                    </html>
+</html>
