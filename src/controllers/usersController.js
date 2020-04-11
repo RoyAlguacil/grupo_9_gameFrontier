@@ -12,9 +12,7 @@ const controller = {
     });
   },
   processLogin: (req, res) => {
-    
     let errors = validationResult(req);
-    
     const errorAndMessage = (field, errors) => {
       for (let oneError of errors) {
         if (oneError.param == field) {
@@ -33,13 +31,14 @@ const controller = {
       // Valido si existe el usuario
       if (usuario != undefined) {
         // Hasheo la contraseña
-        
         if (bcrypt.compareSync(req.body.user_password, usuario.password)) {
           // Borramos la contraseña del objeto usuario
           delete usuario.password;
           
           // Pasamos al usuario a session
           req.session.userId = usuario.id;
+          req.session.userName = usuario.nombre;
+          req.session.avatar = usuario.avatar;
           
           // Redirección
           res.redirect('/');
@@ -92,8 +91,8 @@ const controller = {
         avatar: req.file ? req.file.filename : null,
         ... req.body
       })
-      .then( () => {
-        res.render('index', {title: 'Home Page', userId: null})
+      .then(() => {
+        res.render('index', {title: 'Home Page', userId: null});
       })
       .catch(error => console.log(error))
     } else {

@@ -1,7 +1,6 @@
 const db = require('../database/models/');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const Swal = require('sweetalert2');
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -12,7 +11,9 @@ const controller = {
     if (req.session.userId) {
       res.render('index', {
         title: 'Home page',
-        userId: req.session.userId
+        userId: req.session.userId,
+        userName: req.session.userName,
+        userAvatar: req.session.avatar
       });
     } else {
       res.render('index', {
@@ -34,7 +35,9 @@ const controller = {
     res.render('catalog', {
       title: 'Productos',
       productos: allProducts,
-      userId: req.session.userId ? req.session.userId : null
+      userId: req.session.userId ? req.session.userId : null,
+      userName: req.session.userName,
+      userAvatar: req.session.avatar
     });
   },
   addProduct: async (req, res) => {
@@ -92,7 +95,9 @@ const controller = {
         res.render('productDetail', {
           title: 'Detalle de producto',
           producto,
-          userId: req.session.userId ? req.session.userId : null
+          userId: req.session.userId ? req.session.userId : null,
+          userName: req.session.userName,
+          userAvatar: req.session.avatar
         });
       },
       update: async (req, res) => {
@@ -168,7 +173,9 @@ const controller = {
           res.render('productLoad', {
             title: 'Carga de Producto',
             producto: null,
-            userId: req.session.userId
+            userId: req.session.userId,
+            userName: req.session.userName,
+            userAvatar: req.session.avatar
           });
         } else {
           setTimeout(() => {
@@ -177,20 +184,13 @@ const controller = {
         }
       },
       productCart: (req, res) => {
-        if (!req.session.userId) {
-          console.log('entro');
-          Swal.fire({
-            icon: "error",
-            title: "Advertencia",
-            text: "Debe estar logueado",
-            timer: 3000
+          res.render('productCart', {
+            title: 'Carrito de compras',
+            userId: req.session.userId ? req.session.userId : null,
+            userName: req.session.userName,
+            userAvatar: req.session.avatar,
+            productosSession: req.session.cart
           });
-        }
-        res.render('productCart', {
-          title: 'Carrito de compras',
-          userId: req.session.userId ? req.session.userId : null,
-          productosSession: req.session.cart
-        });
       },
       addToCart: async (req, res) => {
         if (req.session.userId) {
@@ -218,7 +218,9 @@ const controller = {
           res.render('productCart', {
             title: 'Carrito',
             productosSession,
-            userId: req.session.userId ? req.session.userId : null
+            userId: req.session.userId ? req.session.userId : null,
+            userName: req.session.userName,
+            userAvatar: req.session.avatar
           });
         } else {
           res.redirect('/users/loginForm');

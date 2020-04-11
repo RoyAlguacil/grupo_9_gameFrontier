@@ -21,6 +21,51 @@
     top: 0;
 }
 
+.login__button,
+.login__button:active,
+.login__button:link {
+    background-color: var(--main-color);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 30px;
+    justify-self: flex-end;
+}
+
+.login__button a,
+.login__button a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 15px;
+}
+
+.login-big,
+.login-big:active,
+.login-big:link {
+    outline: none !important;
+    margin-top: 20px;
+    background-color: var(--main-color);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 20px;
+    justify-self: flex-end;
+    margin-right: 0;
+    width: 100px;
+}
+
+.login-big a,
+.login-big a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 15px;
+}
+
+.no-logueado {
+    margin: 100px auto;
+    text-align: center;
+    font-size: 16px;
+}
+
 .user-data {
     display: flex;
     flex-direction: column;

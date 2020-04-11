@@ -1,13 +1,29 @@
 <div class='main-menu'>
     <div class="top"></div>
-    <div class="user-data">
-        <div class="user-name">
-            <p>Pepe</p>
+        <% if (typeof userId !== 'undefined') { %>
+        <div class="user-data">
+            <div class="user-name">
+                <% if (typeof userName !== 'undefined') { %>
+                <p><%= userName %></p>
+                <% } else { %>
+                    <div class="no-logueado">
+                        <p>Parece que no estás logueado :(</p>
+                        <button class="login-big">
+                            <a href="/users/loginForm">Login</a>
+                        </button>
+                    </div>
+                <% } %>
+            </div>
+            <div class="user-avatar">
+                <% if (typeof userAvatar !== 'undefined') { %>
+                    <img src="/images/avatars/<%= userAvatar %>" alt="Avatar de usuario">
+                <% } %>
+            </div>
+            <button class="login__button login-big">
+                <a href="/users/logout">Logout</a>
+            </button>
         </div>
-        <div class="user-avatar">
-            <img src="/images/avatars/alexis-1583611069647.jpg" alt="Avatar de usuario">
-        </div>
-    </div>
+        <% } %>
     <nav>
         <ul>
             <a href="#"><li>Perfil</li></a>
