@@ -67,4 +67,9 @@ router.post('/users/processLogin', processLoginMiddleware, usersController.proce
 /* Logout --> GET*/
 router.get('/users/logout', usersController.logout);
 
+
+///////////////////////////////////
+// Error 404
+router.get('**', mainController.error404);
+
 module.exports = router;

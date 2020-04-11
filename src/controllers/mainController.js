@@ -237,7 +237,10 @@ const controller = {
         req.session.cart = filtered;
 
         res.redirect('/carrito');
-      }
+      },
+      error404: (req, res) => {
+        res.render('error');
+    }
 };
         
   module.exports = controller;
