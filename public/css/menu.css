@@ -13,6 +13,10 @@
     animation: animatedMenu 0.3s ease forwards;
 }
 
+.top {
+
+}
+
 .menu-is-open {
     display: flex;
     align-items: center;
