@@ -48,7 +48,11 @@
                     <div>
                       <p>Precio unitario</p>
                       <p>$<%= producto.precio %></p>
+                      <p>Precio Total</p>
+                      <p>$<%= producto.precio * producto.cantidadProducto %></p>
                     </div>
+                    <button type="button" class="btn btn-light" >
+                      <a href="/productos"> Desea agregar mas Productos? </a></button>
                     <form action="carrito/eliminar/<%= producto.id %>?_method=DELETE" method='POST'>
                       <button type="submit" class="removeProduct btn btn-danger">Eliminar</button>
                     </form>
