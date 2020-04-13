@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 250px;
+    bottom: 466px;
     z-index: 9999999;
     display: none;
     border-left: 1px solid black;
@@ -114,9 +114,10 @@ nav ul a:hover{
 }
 
 nav ul li {
-    padding: 20px 0;
+    padding: 5px 0;
     color: #fff;
     text-align: center;
+    font-size: 14px;
 }
 
 nav ul li:hover {

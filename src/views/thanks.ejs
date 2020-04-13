@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <%- include('./partials/head-links') %>
+    <link rel="stylesheet" href="/css/globals.css">
+    <link rel="stylesheet" href="/css/thanks.css">
+</head>
+<body>
+<script src="/js/sweetalert2.all.min.js"></script>
+<script>
+    let timerInterval;
+    Swal.fire({
+        title: 'Gracias por su compra',
+        icon: 'success',
+        html: `Serás redirigido/a a la pantalla principal en 4 segundos`,
+        timer: 4000,
+        timerProgressBar: false,
+        onBeforeOpen: () => {
+            Swal.showLoading()
+            timerInterval = setInterval(() => {
+                const content = Swal.getContent()
+                if (content) {
+                    const b = content.querySelector('b')
+                    if (b) {
+                        b.textContent = Swal.getTimerLeft()
+                    }
+                }
+            }, 100)
+        },
+        onClose: () => {
+            clearInterval(timerInterval)
+        }
+    }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+            location.href = '/';
+        }
+    })
+</script>
+</body>
+</html>

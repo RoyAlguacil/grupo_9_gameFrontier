@@ -65,7 +65,7 @@
         </div>
       </div>
       <!-- Entrega -->
-      <form action="/confirma-compra" method="POST">
+      <form action="/gracias" method="POST" id="formulario-pago">
         <div class="card">
           <div class="card-header" id="headingTwo">
             <h2 class="mb-0">
@@ -126,7 +126,7 @@
                   <option value="efectivo">Efectivo</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-success">Pagar</button>
+            <button type="submit" id="pagar" class="btn btn-success">Pagar</button>
           </div>
         </div>
       </form>
@@ -144,6 +144,26 @@
     </script>
   <script src="/js/menu.js"></script>
   <script src="/js/removeFromCart.js"></script>
+  <script src="/js/sweetalert2.all.min.js"></script>
+  <script>
+    const formularioPago = document.getElementById('formulario-pago');
+    const botonPago = document.getElementById('pagar').addEventListener('click', function(e) {
+      e.preventDefault();
+      Swal.fire({
+        title: '¿Confirma su compra?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, confirmo!',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          formularioPago.submit();
+        }
+      })
+    });
+  </script>
 </body>
 
 </html>

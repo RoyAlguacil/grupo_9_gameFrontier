@@ -264,9 +264,12 @@ const controller = {
         res.redirect('/carrito');
       },
       confirmPurchase: (req, res) => {
-        console.log(req.body);
-        res.send('si');
-      }
+        // Cargar compra en la base --> pendiente
+        res.render('thanks', {
+          title: 'Gracias!',
+          userId: req.session.userId ? req.session.userId : null
+        });
+      },
 };
         
   module.exports = controller;

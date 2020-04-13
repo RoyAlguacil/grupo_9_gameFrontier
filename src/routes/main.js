@@ -50,7 +50,7 @@ router.post('/carrito', cartMiddleware, mainController.addToCart);
 router.delete('/carrito/eliminar/:id', cartMiddleware, mainController.removeFromCart);
 
 /* Confirma compra --> POST */
-router.post('/confirma-compra', mainController.confirmPurchase);
+router.post('/gracias', mainController.confirmPurchase);
 
 ////////////////////////////////////////////////////////////////////////////////
 

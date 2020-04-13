@@ -14,6 +14,15 @@ body {
     text-align: center;
 }
 
+section {
+    padding: 40px 0;
+    min-height: 680px;
+}
+
+.producto-imagen {
+    border-radius: 30px;
+}
+
 #cajaImgPrd img {
     width: 100%;
 }
