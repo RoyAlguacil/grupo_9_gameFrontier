@@ -14,6 +14,7 @@ const uploadProduct = require('../middlewares/uploadProductsMiddleware');
 const registerValidation = require('../middlewares/registerValidations');
 const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
 const cartMiddleware = require('../middlewares/cartMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 // ************ Rutas de Productos ************
 /* Index GET */
@@ -26,19 +27,19 @@ router.get('/productos', mainController.productos);
 router.get('/productos/:id', mainController.detail);
 
 /* Formulario Carga de Producto --> GET */
-router.get('/carga-producto', mainController.productLoad);
+router.get('/carga-producto', authMiddleware, mainController.productLoad);
 
 /* Carga de Producto --> POST */
 router.post('/carga-producto', uploadProduct.single('image_input'), mainController.addProduct);
 
 /* Formulario de Update Producto --> GET */
-router.get('/productos/editar/:id', mainController.update);
+router.get('/productos/editar/:id', authMiddleware, mainController.update);
 
 /* Update Producto --> POST */
 router.post('/productos/editar/:id', uploadProduct.single('image_input'), mainController.updateProduct);
 
 /* Eliminación de Productos --> DELETE */
-router.delete('/productos/eliminar/:id', mainController.delete);
+router.delete('/productos/eliminar/:id', authMiddleware, mainController.delete);
 
 /* Carro de Compras --> GET */
 router.get('/carrito', cartMiddleware, mainController.productCart);
@@ -81,6 +82,9 @@ router.get('/users/loginForm', usersController.loginForm);
 
 /* Alta de Login --> POST */
 router.post('/users/processLogin', processLoginMiddleware, usersController.processLogin);
+
+/* Vista del Perfil --> GET */
+router.get('/profile', authMiddleware, usersController.profile);
 
 /* Logout --> GET*/
 router.get('/users/logout', usersController.logout);

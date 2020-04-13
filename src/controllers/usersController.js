@@ -99,7 +99,6 @@ const controller = {
       res.render('register', {title:'Registro', errors: errors.array(), oldData: req.body, errorAndMessage})
     }
   },
-  
   logout: (req, res) => {
     // Destruimos la session
     req.session.destroy();
@@ -110,6 +109,11 @@ const controller = {
     // Redirección
     res.redirect('/');
   },
+  profile: async (req, res) => {
+    let usuario = await Usuarios.findByPk(req.session.userId)
+
+    res.render('profile', {title: 'Perfil Usuario', usuario});
+  }
 };
 
 module.exports = controller;
