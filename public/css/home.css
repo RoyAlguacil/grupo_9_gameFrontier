@@ -266,7 +266,7 @@
 }
 
 .newsletter__form {
-  width: 90%;
+  max-width: 500px;
   margin-top: 10px;
   background-color: var(--white-color);
   border-radius: 30px;
@@ -305,6 +305,12 @@
 }
 
 /* Media Queries */
+/* SM */
+@media only screen and (min-width: 320px) {
+  .newsletter__form {
+    min-width: 320px;
+  }
+}
 @media only screen and (min-width: 576px) {
   .swiper-container.trending-swiper {
     height: 600px;
@@ -338,6 +344,9 @@
 
   .split .games {
     background-position: top;
+  }
+  .newsletter__form {
+    max-width: 576px;
   }
 }
 
