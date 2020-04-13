@@ -52,6 +52,25 @@ main {
   padding: 15px;
   font-weight: bold;
   margin: 150px auto 0 auto;
+  text-align: center;
+}
+
+.mas-productos {
+  background-color: transparent;
+  transition: all .4s ease;
+  border: none;
+}
+
+.mas-productos a {
+  color: var(--main-color);
+}
+
+.mas-productos:hover {
+  background-color: var(--main-color);
+}
+
+.mas-productos:hover a {
+  color: #fff;
 }
 
 .modal fade btn__compras{

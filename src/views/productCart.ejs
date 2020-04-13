@@ -15,6 +15,9 @@
     <div class="mje-cliente">
       <% if (typeof productosSession !== "undefined" && productosSession.length) { %>
         <h1>Falta poco... ya casi es tuyo!!</h1>
+        <button type="button" class="btn btn-light mas-productos" >
+          <a href="/productos"> ¿Desea agregar más productos? </a>
+        </button>
       <% } else { %>
         <div class="empty-cart">
           <h1>Parece que el carrito está vacío...</h1>
@@ -51,8 +54,6 @@
                       <p>Precio Total</p>
                       <p>$<%= producto.precio * producto.cantidadProducto %></p>
                     </div>
-                    <button type="button" class="btn btn-light" >
-                      <a href="/productos"> Desea agregar mas Productos? </a></button>
                     <form action="carrito/eliminar/<%= producto.id %>?_method=DELETE" method='POST'>
                       <button type="submit" class="removeProduct btn btn-danger">Eliminar</button>
                     </form>
