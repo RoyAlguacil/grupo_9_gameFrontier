@@ -215,8 +215,12 @@ const controller = {
           // Añado al array de session
           productosSession.push(producto);
 
+          // Buscamos el usuario logueado
+          const usuario = await db.usuarios.findByPk(req.session.userId);
+
           res.render('productCart', {
             title: 'Carrito',
+            usuario,
             productosSession,
             userId: req.session.userId ? req.session.userId : null,
             userName: req.session.userName,
@@ -239,10 +243,7 @@ const controller = {
         req.session.cart = filtered;
 
         res.redirect('/carrito');
-      },
-      error404: (req, res) => {
-        res.render('error');
-    }
+      }
 };
         
   module.exports = controller;
