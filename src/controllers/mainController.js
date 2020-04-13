@@ -183,9 +183,13 @@ const controller = {
           }, 3000);
         }
       },
-      productCart: (req, res) => {
+      productCart: async (req, res) => {
+
+      const usuario = await db.usuarios.findByPk(req.session.userId);
+
           res.render('productCart', {
             title: 'Carrito de compras',
+            usuario,
             userId: req.session.userId ? req.session.userId : null,
             userName: req.session.userName,
             userAvatar: req.session.avatar,
