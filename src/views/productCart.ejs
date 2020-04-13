@@ -65,82 +65,71 @@
         </div>
       </div>
       <!-- Entrega -->
-      <div class="card">
-        <div class="card-header" id="headingTwo">
-          <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">Domicilio de Entrega</button>
-          </h2>
-        </div>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-          <div class="card-body">
-            <div class="input-group flex-nowrap">
-              <form action="#" method="#">
-                <div class="form-group">
-                  <label for="address">Domicilio</label>
-                  <input type="text" class="form-control" id="address" placeholder="Ingrese domicilio">
-                </div>
-                <div class="form-group">
-                  <label for="localidad">Localidad</label>
-                  <input type= "text" class="form-control" id="localidad" placeholder="<%= usuario.localidad %>" />
-                </div>
-                <div class="form-group">
-                  <label for="provincia">Provincia</label>
-                  <input type="text" class="form-control" id="provincia" placeholder="<%= usuario.provincia%>" />
-                </div>
-                <div class="form-group">
-                  <label for="telefono">Teléfono</label>
-                  <input type="tel" class="form-control" id="telefono" placeholder="<%= usuario.telefono %>" />
-                </div>
-              </form>
+      <form action="/confirma-compra" method="POST">
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                      aria-expanded="false" aria-controls="collapseTwo">Entrega</button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="input-group flex-nowrap justify-content-md-around">
+                  <div class="form-group">
+                    <label for="address">Domicilio</label>
+                    <input type="text" name="domicilio" class="form-control" id="address">
+                  </div>
+                  <div class="form-group">
+                    <label for="localidad">Localidad</label>
+                    <input type= "text" name="localidad" class="form-control" id="localidad" />
+                  </div>
+                  <div class="form-group">
+                    <label for="provincia">Provincia</label>
+                    <input type="text" name="provincia" class="form-control" id="provincia" />
+                  </div>
+                  <div class="form-group">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" name="telefono" class="form-control" id="telefono" />
+                  </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Pago -->
-      <div class="card">
-        <div class="card-header" id="headingThree">
-          <h2 class="mb-0">
-            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="false" aria-controls="collapseThree">
-              Metodo de Pago / Descuentos
-            </button>
-          </h2>
-        </div>
-        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <!-- Pago -->
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                      aria-expanded="false" aria-controls="collapseThree">
+                Metodo de Pago / Descuentos
+              </button>
+            </h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
 
-          <!-- Efectivo / Tarjetas -->
-          <div class="medios-pago">
-
-            <div>
-              <img src="/images/logo/visa.jpg" class="card-img-top" alt="tarjeta visa">
-              <h5 class="card-title">Tarjeta VISA</h5>
-              <p class="card-text">Ahora 12</p>
-              <p class="card-text">Ahora 6</p>
-              <p class="card-text">Ahora 3</p>
-              <p class="card-text">Sin intereses</p>
-              <a href="#" class="btn btn-primary">Pagar</a>
+            <!-- Efectivo / Tarjetas -->
+            <div class="medios-pago">
+                <select name="medio-pago" id="pago">
+                  <option value="visa1">Visa 1 cuota</option>
+                  <option value="visa3">Visa 3 cuotas</option>
+                  <option value="visa6">Visa 6 cuotas</option>
+                  <option value="visa12">Visa 12 cuotas</option>
+                  <option value="mastercard1">Mastercard 1 cuota</option>
+                  <option value="mastercard3">Mastercard 3 cuotas</option>
+                  <option value="mastercard6">Mastercard 6 cuotas</option>
+                  <option value="mastercard12">Mastercard 12 cuotas</option>
+                  <option value="amex1">American Express 1 cuota</option>
+                  <option value="amex3">American Express 3 cuotas</option>
+                  <option value="amex6">American Express 6 cuotas</option>
+                  <option value="amex12">American Express 12 cuotas</option>
+                  <option value="efectivo">Efectivo</option>
+                </select>
             </div>
-
-            <div>
-              <img src="/images/logo/mastercard.jpg" class="card-img-top" alt="tarjeta mastercard" width="100">
-              <h5 class="card-title">Tarjeta MASTERCARD</h5>
-              <p class="card-text">Ahora 12</p>
-              <p class="card-text">Ahora 6</p>
-              <p class="card-text">Ahora 3</p>
-              <p class="card-text">Sin intereses</p>
-              <a href="#" class="btn btn-primary">Pagar</a>
-            </div>
-
-            <div>
-              <img src="/images/logo/efectivo.jpg" class="card-img-top" alt="efectivo">
-              <h5 class="card-title">Pago en EFECTIVO</h5>
-              <p class="card-text">10% de descuento</p>
-              <a href="#" class="btn btn-primary">Pagar</a>
-            </div>
+            <button type="submit" class="btn btn-success">Pagar</button>
           </div>
         </div>
-      </div>
+      </form>
     <% } %>
   </main>
 

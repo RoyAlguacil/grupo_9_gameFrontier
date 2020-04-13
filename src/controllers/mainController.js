@@ -262,6 +262,10 @@ const controller = {
         req.session.cart = filtered;
 
         res.redirect('/carrito');
+      },
+      confirmPurchase: (req, res) => {
+        console.log(req.body);
+        res.send('si');
       }
 };
         

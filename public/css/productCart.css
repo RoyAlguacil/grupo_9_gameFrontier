@@ -99,6 +99,24 @@ main {
   text-decoration: none;
 }
 
+button[data-toggle] {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+button[data-toggle]:hover {
+  color: var(--main-color);
+  text-decoration: none;
+}
+
+div[id="collapseThree"] {
+  text-align: center;
+}
+
+button[type="submit"] {
+  margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   .medios-pago {
     flex-direction: row;
