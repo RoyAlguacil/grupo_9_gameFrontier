@@ -40,6 +40,102 @@ const controller = {
       userAvatar: req.session.avatar
     });
   },
+  filtradoPlataforma: async (req, res) => {
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const filtrados = allProducts.filter(producto => {
+      const subcategoriaString = `${producto.subcategoriaId}`;
+      const categoriaString = `${producto.categoriaId}`;
+      return (subcategoriaString === req.query.subcategoria) && (categoriaString === req.query.categoria);
+    });
+
+    res.render('catalog', {
+      title: 'Productos',
+      productos: filtrados,
+      userId: req.session.userId ? req.session.userId : null,
+      userName: req.session.userName,
+      userAvatar: req.session.avatar
+    });
+  },
+  filtradoVideojuegos: async (req, res) => {
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const filtrados = allProducts.filter(producto => {
+      const subcategoriaString = `${producto.subcategoriaId}`;
+      const categoriaString = `${producto.categoriaId}`;
+      return (subcategoriaString === req.query.subcategoria) && (categoriaString === req.query.categoria);
+    });
+
+    res.render('catalog', {
+      title: 'Productos',
+      productos: filtrados,
+      userId: req.session.userId ? req.session.userId : null,
+      userName: req.session.userName,
+      userAvatar: req.session.avatar
+    });
+  },
+  filtradoElectro: async (req, res) => {
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const filtrados = allProducts.filter(producto => {
+      const subcategoriaString = `${producto.subcategoriaId}`;
+      const categoriaString = `${producto.categoriaId}`;
+      return (subcategoriaString === req.query.subcategoria) && (categoriaString === req.query.categoria);
+    });
+
+    res.render('catalog', {
+      title: 'Productos',
+      productos: filtrados,
+      userId: req.session.userId ? req.session.userId : null,
+      userName: req.session.userName,
+      userAvatar: req.session.avatar
+    });
+  },
+  filtradoMerchandising: async (req, res) => {
+    let allProducts;
+    try {
+      allProducts = await db.productos.findAll({
+        raw: true
+      });
+    } catch (error) {
+      console.log(error);
+    }
+
+    const filtrados = allProducts.filter(producto => {
+      const subcategoriaString = `${producto.subcategoriaId}`;
+      const categoriaString = `${producto.categoriaId}`;
+      return (subcategoriaString === req.query.subcategoria) && (categoriaString === req.query.categoria);
+    });
+
+    res.render('catalog', {
+      title: 'Productos',
+      productos: filtrados,
+      userId: req.session.userId ? req.session.userId : null,
+      userName: req.session.userName,
+      userAvatar: req.session.avatar
+    });
+  },
   addProduct: async (req, res) => {
     const categoriaId = await db.categorias.findOne(
       {

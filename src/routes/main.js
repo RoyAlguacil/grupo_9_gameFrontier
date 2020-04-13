@@ -52,6 +52,21 @@ router.delete('/carrito/eliminar/:id', cartMiddleware, mainController.removeFrom
 /* Confirma compra --> POST */
 router.post('/gracias', mainController.confirmPurchase);
 
+/*
+* Filtrado de productos
+*/
+// Consolas
+router.get('/plataforma', mainController.filtradoPlataforma);
+
+// Videojuegos
+router.get('/videojuegos', mainController.filtradoVideojuegos);
+
+// Electro
+router.get('/electro', mainController.filtradoElectro);
+
+// Merchandising
+router.get('/merchandising', mainController.filtradoMerchandising);
+
 ////////////////////////////////////////////////////////////////////////////////
 
 // ************ Rutas de Usuarios ************
