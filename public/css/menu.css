@@ -1,11 +1,11 @@
 .main-menu {
     min-width: 300px;
     max-width: 500px;
+    min-height: 534px;
     background-color: #fff;
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 290px;
     z-index: 9999999;
     display: none;
     border-left: 1px solid black;
