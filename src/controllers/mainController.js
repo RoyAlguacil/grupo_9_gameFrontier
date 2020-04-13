@@ -200,7 +200,7 @@ const controller = {
         if (req.session.userId) {
           // Session y cantidad del form
           const productosSession = req.session.cart;
-          const cantidadProducto = req.body.cantidad;
+          const cantidadProducto = parseInt(req.body.cantidad);
 
           // Producto de DB
           const productoDB = await db.productos.findByPk(req.body.productoId);
@@ -216,11 +216,26 @@ const controller = {
             nombreCategoria
           };
 
-          // Añado al array de session
-          productosSession.push(producto);
-
           // Buscamos el usuario logueado
           const usuario = await db.usuarios.findByPk(req.session.userId);
+
+          // Añado al array de session dependiendo si el item ya esta ahí o no
+          productosSession.forEach(producto => {
+            if (productoDB.dataValues.id === producto.id) {
+              producto.cantidadProducto += cantidadProducto;
+              return res.render('productCart', {
+                title: 'Carrito',
+                usuario,
+                productosSession,
+                userId: req.session.userId ? req.session.userId : null,
+                userName: req.session.userName,
+                userAvatar: req.session.avatar
+              });
+            }
+          });
+
+          // Si no estaba ahí, se añade
+          productosSession.push(producto);
 
           res.render('productCart', {
             title: 'Carrito',
