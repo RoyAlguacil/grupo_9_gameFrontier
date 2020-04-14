@@ -10,6 +10,11 @@ main {
     text-align: center;
 }
 
+.card img {
+    width: 20rem;
+    border-radius: 50%;
+}
+
 .card ul {
     list-style: none;
 }
