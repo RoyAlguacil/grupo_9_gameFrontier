@@ -11,19 +11,20 @@
 <body>
     <%- include('./partials/header') %>
     <%- include('./partials/menu') %>
-    
-    <div class="card">
-        <img src="/images/avatars/<%= usuario.avatar %>" class="card-img-top" alt="imagen de perfil" style="width: 15rem;">
-        <div class="card-body">
-            <h3 class="card-title">Perfil de <%= usuario.nombre %> </h3>
-            <ul>
-                <li> Email: <%= usuario.email %></li>
-                <li> Telefono: <%= usuario.telefono %></li>
-                <li> Localidad: <%= usuario.localidad %></li>
-                <li> Provincia: <%= usuario.provincia %></li>
-            </ul>
-            <a href="#" class="btn btn-primary">Editar perfil</a>
+    <main style="min-height: 618px;">
+        <div class="card">
+            <img src="/images/avatars/<%= usuario.avatar %>" class="card-img-top" alt="imagen de perfil" style="width: 15rem;">
+            <div class="card-body">
+                <h3 class="card-title">Perfil de <%= usuario.nombre %> </h3>
+                <ul>
+                    <li> Email: <%= usuario.email %></li>
+                    <li> Telefono: <%= usuario.telefono %></li>
+                    <li> Localidad: <%= usuario.localidad %></li>
+                    <li> Provincia: <%= usuario.provincia %></li>
+                </ul>
+                <a href="#" class="btn btn-primary">Editar perfil</a>
+            </div>
         </div>
-    </div>
+    </main>
     <%- include('./partials/footer') %>
 </body>
