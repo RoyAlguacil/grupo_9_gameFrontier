@@ -31,23 +31,6 @@
     color: var(--main-color);
 }
 
-.todosProductos {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    background-color: var(--main-color);
-    border: 1px solid transparent;
-    transition: all .2s ease;
-}
-
-.todosProductos:hover {
-    background-color: #fff;
-    text-decoration: none;
-    border: 1px solid #2f9cc3;
-    color: var(--main-color);
-}
-
 .product {
     width: 220px;
     margin: 20px;
