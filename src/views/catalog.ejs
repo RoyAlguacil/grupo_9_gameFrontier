@@ -97,7 +97,7 @@
           <p><%= producto.nombre %></p>
           <div style='display: flex; justify-content: center;'>
             <a style='margin: 10px;' class='btn btn-success' href='/productos/editar/<%= producto.id %>'>Editar</a>
-            <form action='/productos/eliminar/<%= producto.id %>?_method=DELETE' method='POST'>
+            <form action='/productos/eliminar/<%= producto.id %>?_method=DELETE' method='POST' id="formulario">
               <button id='delete' style='margin: 10px;' class='btn btn-danger' type='submit'>
                 Borrar
               </button>
@@ -121,15 +121,30 @@
   </script>
   <script src="/js/menu.js"></script>
   <script>
+    const form = document.getElementById('formulario');
     const deleteButton = document
       .querySelector('#delete')
-      .addEventListener('click', () => {
+      .addEventListener('click', (e) => {
+        e.preventDefault();
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Producto eliminado',
-          showConfirmButton: false,
-          timer: 1500
+          title: '¿Deseas borrar el producto?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Confirmar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.value) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Producto eliminado',
+              showConfirmButton: false,
+              timer: 1500
+            });
+            form.submit();
+          }
         });
       });
 

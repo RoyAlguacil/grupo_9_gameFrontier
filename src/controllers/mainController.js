@@ -1,10 +1,7 @@
 const db = require('../database/models/');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+const capitalizeFirstLetter = require('../util/capitalize');
 
 const controller = {
   root: (req, res) => {
@@ -262,7 +259,7 @@ const controller = {
 
         setTimeout(() => {
           res.redirect('/productos');
-        }, 1500);
+        }, 2000);
       },
       productLoad: (req, res) => {
         if (req.session.userId) {

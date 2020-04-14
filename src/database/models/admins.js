@@ -10,13 +10,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },       
         nombre: DataTypes.STRING,
+        usuario: DataTypes.STRING,
         email: DataTypes.STRING,
+        password: DataTypes.STRING,
         avatar: DataTypes.STRING
     };
     let config = {
         tableName: 'admins'
     };
-    
-    const admin = sequelize.define(alias, cols, config);
-    return admin;
+
+    return sequelize.define(alias, cols, config);
 };

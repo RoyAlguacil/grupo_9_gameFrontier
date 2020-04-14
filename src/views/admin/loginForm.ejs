@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head-links') %>
+    <link rel="stylesheet" href="/css/globals.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/loginForm.css" />
+</head>
+
+<body>
+<%- include('../partials/header') %>
+<%- include('../partials/menu') %>
+<main>
+    <form action="/users/processLogin" method="POST">
+        <h2 style="color: #000;">Ingreso para administrador</h2>
+        <div class="form-group email">
+            <label>Ingrese su email: </label>
+            <input name="user_email" class="credentials
+          <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_email', errors) ? 'is-invalid' : null %>
+            <% } %>
+            " />
+            <i class="invalid-feedback">
+                <% if(typeof errorAndMessage !== 'undefined') { %>
+                    <%= errorAndMessage('user_email', errors) ? errorAndMessage('user_email', errors) : null %>
+                <% } %>
+            </i>
+        </div>
+
+        <div class="form-group  password">
+            <label>Contraseña:</label>
+            <input class="credentials
+          <% if(typeof errorAndMessage !== 'undefined') { %>
+            <%= errorAndMessage('user_password', errors) ? 'is-invalid' : null %>
+            <% } %>
+          " type="password" name="user_password" />
+            <i class="invalid-feedback">
+                <% if(typeof errorAndMessage !== 'undefined') { %>
+                    <%= errorAndMessage('user_password', errors) ? errorAndMessage('user_password', errors) : null %>
+                <% } %>
+            </i>
+        </div>
+
+        <button class="register" type="submit">Continuar</button>
+        <br>
+        <p style="margin-top: 20px;"><a href="/admin/registro" style="color: var(--main-color); text-decoration: none;">Añadir nuevo administrador</a></p>
+    </form>
+</main>
+<%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,68 @@
+main {
+    min-height: 69vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right bottom, rgb(0, 99, 228), rgb(173, 209, 255));
+}
+
+.card {
+    padding: 0;
+    border: none;
+    text-align: center;
+    max-width: 525px;
+}
+
+.card-header {
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.card-errors {
+    min-height: 536px;
+    max-height: 536px;
+    background-color: #fff;
+    color: rgb(255, 0 , 0);
+}
+
+.card-errors .card-header {
+    background-color: red;
+}
+
+.container .row .formulario {
+    padding: 0;
+}
+
+.card-errors .card-body {
+    position: relative;
+}
+
+.card-errors .card-body .card-errors-list {
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.card-errors-list li {
+    padding: 10px 0;
+    font-size: 20px;
+}
+
+.bomb {
+    margin: 20px 0;
+}
+
+.fa-bomb {
+    font-size: 5rem;
+}
+
+@media only screen and (max-width: 520px) {
+    .card {
+        margin: 20px 0;
+    }
+}

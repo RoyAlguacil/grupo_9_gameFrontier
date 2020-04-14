@@ -6,17 +6,19 @@ const { check } = require('express-validator');
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
 const usersController = require('../controllers/usersController');
+const adminController = require('../controllers/adminController');
 
 // ************ Middlewares ************
 /* const invMiddleware = require('../middlewares/invMiddleware'); */
 const uploadAvatar = require('../middlewares/uploadMiddleware');
 const uploadProduct = require('../middlewares/uploadProductsMiddleware');
 const registerValidation = require('../middlewares/registerValidations');
+const registerValidationAdmin = require('../middlewares/registerValidationAdmin');
 const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
 const cartMiddleware = require('../middlewares/cartMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 
-// ************ Rutas de Productos ************
+// ************ PRODUCTOS ************
 /* Index GET */
 router.get('/', mainController.root);
 
@@ -54,7 +56,7 @@ router.delete('/carrito/eliminar/:id', cartMiddleware, mainController.removeFrom
 router.post('/gracias', mainController.confirmPurchase);
 
 /*
-* Filtrado de productos
+* FILTRADO DE PRODUCTOS
 */
 // Consolas
 router.get('/plataforma', mainController.filtradoPlataforma);
@@ -70,7 +72,7 @@ router.get('/merchandising', mainController.filtradoMerchandising);
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// ************ Rutas de Usuarios ************
+// ************ USUARIOS ************
 /* Formulario de Registro --> GET */
 router.get('/registro', usersController.formRegister);
 
@@ -88,6 +90,16 @@ router.get('/perfil', authMiddleware, usersController.profile);
 
 /* Logout --> GET*/
 router.get('/users/logout', usersController.logout);
+
+// ************ ADMIN ************
+/* Login Admin --> GET */
+router.get('/admin', adminController.root);
+
+/* Register Admin --> GET */
+router.get('/admin/registro', adminController.addAdmin);
+
+/* Register Admin --> POST */
+router.post('/admin/registro', registerValidationAdmin, adminController.register);
 
 /// Endpoints para React
 // Usuarios (cantidad y tipo)
