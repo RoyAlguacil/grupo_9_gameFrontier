@@ -17,7 +17,7 @@
 .main-content {
     display: flex;
     flex-direction: column;
-    min-height: 680px;
+    min-height: 69vh;
 }
 
 #accordionExample button,

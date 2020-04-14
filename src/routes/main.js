@@ -84,7 +84,7 @@ router.get('/users/loginForm', usersController.loginForm);
 router.post('/users/processLogin', processLoginMiddleware, usersController.processLogin);
 
 /* Vista del Perfil --> GET */
-router.get('/profile', authMiddleware, usersController.profile);
+router.get('/perfil', authMiddleware, usersController.profile);
 
 /* Logout --> GET*/
 router.get('/users/logout', usersController.logout);

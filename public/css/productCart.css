@@ -9,7 +9,7 @@ main {
   font-size: unset;
   color: #2f9cc3;
   background-color: #fff;
-  min-height: 680px;
+  min-height: 69vh;
   display: flex;
   flex-direction: column;
 }

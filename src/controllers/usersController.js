@@ -110,9 +110,12 @@ const controller = {
     res.redirect('/');
   },
   profile: async (req, res) => {
-    let usuario = await Usuarios.findByPk(req.session.userId)
+    const usuario = await Usuarios.findByPk(req.session.userId);
+    const userId = usuario.dataValues.id;
+    const userName = usuario.dataValues.nombre;
+    const userAvatar = usuario.dataValues.avatar;
 
-    res.render('profile', {title: 'Perfil Usuario', usuario});
+    res.render('profile', {title: 'Perfil Usuario', usuario, userId, userName, userAvatar});
   }
 };
 

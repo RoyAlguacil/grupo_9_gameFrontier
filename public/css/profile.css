@@ -1,0 +1,15 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 69vh;
+}
+
+.card {
+    padding: 0;
+    text-align: center;
+}
+
+.card ul {
+    list-style: none;
+}
