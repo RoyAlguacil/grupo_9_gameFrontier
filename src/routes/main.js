@@ -15,7 +15,6 @@ const registerValidation = require('../middlewares/registerValidations');
 const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
 const cartMiddleware = require('../middlewares/cartMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-const adminMiddleware = require('../middlewares/adminMiddleware');
 
 // ************ Rutas de Productos ************
 /* Index GET */
@@ -28,19 +27,19 @@ router.get('/productos', mainController.productos);
 router.get('/productos/:id', mainController.detail);
 
 /* Formulario Carga de Producto --> GET */
-router.get('/carga-producto', adminMiddleware, mainController.productLoad);
+router.get('/carga-producto', authMiddleware, mainController.productLoad);
 
 /* Carga de Producto --> POST */
-router.post('/carga-producto', adminMiddleware, uploadProduct.single('image_input'), mainController.addProduct);
+router.post('/carga-producto', uploadProduct.single('image_input'), mainController.addProduct);
 
 /* Formulario de Update Producto --> GET */
-router.get('/productos/editar/:id', adminMiddleware, mainController.update);
+router.get('/productos/editar/:id', authMiddleware, mainController.update);
 
 /* Update Producto --> POST */
-router.post('/productos/editar/:id', adminMiddleware, uploadProduct.single('image_input'), mainController.updateProduct);
+router.post('/productos/editar/:id', authMiddleware, uploadProduct.single('image_input'), mainController.updateProduct);
 
 /* Eliminación de Productos --> DELETE */
-router.delete('/productos/eliminar/:id', adminMiddleware, mainController.delete);
+router.delete('/productos/eliminar/:id', authMiddleware, mainController.delete);
 
 /* Carro de Compras --> GET */
 router.get('/carrito', cartMiddleware, authMiddleware, mainController.productCart);
@@ -89,12 +88,6 @@ router.get('/profile', authMiddleware, usersController.profile);
 
 /* Logout --> GET*/
 router.get('/users/logout', usersController.logout);
-
-/* Formulario de Login Admin --> GET */
-router.get('/admin', usersController.loginAdmin);
-
-/* Alta de Login Admin --> POST */
-router.post('/admin', usersController.processAdmin);
 
 /// Endpoints para React
 // Usuarios (cantidad y tipo)
