@@ -18,10 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    marcaId: DataTypes.INTEGER,
     categoriaId: DataTypes.INTEGER,
     subcategoriaId: DataTypes.INTEGER,
-    colorId: DataTypes.INTEGER
+    cantidad: DataTypes.INTEGER,
   };
   let config = {
     tableName: "productos"
@@ -30,18 +29,6 @@ module.exports = (sequelize, DataTypes) => {
   const producto = sequelize.define(alias, cols, config);
 
   producto.associate = function(models) {
-    producto.belongsTo(models.usuarios, {
-      as: "usuarios",
-      foreignKey: "usuarioId"
-    });
-    producto.belongsTo(models.marcas, {
-      as: "marcas",
-      foreignKey: "marcaId"
-    });
-    producto.belongsTo(models.colores, {
-      as: "colores",
-      foreignKey: "colorId"
-    });
     producto.belongsTo(models.categorias, {
       as: "categorias",
       foreignKey: "categoriaId"

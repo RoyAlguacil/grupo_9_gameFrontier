@@ -39,8 +39,6 @@ const controller = {
       console.log(error);
     }
 
-    console.log(req.session.userId);
-
     if (req.session.userId) {
       return res.render('catalog', {
         title: 'Productos',
@@ -185,6 +183,8 @@ const controller = {
           nombre: req.body.nombre,
           precio: req.body.precio,
           codigo: req.body.codigo,
+          usuarioId: req.session.adminId ? req.session.adminId : null,
+          cantidad: req.body.cantidad,
           descripcion: req.body.descripcion,
           categoriaId: categoriaId.dataValues.id,
           subcategoriaId: subcategoriaId.dataValues.id
@@ -274,7 +274,9 @@ const controller = {
           nombre: req.body.nombre,
           precio: req.body.precio,
           codigo: req.body.codigo,
+          usuarioId: req.session.adminId ? req.session.adminId : null,
           descripcion: req.body.descripcion,
+          cantidad: req.body.cantidad,
           categoriaId: categoriaId.dataValues.id,
           subcategoriaId: subcategoriaId.dataValues.id
         }, {
@@ -310,6 +312,7 @@ const controller = {
         }, 2000);
       },
       productLoad: (req, res) => {
+    console.log(req.session.adminId)
         if (req.session.adminId) {
           res.render('productLoad', {
             title: 'Carga de Producto',
