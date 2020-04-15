@@ -64,7 +64,7 @@ const controller = {
   // Usuarios
   formRegister: (req, res) => {
     if (req.session.userId) {
-      res.redirect('/');
+      return res.redirect('/');
     }
     res.render('register', {
       title: 'Registro',
