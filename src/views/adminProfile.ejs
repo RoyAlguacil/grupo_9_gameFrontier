@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <%- include('./partials/head-links') %>
+    <link rel='stylesheet' href='/css/globals.css' />
+    <link rel='stylesheet' href='/css/home.css' />
+    <link rel='stylesheet' href='/css/header.css' />
+    <link rel='stylesheet' href='/css/footer.css' />
+    <link rel='stylesheet' href='/css/profile.css' />
+</head>
+
+<body>
+<%- include('./partials/header') %>
+<%- include('./partials/menu') %>
+<main>
+    <div class="card col-md-4 col-sm-12">
+        <div class="card-header">
+            <img src="/images/avatars/<%= avatar %>" class="card-img-top" alt="imagen de perfil">
+        </div>
+        <div class="card-body">
+            <h3 class="card-title"><%= userName %> </h3>
+            <ul>
+                <li> Email: <%= userEmail %></li>
+            </ul>
+        </div>
+        <a href="/carga-producto">Cargar productos al catálogo</a>
+    </div>
+</main>
+<%- include('./partials/footer') %>
+<script src="/js/menu.js"></script>
+</body>

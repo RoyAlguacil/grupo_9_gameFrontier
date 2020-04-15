@@ -185,9 +185,15 @@
         <div class="newsletter__title">
           <h2 class="heading">Newsletter</h2>
         </div>
-        <form class="newsletter__form" action="">
-          <input type="text" placeholder="Email" />
-          <button type="submit">Enviar</button>
+        <form class="newsletter__form" action="/newsletter" method="POST" id="newsletter-form">
+          <input type="email" placeholder="Email" name="email" required id="email"/>
+          <% if (typeof empty !== 'undefined') { %>
+            <p class="text-danger">Este campo es requerido</p>
+          <% } %>
+          <% if (typeof duplicate !== 'undefined') { %>
+            <p class="text-danger">Este usuario ya se ha cargado</p>
+          <% } %>
+          <button type="submit" id="newsletter-send">Enviar</button>
         </form>
       </section>
     </main>
@@ -197,24 +203,39 @@
     <script src="/js/swiper.min.js"></script>
     <script src="/js/sweetalert2.all.min.js"></script>
     <script>
-      // Capturo elementos del DOM
-      let account;
-      if (typeof adminId !== 'undefined') {
-        account = document
-        .querySelector(".account__button")
-        .addEventListener("click", () => {
-          if (typeof userId === "undefined") {
-            setTimeout(() => {
-              Swal.fire({
-                icon: "error",
-                title: "Advertencia",
-                text: "Debe estar logueado",
-                timer: 3000
-              });
-            }, 500);
-          }
-        });
-      }
+      // Chequeo que el input tenga email para que el form se envio con cartelito sweetalert
+      const form = document.getElementById('newsletter-form');
+      const inputEmail = document.getElementById('email');
+
+      const botonNewsletter = document.getElementById('newsletter-send').addEventListener('click', async (e) => {
+        e.preventDefault();
+        const valid = await inputEmail.checkValidity();
+        if (valid) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: '¡Gracias por suscribirte!',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            form.submit();
+          }, 1600);
+        } else {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Error...',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            form.submit();
+          }, 1600);
+        }
+      })
+
+
       const mySwiper = new Swiper(".swiper-container", {
         loop: true,
         loopedSlides: 4,

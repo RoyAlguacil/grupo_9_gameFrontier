@@ -54,8 +54,19 @@ const controller = {
         })
         .catch(error => console.log(error));
     },
-    profile: (req, res) => {
-      res.send('profile!');
+    profile: async (req, res) => {
+        const checkAdmin = await Admins.findOne({
+            where:{id: req.session.adminId}
+        });
+        if (checkAdmin && checkAdmin.dataValues.id) {
+            return res.render('adminProfile', {
+                title: 'Perfil administrador',
+                adminId: req.session.adminId,
+                userName: checkAdmin.dataValues.nombre,
+                userEmail: checkAdmin.dataValues.email,
+                avatar: checkAdmin.dataValues.avatar
+            });
+        }
     },
     addAdmin: (req, res) => {
         res.render('admin/addAdmin', {

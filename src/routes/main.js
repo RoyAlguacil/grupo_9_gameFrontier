@@ -109,6 +109,12 @@ router.get('/admin/registro', userNotAllowedMiddleware, adminController.addAdmin
 /* Register Admin --> POST */
 router.post('/admin/registro', userNotAllowedMiddleware, registerValidationAdmin, adminController.register);
 
+// ************ Newsletters ************
+/* Envío newsletter, no permitir --> GET */
+router.get('/newsletter', (req, res) => res.redirect('/'));
+/* Envío newsletter --> POST */
+router.post('/newsletter', mainController.newsletter);
+
 /// Endpoints para React
 // Usuarios (cantidad y tipo)
 // Productos (cantidad, categorias, precioAvg)

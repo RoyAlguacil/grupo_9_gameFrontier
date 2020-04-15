@@ -1,6 +1,7 @@
 const db = require('../database/models/');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const Newsletters = db.newsletters;
 const capitalizeFirstLetter = require('../util/capitalize');
 
 const controller = {
@@ -408,6 +409,55 @@ const controller = {
           userId: req.session.userId ? req.session.userId : null
         });
       },
+      newsletter: async (req, res) => {
+        // Chequeo que se haya enviado email
+        if (!req.body.email) {
+          return res.render('index', {
+            title: 'Home page',
+            empty: true
+          });
+        }
+
+        // Chequeo que no esté duplicado el mail
+        const checkUser = await Newsletters.findOne({
+          where:{email: req.body.email}
+        });
+        if (checkUser && checkUser.dataValues.id) {
+          return res.render('index', {
+            title: 'Home page',
+            duplicate: true
+          });
+        }
+
+        // Creo el mail para el newsletter
+        Newsletters
+          .create({
+            ...req.body
+          })
+          .then(() => {
+            // Si hay usuario logueado
+            if (req.session.userId) {
+              return res.render('index', {
+                title: 'Home page',
+                userId: req.session.userId,
+                userName: req.session.userName,
+                userAvatar: req.session.avatar
+              });
+              // Si hay admin logueado
+            } else if (req.session.adminId) {
+              return res.render('index', {
+                title: 'Home page',
+                adminId: req.session.adminId,
+                userName: req.session.userName,
+                userAvatar: req.session.avatar
+              });
+              // Si no hay nada logueado
+            } else {
+              return res.redirect('/');
+            }
+          })
+          .catch(error => console.log(error))
+      }
 };
         
   module.exports = controller;
