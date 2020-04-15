@@ -99,6 +99,9 @@ router.get('/admin', userNotAllowedMiddleware, adminController.root);
 /* Login Admin --> POST */
 router.post('/admin/processLogin', userNotAllowedMiddleware, adminController.login);
 
+/* Perfil Admin --> GET */
+router.get('/admin/perfil', userNotAllowedMiddleware, adminController.profile);
+
 /* Register Admin --> GET */
 router.get('/admin/registro', userNotAllowedMiddleware, adminController.addAdmin);
 

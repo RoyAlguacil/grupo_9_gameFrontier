@@ -19,6 +19,9 @@ const controller = {
         req.session.avatar = 'test';
         res.redirect('/');
     },
+    profile: (req, res) => {
+      res.send('profile!');
+    },
     addAdmin: (req, res) => {
         res.render('admin/addAdmin', {
             title: 'Añadir administrador',

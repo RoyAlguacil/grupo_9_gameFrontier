@@ -26,7 +26,11 @@
         <% } %>
     <nav>
         <ul>
-            <a href="/perfil"><li>Perfil</li></a>
+            <% if (typeof userId !== 'undefined') { %>
+                <a href="/perfil"><li>Perfil</li></a>
+            <% } else { %>
+                    <a href="/admin/perfil"><li>Admin</li></a>
+            <% } %>
             <a href="/productos"><li>Catálogo</li></a>
             <a href="/#categorias"><li>Categorías</li></a>
             <a href="/carrito"><li>Carrito</li></a>

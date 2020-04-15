@@ -287,9 +287,7 @@ const controller = {
         }
       },
       productCart: async (req, res) => {
-
       const usuario = await db.usuarios.findByPk(req.session.userId);
-
           res.render('productCart', {
             title: 'Carrito de compras',
             usuario,
