@@ -11,6 +11,14 @@ const cookieMiddleware = require('./middlewares/cookieMiddleware');
 // ************ express() - (don't touch) ************
 const app = express();
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+
 // ************ Middlewares - (don't touch) ************
 app.use(express.static(path.join(__dirname, '../public'))); // Necesario para los archivos estáticos en el folder /public
 app.use(
@@ -33,11 +41,6 @@ app.set('views', './src/views'); // Seteo de la ubicación de la carpeta 'views'
 // ************ Route System require and use() ************
 const mainRouter = require('./routes/main');
 app.use('/', mainRouter);
-
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
 
 // ************ DON'T TOUCH FROM HERE ************
 // ************ catch 404 and forward to error handler ************
