@@ -6,6 +6,7 @@ const Admins = db.admins;
 const Productos = db.productos;
 const Newsletters = db.newsletters;
 const Categorias = db.categorias;
+const path = require('path');
 
 const controller = {
     usuarios: async (req, res) => {
@@ -37,6 +38,14 @@ const controller = {
             .then(data => data)
 
         res.json(categorias);
+    },
+    ultimoProductoImg: async (req, res) => {
+        const todos = await Productos.findAll()
+            .then(data => data);
+
+        const ultimoProductoImg = todos[todos.length - 1].imagen;
+
+        res.sendFile(path.resolve(__dirname, '../../public/images/multer/' + ultimoProductoImg));
     }
 }
 

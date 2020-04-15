@@ -131,4 +131,7 @@ router.get('/api/newsletters', apiController.newsletters);
 /* Obtener Categorias --> GET */
 router.get('/api/categorias', apiController.categorias);
 
+/* Obtener Último producto IMG --> GET */
+router.get('/api/productos/ultimo-producto-img', apiController.ultimoProductoImg);
+
 module.exports = router;
