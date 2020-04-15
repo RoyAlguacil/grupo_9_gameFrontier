@@ -1,6 +1,6 @@
 <div class='main-menu'>
     <div class="top"></div>
-        <% if (typeof userId !== 'undefined') { %>
+        <% if (typeof userId !== 'undefined' || typeof adminId !== 'undefined') { %>
         <div class="user-data">
             <div class="user-name">
                 <% if (typeof userName !== 'undefined') { %>

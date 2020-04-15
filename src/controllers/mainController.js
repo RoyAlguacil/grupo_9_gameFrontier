@@ -5,6 +5,7 @@ const capitalizeFirstLetter = require('../util/capitalize');
 
 const controller = {
   root: (req, res) => {
+    // Si hay usuario logueado
     if (req.session.userId) {
       res.render('index', {
         title: 'Home page',
@@ -12,6 +13,15 @@ const controller = {
         userName: req.session.userName,
         userAvatar: req.session.avatar
       });
+      // Si hay admin logueado
+    } else if (req.session.adminId) {
+      res.render('index', {
+        title: 'Home page',
+        adminId: req.session.adminId,
+        userName: req.session.userName,
+        userAvatar: req.session.avatar
+      });
+      // Si no hay nada logueado
     } else {
       res.render('index', {
         title: 'Home page',

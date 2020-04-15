@@ -17,6 +17,7 @@ const registerValidationAdmin = require('../middlewares/registerValidationAdmin'
 const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
 const cartMiddleware = require('../middlewares/cartMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
+const userNotAllowedMiddleware = require('../middlewares/userNotAllowedMiddleware');
 
 // ************ PRODUCTOS ************
 /* Index GET */
@@ -93,13 +94,16 @@ router.get('/users/logout', usersController.logout);
 
 // ************ ADMIN ************
 /* Login Admin --> GET */
-router.get('/admin', adminController.root);
+router.get('/admin', userNotAllowedMiddleware, adminController.root);
+
+/* Login Admin --> POST */
+router.post('/admin/processLogin', userNotAllowedMiddleware, adminController.login);
 
 /* Register Admin --> GET */
-router.get('/admin/registro', adminController.addAdmin);
+router.get('/admin/registro', userNotAllowedMiddleware, adminController.addAdmin);
 
 /* Register Admin --> POST */
-router.post('/admin/registro', registerValidationAdmin, adminController.register);
+router.post('/admin/registro', userNotAllowedMiddleware, registerValidationAdmin, adminController.register);
 
 /// Endpoints para React
 // Usuarios (cantidad y tipo)

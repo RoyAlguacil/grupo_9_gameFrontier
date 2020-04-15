@@ -14,18 +14,18 @@
 <%- include('../partials/header') %>
 <%- include('../partials/menu') %>
 <main>
-    <form action="/users/processLogin" method="POST">
+    <form action="/admin/processLogin" method="POST">
         <h2 style="color: #000;">Ingreso para administrador</h2>
         <div class="form-group email">
             <label>Ingrese su email: </label>
-            <input name="user_email" class="credentials
+            <input name="email" class="credentials
           <% if(typeof errorAndMessage !== 'undefined') { %>
-            <%= errorAndMessage('user_email', errors) ? 'is-invalid' : null %>
+            <%= errorAndMessage('email', errors) ? 'is-invalid' : null %>
             <% } %>
             " />
             <i class="invalid-feedback">
                 <% if(typeof errorAndMessage !== 'undefined') { %>
-                    <%= errorAndMessage('user_email', errors) ? errorAndMessage('user_email', errors) : null %>
+                    <%= errorAndMessage('email', errors) ? errorAndMessage('email', errors) : null %>
                 <% } %>
             </i>
         </div>
@@ -34,12 +34,12 @@
             <label>Contraseña:</label>
             <input class="credentials
           <% if(typeof errorAndMessage !== 'undefined') { %>
-            <%= errorAndMessage('user_password', errors) ? 'is-invalid' : null %>
+            <%= errorAndMessage('password', errors) ? 'is-invalid' : null %>
             <% } %>
           " type="password" name="user_password" />
             <i class="invalid-feedback">
                 <% if(typeof errorAndMessage !== 'undefined') { %>
-                    <%= errorAndMessage('user_password', errors) ? errorAndMessage('user_password', errors) : null %>
+                    <%= errorAndMessage('password', errors) ? errorAndMessage('password', errors) : null %>
                 <% } %>
             </i>
         </div>

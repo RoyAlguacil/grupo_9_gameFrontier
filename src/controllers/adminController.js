@@ -13,6 +13,12 @@ const controller = {
             userId: null
         });
     },
+    login: (req, res) => {
+        req.session.adminId = 1;
+        req.session.userName = 'test';
+        req.session.avatar = 'test';
+        res.redirect('/');
+    },
     addAdmin: (req, res) => {
         res.render('admin/addAdmin', {
             title: 'Añadir administrador',
