@@ -1,12 +1,12 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
-const { check } = require('express-validator');
 
 // ************ Controller Require ************
 const mainController = require('../controllers/mainController');
 const usersController = require('../controllers/usersController');
 const adminController = require('../controllers/adminController');
+const apiController = require('../controllers/apiController');
 
 // ************ Middlewares ************
 /* const invMiddleware = require('../middlewares/invMiddleware'); */
@@ -115,8 +115,17 @@ router.get('/newsletter', (req, res) => res.redirect('/'));
 /* Envío newsletter --> POST */
 router.post('/newsletter', mainController.newsletter);
 
-/// Endpoints para React
-// Usuarios (cantidad y tipo)
-// Productos (cantidad, categorias, precioAvg)
+/// ************ Endpoints para React ************
+/* Obtener Usuarios --> GET */
+router.get('/api/usuarios', apiController.usuarios);
+
+/* Obtener Admins --> GET */
+router.get('/api/admins', apiController.admins);
+
+/* Obtener Productos --> GET */
+router.get('/api/productos', apiController.productos);
+
+/* Obtener Newsletters --> GET */
+router.get('/api/newsletters', apiController.newsletters);
 
 module.exports = router;
