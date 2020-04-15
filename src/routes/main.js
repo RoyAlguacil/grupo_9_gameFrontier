@@ -128,4 +128,7 @@ router.get('/api/productos', apiController.productos);
 /* Obtener Newsletters --> GET */
 router.get('/api/newsletters', apiController.newsletters);
 
+/* Obtener Categorias --> GET */
+router.get('/api/categorias', apiController.categorias);
+
 module.exports = router;

@@ -5,6 +5,7 @@ const Usuarios = db.usuarios;
 const Admins = db.admins;
 const Productos = db.productos;
 const Newsletters = db.newsletters;
+const Categorias = db.categorias;
 
 const controller = {
     usuarios: async (req, res) => {
@@ -30,6 +31,12 @@ const controller = {
             .then(data => data)
 
         res.json(newsletters);
+    },
+    categorias: async (req, res) => {
+        const categorias = await Categorias.findAll()
+            .then(data => data)
+
+        res.json(categorias);
     }
 }
 
