@@ -7,7 +7,6 @@ const controller = {
   loginForm: (req, res) => {
     res.render('users/loginForm', {
       title: 'Pagina Login',
-      userId: null,
       loginBtn: false
     });
   },

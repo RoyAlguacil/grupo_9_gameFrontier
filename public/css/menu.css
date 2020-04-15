@@ -1,7 +1,7 @@
 .main-menu {
     min-width: 300px;
     max-width: 500px;
-    min-height: 534px;
+    min-height: 530px;
     background-color: #fff;
     position: fixed;
     top: 0;
@@ -61,9 +61,13 @@
 }
 
 .no-logueado {
-    margin: 100px auto;
+    width: 100%;
+}
+
+.no-logueado p {
+    width: 100%;
+    color: var(--main-color);
     text-align: center;
-    font-size: 16px;
 }
 
 .user-data {
@@ -95,32 +99,35 @@
     border: 1px solid #000;
 }
 
-nav {
+#nav {
     width: 100%;
-}
-
-nav ul {
-    background-color: #000;
-    list-style: none;
     position: absolute;
-    top: 350px;
     left: 0;
     right: 0;
+    bottom: 0;
+    margin: 0;
 }
 
-nav ul a,
-nav ul a:hover{
+#nav ul {
+    background-color: #000;
+    list-style: none;
+    top: 350px;
+    margin: 0;
+}
+
+#nav ul a,
+#nav ul a:hover{
     text-decoration: none;
 }
 
-nav ul li {
+#nav ul li {
     padding: 5px 0;
     color: #fff;
     text-align: center;
     font-size: 14px;
 }
 
-nav ul li:hover {
+#nav ul li:hover {
     background-color: var(--main-color);
     transition: all .2s ease;
 }

@@ -24,8 +24,7 @@ const controller = {
       // Si no hay nada logueado
     } else {
       res.render('index', {
-        title: 'Home page',
-        userId: null
+        title: 'Home page'
       });
     }
   },
@@ -38,13 +37,31 @@ const controller = {
     } catch (error) {
       console.log(error);
     }
-    
-    res.render('catalog', {
+
+    console.log(req.session.userId);
+
+    if (req.session.userId) {
+      return res.render('catalog', {
+        title: 'Productos',
+        productos: allProducts,
+        userId: req.session.userId ? req.session.userId : null,
+        userName: req.session.userName,
+        userAvatar: req.session.avatar
+      });
+    }
+    if (req.session.adminId) {
+      return res.render('catalog', {
+        title: 'Productos',
+        productos: allProducts,
+        adminId: req.session.adminId ? req.session.adminId : null,
+        userName: req.session.userName,
+        userAvatar: req.session.avatar
+      });
+    }
+
+    return res.render('catalog', {
       title: 'Productos',
-      productos: allProducts,
-      userId: req.session.userId ? req.session.userId : null,
-      userName: req.session.userName,
-      userAvatar: req.session.avatar
+      productos: allProducts
     });
   },
   filtradoPlataforma: async (req, res) => {
@@ -184,7 +201,7 @@ const controller = {
         res.render('catalog', {
           title: 'Productos',
           productos: allProducts,
-          userId: req.session.userId
+          adminId: req.session.adminId
         });
       },
       detail: async (req, res) => {
@@ -194,14 +211,32 @@ const controller = {
         
         producto.categoria = productoCategoria.dataValues.nombre;
         producto.subcategoria = productoSubcategoria.dataValues.nombre;
-        
-        res.render('productDetail', {
+
+        if (req.session.userId) {
+          return res.render('productDetail', {
+            title: 'Detalle de producto',
+            producto,
+            userId: req.session.userId ? req.session.userId : null,
+            userName: req.session.userName,
+            userAvatar: req.session.avatar
+          });
+        }
+
+        if (req.session.adminId) {
+          return res.render('productDetail', {
+            title: 'Detalle de producto',
+            producto,
+            adminId: req.session.adminId ? req.session.adminId : null,
+            userName: req.session.userName,
+            userAvatar: req.session.avatar
+          });
+        }
+
+        return res.render('productDetail', {
           title: 'Detalle de producto',
-          producto,
-          userId: req.session.userId ? req.session.userId : null,
-          userName: req.session.userName,
-          userAvatar: req.session.avatar
+          producto
         });
+
       },
       update: async (req, res) => {
         const producto = await db.productos.findByPk(req.params.id);
@@ -209,7 +244,9 @@ const controller = {
         res.render('productLoad', {
           title: 'Edición de Producto',
           producto,
-          userId: req.session.userId ? req.session.userId : null
+          adminId: req.session.adminId,
+          userName: req.session.userName,
+          avatar: req.session.avatar
         });
       },
       updateProduct: async (req, res) => {
@@ -254,10 +291,10 @@ const controller = {
           console.log(error);
         }
 
-        res.render('catalog', {
+        return res.render('catalog', {
           title: 'Productos',
           productos: allProducts,
-          userId: req.session.userId ? req.session.userId : null
+          adminId: req.session.adminId ? req.session.adminId : null
         });
         },
       delete: (req, res) => {
@@ -272,11 +309,11 @@ const controller = {
         }, 2000);
       },
       productLoad: (req, res) => {
-        if (req.session.userId) {
+        if (req.session.adminId) {
           res.render('productLoad', {
             title: 'Carga de Producto',
             producto: null,
-            userId: req.session.userId,
+            adminId: req.session.adminId,
             userName: req.session.userName,
             userAvatar: req.session.avatar
           });
@@ -298,7 +335,7 @@ const controller = {
           });
       },
       addToCart: async (req, res) => {
-        if (req.session.userId) {
+        if (typeof req.session.userId !== 'undefined') {
           // Session y cantidad del form
           const productosSession = req.session.cart;
           const cantidadProducto = parseInt(req.body.cantidad);
@@ -338,7 +375,7 @@ const controller = {
           // Si no estaba ahí, se añade
           productosSession.push(producto);
 
-          res.render('productCart', {
+          return res.render('productCart', {
             title: 'Carrito',
             usuario,
             productosSession,
@@ -347,7 +384,7 @@ const controller = {
             userAvatar: req.session.avatar
           });
         } else {
-          res.redirect('/users/loginForm');
+          return res.redirect('/users/loginForm');
         }
       },
       removeFromCart: (req, res) => {

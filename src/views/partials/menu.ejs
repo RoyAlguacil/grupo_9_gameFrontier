@@ -5,13 +5,6 @@
             <div class="user-name">
                 <% if (typeof userName !== 'undefined') { %>
                 <p><%= userName %></p>
-                <% } else { %>
-                    <div class="no-logueado">
-                        <p>Parece que no estás logueado :(</p>
-                        <button class="login-big">
-                            <a href="/users/loginForm">Login</a>
-                        </button>
-                    </div>
                 <% } %>
             </div>
             <div class="user-avatar">
@@ -20,16 +13,22 @@
                 <% } %>
             </div>
             <button class="login__button login-big">
-                <a href="/users/logout">Logout</a>
+                <a href="/logout">Logout</a>
             </button>
         </div>
+        <% } else { %>
+        <div class="no-logueado">
+            <p>Parece que no estás logueado :(</p>
+        </div>
         <% } %>
-    <nav>
+    <nav id="nav">
         <ul>
             <% if (typeof userId !== 'undefined') { %>
                 <a href="/perfil"><li>Perfil</li></a>
-            <% } else { %>
+            <% } else if (typeof adminId !== 'undefined') { %>
                     <a href="/admin/perfil"><li>Admin</li></a>
+            <% } else { %>
+                    <a href="/users/loginForm"><li>Login</li></a>
             <% } %>
             <a href="/productos"><li>Catálogo</li></a>
             <a href="/#categorias"><li>Categorías</li></a>

@@ -18,6 +18,7 @@ const processLoginMiddleware = require('../middlewares/processLoginMiddleware');
 const cartMiddleware = require('../middlewares/cartMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
 const userNotAllowedMiddleware = require('../middlewares/userNotAllowedMiddleware');
+const alreadyLoggedMiddleware = require('../middlewares/alreadyLoggedMiddleware');
 
 // ************ PRODUCTOS ************
 /* Index GET */
@@ -30,19 +31,19 @@ router.get('/productos', mainController.productos);
 router.get('/productos/:id', mainController.detail);
 
 /* Formulario Carga de Producto --> GET */
-router.get('/carga-producto', authMiddleware, mainController.productLoad);
+router.get('/carga-producto', userNotAllowedMiddleware, mainController.productLoad);
 
 /* Carga de Producto --> POST */
 router.post('/carga-producto', uploadProduct.single('image_input'), mainController.addProduct);
 
 /* Formulario de Update Producto --> GET */
-router.get('/productos/editar/:id', authMiddleware, mainController.update);
+router.get('/productos/editar/:id', userNotAllowedMiddleware, mainController.update);
 
 /* Update Producto --> POST */
-router.post('/productos/editar/:id', authMiddleware, uploadProduct.single('image_input'), mainController.updateProduct);
+router.post('/productos/editar/:id', uploadProduct.single('image_input'), mainController.updateProduct);
 
 /* Eliminación de Productos --> DELETE */
-router.delete('/productos/eliminar/:id', authMiddleware, mainController.delete);
+router.delete('/productos/eliminar/:id', mainController.delete);
 
 /* Carro de Compras --> GET */
 router.get('/carrito', cartMiddleware, authMiddleware, mainController.productCart);
@@ -81,7 +82,7 @@ router.get('/registro', usersController.formRegister);
 router.post('/registro', uploadAvatar.single('user_avatar'), registerValidation, usersController.register);
 
 /* Formulario de Login --> GET */
-router.get('/users/loginForm', usersController.loginForm);
+router.get('/users/loginForm', alreadyLoggedMiddleware, usersController.loginForm);
 
 /* Alta de Login --> POST */
 router.post('/users/processLogin', processLoginMiddleware, usersController.processLogin);
@@ -90,7 +91,7 @@ router.post('/users/processLogin', processLoginMiddleware, usersController.proce
 router.get('/perfil', authMiddleware, usersController.profile);
 
 /* Logout --> GET*/
-router.get('/users/logout', usersController.logout);
+router.get('/logout', usersController.logout);
 
 // ************ ADMIN ************
 /* Login Admin --> GET */
