@@ -54,8 +54,8 @@
                       <p>Precio Total</p>
                       <p>$<%= producto.precio * producto.cantidadProducto %></p>
                     </div>
-                    <form action="carrito/eliminar/<%= producto.id %>?_method=DELETE" method='POST'>
-                      <button type="submit" class="removeProduct btn btn-danger">Eliminar</button>
+                    <form action="carrito/eliminar/<%= producto.id %>?_method=DELETE" method='POST' id="formulario-eliminar">
+                      <button type="submit" class="removeProduct btn btn-danger" id="eliminar-item">Eliminar</button>
                     </form>
                   </div>
                 <% }) %>
@@ -147,6 +147,8 @@
   <script src="/js/sweetalert2.all.min.js"></script>
   <script>
     const formularioPago = document.getElementById('formulario-pago');
+    const formularioEliminar = document.getElementById('formulario-eliminar');
+
     const botonPago = document.getElementById('pagar').addEventListener('click', function(e) {
       e.preventDefault();
       Swal.fire({
@@ -162,6 +164,32 @@
           formularioPago.submit();
         }
       })
+    });
+
+    const botonEliminar = document.getElementById('eliminar-item').addEventListener('click', (e) => {
+      e.preventDefault();
+      Swal.fire({
+        title: '¿Querés quitar el producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto removido',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            formularioEliminar.submit();
+          }, 1600);
+        }
+      });
     });
   </script>
 </body>

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/css/home.css" />
   <link rel="stylesheet" href="/css/footer.css" />
   <link rel="stylesheet" href="/css/productDetail.css" />
+  <script src='/js/sweetalert2.all.min.js'></script>
 </head>
 
 <body>
@@ -30,7 +31,7 @@
 
         <div class="carrito">
           <h2>Añadir a carrito</h2>
-          <form action="/carrito" method="post">
+          <form action="/carrito" method="post" id="formulario">
             <div class="control">
               <label for="cantidad">Cantidad:</label>
               <input type="number" name="productoId" value="<%= producto.id %>" hidden="hidden">
@@ -52,6 +53,33 @@
   
   <script src="/js/swiper.min.js"></script>
   <script>
+    const form = document.getElementById('formulario');
+    const addProduct = document.querySelector('#cartBtn').addEventListener('click', e => {
+      e.preventDefault();
+      Swal.fire({
+        title: '¿Querés añadir el producto?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto añadido',
+            showConfirmButton: false,
+            timer: 1500
+          });
+          setTimeout(() => {
+            form.submit();
+          }, 1600);
+        }
+      });
+    })
+
     const mySwiper = new Swiper(".swiper-container", {
       loop: true,
       loopedSlides: 4,
