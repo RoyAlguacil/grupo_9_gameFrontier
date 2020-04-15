@@ -23,7 +23,6 @@ const controller = {
         .then(admin => {
             // Valido si existe el usuario
             if (admin != undefined) {
-                console.log('hay user');
                 // Hasheo la contraseña
                 if (bcrypt.compareSync(req.body.password, admin.password)) {
                     console.log('coinciden pass');
@@ -35,25 +34,21 @@ const controller = {
                     req.session.userName = admin.nombre;
                     req.session.avatar = 'admin.avatar';
 
-                    console.log(req.session.adminId)
-                    console.log(req.session.userName)
-                    console.log(req.session.avatar)
-
                     // Redirección
                     return res.redirect('/');
                 } else {
-                    console.log('no coinciden pass');
                     // Si la contraseña falla
                     return res.render('admin/loginForm', {
                         title: 'Login',
                         adminId: null,
+                        datosErroneos: true
                     });
                 }
             } else {
-                console.log('no hay user');
                 return res.render('admin/loginForm', {
                     title: 'Login',
                     adminId: null,
+                    datosErroneos: true
                 });
             }
         })

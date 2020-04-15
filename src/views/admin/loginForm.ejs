@@ -46,6 +46,10 @@
 
         <button class="register" type="submit">Continuar</button>
         <br>
+        <% if (typeof datosErroneos !== 'undefined') { %>
+            <p class="text-danger">Credenciales incorrectas</p>
+        <% } %>
+        <br>
         <p style="margin-top: 20px;"><a href="/admin/registro" style="color: var(--main-color); text-decoration: none;">Añadir nuevo administrador</a></p>
     </form>
 </main>
