@@ -10,14 +10,54 @@ const controller = {
     root: (req, res) => {
         res.render('admin/loginForm', {
             title: 'Admin',
-            userId: null
+            adminId: null
         });
     },
     login: (req, res) => {
-        req.session.adminId = 1;
-        req.session.userName = 'test';
-        req.session.avatar = 'test';
-        res.redirect('/');
+        console.log(req.body);
+        // Busco al admin por email
+        Admins
+        .findOne({
+            where:{email: req.body.email}
+        })
+        .then(admin => {
+            // Valido si existe el usuario
+            if (admin != undefined) {
+                console.log('hay user');
+                // Hasheo la contraseña
+                if (bcrypt.compareSync(req.body.password, admin.password)) {
+                    console.log('coinciden pass');
+                    // Borramos la contraseña del objeto admin
+                    delete admin.password;
+
+                    // Pasamos al usuario a session
+                    req.session.adminId = admin.id;
+                    req.session.userName = admin.nombre;
+                    req.session.avatar = 'admin.avatar';
+
+                    console.log(req.session.adminId)
+                    console.log(req.session.userName)
+                    console.log(req.session.avatar)
+
+                    // Redirección
+                    return res.redirect('/');
+                } else {
+                    console.log('no coinciden pass');
+                    // Si la contraseña falla
+                    return res.render('admin/loginForm', {
+                        title: 'Login',
+                        adminId: null,
+                    });
+                }
+            } else {
+                console.log('no hay user');
+                return res.render('admin/loginForm', {
+                    title: 'Login',
+                    adminId: null,
+                });
+            }
+        })
+        .catch(error => console.log(error));
     },
     profile: (req, res) => {
       res.send('profile!');
